@@ -1,77 +1,84 @@
-import numpy as np 
+import numpy as np
+from PyEMD import EMD
 import matplotlib.pyplot as plt
 import scipy.signal as signal
 import scipy.stats as stats
+import pandas as pd
 
 from scipy.interpolate import interp1d
 from scipy.signal import hilbert, chirp
-'''
-def aggregation(x):#to do
-    for clusters in x:
-        result = np.mean(clusters,axis=x)
-'''
-def correlation(x,y):
-    return stats.pearsonr(x,y)[0] #get the cor of two signals
 
-def getReference(s1,s2):
-    n = 10 #number of time bins
-    j = 0 #current time range
-    
-    #cut each IMF in s1:
-    isolated1 = [[],[],[],[]]
-    for j in range(4):
-        for i in range(0,len(s1[j]),len(s1[j])/n): #devide IMFj into n parts
-            isolated1[j].append(s1[j][i:i+len(s1[j]/n)])
-            
-    #cut each IMF in s2:
-    isolated2 = [[],[],[],[]]
-    for j in range(4):
-        for i in range(0,len(s2[j]),len(s2[j])/n): 
-            isolated2[j].append(s2[j][i:i+len(s2[j]/n)])
-            
-    #compute the correlations        
-    matrix1 = np.array(isolated1)
-    matrix2 = np.array(isolated2)
-    matrixCor = np.zeros((n,4))
-    for x in range(0,n):
-        for y in range(0,4):
-            matrixCor[x][y] = correlation(matrix1[x][y],matrix2[x][y])
-            
-    #get the median
-    medianList = []
-    for l in range(0,4):
-        medianList.append(np.median(matrixCor[:,l])
 
-    return medianList
+def getFrequency(signal):
+    fs = 400.0
+    analytic_signal = hilbert(signal)
+    instantaneous_phase = np.unwrap(np.angle(analytic_signal))
+    instantaneous_frequency = (np.diff(instantaneous_phase) / (2.0 * np.pi) * fs)
+    return instantaneous_frequency
+
+
+def correlation(x, y):
+    return stats.pearsonr(x, y)[0]  # get the cor of two signals
+
 
 def getCluster(IMFs):
-    frequencies = []    #frequency of each IMFs
+    frequencies = []  # frequency of each IMFs
     for imf in IMFs:
         frequency = getFrequency(imf)
-        frequencies.append(frequency)
-        
-    clusters = [[],[],[],[]]
-                          
-    #4 time scale ranges
-    range1 = 20 * 60
-    range2 = 6 * 60 * 60
-    range3 = 6 * 60 * 60 * 24
-    i = 0
-    for f in frequencies:
-        if f<range1:
-            clusters[0].append(IMFs[i])
-        elif f in range(range1,range2):
-            clusters[1].append(IMFs[i])
-        elif f in range(range2,range3):
-            clusters[2].append(IMFs[i])
-        elif f > range3:
-            clusters[3].append(IMFs[i])
-        i=i+1
-    return clusters
+        if frequency.mean()<0:
+            frequencies.append(0.0)
+        else:
+            frequencies.append(frequency.mean())
 
-def getReference2(matrix1,matrix2):#to do
-    n = 10 #number of time bins
-    l = len(matrix[:,0])
-    matrixCol = [[]]
-    for i in range(
-    matrixCol[0].append(np.corrcoef(matrix1[:,0][0,l/i],matrix2[:,0][0,n]))
+    matrix = np.transpose(np.array(IMFs))
+    frequencies = np.array(frequencies)
+    matrixF = np.vstack((frequencies, matrix))
+
+    # 4 time scale ranges
+    range1 = 3
+    range2 = 20
+    range3 = 80
+    Range = [0, 0, 0, 0]
+    for f in matrixF[0, :]:
+        if f < range1:
+            Range[0] = Range[0] + 1
+        if range1 < f < range2:
+            Range[1] = Range[1] + 1
+        if range2 < f < range3:
+            Range[2] = Range[2] + 1
+        if f > range3:
+            Range[3] = Range[3] + 1
+    cluster1 = np.sum(matrix[:, 0:Range[0]], 1)
+    cluster2 = np.sum(matrix[:, Range[0]:Range[0] + Range[1]], 1)
+    cluster3 = np.sum(matrix[:, Range[0] + Range[1]:Range[0] + Range[1] + Range[2]], 1)
+    cluster4 = np.sum(matrix[:, Range[0] + Range[1] + Range[2]:], 1)
+    cluster = np.vstack((cluster1, cluster2, cluster3, cluster4)).transpose()
+    return cluster
+
+
+def getReference(matrix1, matrix2, timeRange):
+    n = 10  # number of time bins
+    l = len(matrix1[:, 0])/n
+    ref = []
+    for i in range(0, 10):
+        ref.append(correlation(matrix1[i*l:(i+1)*l,timeRange],matrix2[i*l:(i+1)*l,timeRange]))
+    ref = np.array(ref)
+    return ref.mean()
+
+
+def dataProcessing(fileName):
+
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/'+fileName,
+                           names=['date', 'value'])
+
+    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data = raw_data.sort_values(by=['date'])
+    # plt.plot(raw_data['date'], raw_data['value'])
+    # plt.show()
+    return np.array(raw_data['value'])
+
+
+if __name__ == '__main__':
+    IMF1s = EMD().emd(dataProcessing('2_Mag_HW_Return_Temp.csv'))
+    IMF2s = EMD().emd(dataProcessing('2_Mag_CHW_Supply_Temp.csv'))
+    print getReference(getCluster(IMF1s), getCluster(IMF2s), 0)

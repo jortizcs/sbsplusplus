@@ -79,7 +79,7 @@ def getcMatrix(matrix1, matrix2, timeRange, t):
 
 def dataProcessing(fileName):
 
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/'+fileName,
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'+fileName,
                            names=['date', 'value'])
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
@@ -90,7 +90,7 @@ def dataProcessing(fileName):
 
 
 def plot(fileName,tb, more_than_one):
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/' + fileName,
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/' + fileName,
                            names=['date', 'value'])
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')

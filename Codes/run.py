@@ -59,8 +59,8 @@ if __name__ == '__main__':
     for time in range(0, len(l_t)):
         an = search.anomaly(l_t, MAD, threshold, time)
         ano_list.append(an)
-    print ano_list
-
+    print
+    ano_list
     # plot the graph with anomalies for each pair of devices
     more_than_one = False   # in order to print the graph only once
     for item in range(0, len(ano_list)):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
             plt.subplot(211)
             bind.plot(filescv_list[device], item, more_than_one)
             plt.subplot(212)
-            bind.plot(filescv_list[device+1], item, more_than_one)
+            bind.plot(filescv_list[device+7], item, more_than_one)
             more_than_one = True
     plt.gcf().autofmt_xdate()
     plt.show()

@@ -1,5 +1,6 @@
 import numpy as np
 from PyEMD import EMD
+import math
 import matplotlib.pyplot as plt
 import scipy.signal as signal
 import scipy.stats as stats
@@ -18,7 +19,11 @@ def getFrequency(signal):
 
 
 def correlation(x, y):
-    return stats.pearsonr(x, y)[0]  # get the cor of two signals
+    cor = stats.pearsonr(x, y)[0]  # get the cor of two signals
+    if not math.isnan(cor):
+        return cor
+    else:
+        return -1
 
 
 def getCluster(IMFs):
@@ -66,6 +71,12 @@ def getReference(matrix1, matrix2, timeRange):
     return ref.mean()
 
 
+def getcMatrix(matrix1, matrix2, timeRange, t):
+    n = 10
+    l = len(matrix1[:, 0])/n
+    return correlation(matrix1[(t-1)*l: t*l, timeRange], matrix2[(t-1)*l:t*l, timeRange])
+
+
 def dataProcessing(fileName):
 
     raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/'+fileName,
@@ -73,12 +84,30 @@ def dataProcessing(fileName):
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
-    # plt.plot(raw_data['date'], raw_data['value'])
-    # plt.show()
+    #plt.plot(raw_data['date'], raw_data['value'], label=fileName)
+    #plt.legend()
     return np.array(raw_data['value'])
+
+
+def plot(fileName,tb, more_than_one):
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/' + fileName,
+                           names=['date', 'value'])
+
+    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data = raw_data.sort_values(by=['date'])
+    if more_than_one is False:
+        plt.plot(raw_data['date'], raw_data['value'], label=fileName)
+    n = 10
+    l = len(raw_data)/n
+    start = raw_data.iloc[l*tb, 0]
+    end = raw_data.iloc[l*tb + l, 0]
+    #print start, end
+    plt.axvspan(start, end, facecolor='#c63535', alpha=0.5)
+    plt.legend()
 
 
 if __name__ == '__main__':
     IMF1s = EMD().emd(dataProcessing('2_Mag_HW_Return_Temp.csv'))
     IMF2s = EMD().emd(dataProcessing('2_Mag_CHW_Supply_Temp.csv'))
     print getReference(getCluster(IMF1s), getCluster(IMF2s), 0)
+    print getcMatrix(getCluster(IMF1s), getCluster(IMF2s), 0, 1)

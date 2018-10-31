@@ -33,7 +33,8 @@ def isMonotonic(x):
         return True
     else:
         return False
-    
+
+
 def isImf(x):
     N = np.size(x)
     pass_zero = np.sum(x[0:N-2]*x[1:N-1]<0)

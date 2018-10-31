@@ -68,7 +68,7 @@ if __name__ == '__main__':
             plt.subplot(211)
             bind.plot(filescv_list[device], item, more_than_one)
             plt.subplot(212)
-            bind.plot(filescv_list[device+7], item, more_than_one)
+            bind.plot(filescv_list[device+1], item, more_than_one)
             more_than_one = True
     plt.gcf().autofmt_xdate()
     plt.show()

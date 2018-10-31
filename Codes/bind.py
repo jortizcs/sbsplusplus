@@ -77,8 +77,19 @@ def getcMatrix(matrix1, matrix2, timeRange, t):
     return correlation(matrix1[(t-1)*l: t*l, timeRange], matrix2[(t-1)*l:t*l, timeRange])
 
 
-def dataProcessing(fileName):
+def dataProcessing_byday(fileName, day):
+    row = day * 24 * 4
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/metadata/Rice/'+fileName,
+                           names=['date', 'value'], nrows=day)
 
+    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data = raw_data.sort_values(by=['date'])
+    #plt.plot(raw_data['date'], raw_data['value'], label=fileName)
+    #plt.legend()
+    return np.array(raw_data['value'])
+
+
+def dataProcessing(fileName):
     raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'+fileName,
                            names=['date', 'value'])
 
@@ -87,7 +98,6 @@ def dataProcessing(fileName):
     #plt.plot(raw_data['date'], raw_data['value'], label=fileName)
     #plt.legend()
     return np.array(raw_data['value'])
-
 
 def plot(fileName,tb, more_than_one):
     raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/' + fileName,

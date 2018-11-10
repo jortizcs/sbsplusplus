@@ -1,5 +1,5 @@
 import numpy as np 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import scipy.signal as signal
 import pandas as pd
 
@@ -12,8 +12,8 @@ def findpeaks(x):
     index = signal.argrelextrema(x,np.greater)[0]
     return index
 
-def getspline(x):
 
+def getspline(x):
 
     N = np.size(x)
     peaks = findpeaks(x)
@@ -43,7 +43,8 @@ def isImf(x):
         return False
     else:
         return True
-    
+
+
 def emd(x):
     imf = []
     while not isMonotonic(x):
@@ -56,8 +57,8 @@ def emd(x):
         imf.append(x1)
         x = x-x1
     imf.append(x)
-    print imf
     return imf
+
 
 def getFrequency(signal):
     fs = 400.0
@@ -67,14 +68,7 @@ def getFrequency(signal):
     instantaneous_frequency = (np.diff(instantaneous_phase) / (2.0*np.pi) * fs)
     return instantaneous_frequency
 
-def dataProcessing():
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Zone_Temp_RMI104.csv', names=['date', 'value'])
-    #2_Mag_HW_Return_Temp   2_Mag_CHW_Supply_Temp   Zone_Temp_RMI104
-    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
-    raw_data = raw_data.sort_values(by=['date'])
-    #plt.plot(raw_data['date'], raw_data['value'])
-    #plt.show()
-    return raw_data.values
+
 
 if __name__ == '__main__':
     matrix = dataProcessing()

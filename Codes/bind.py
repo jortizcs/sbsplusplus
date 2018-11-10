@@ -1,6 +1,7 @@
 import numpy as np
-from PyEMD import EMD
+#from PyEMD import EMD
 import math
+import EMD
 import matplotlib.pyplot as plt
 import scipy.signal as signal
 import scipy.stats as stats
@@ -9,9 +10,10 @@ import pandas as pd
 from scipy.interpolate import interp1d
 from scipy.signal import hilbert, chirp
 
+fs = 0.0011
 
 def getFrequency(signal):
-    fs = 400.0
+    fs = 0.0011
     analytic_signal = hilbert(signal)
     instantaneous_phase = np.unwrap(np.angle(analytic_signal))
     instantaneous_frequency = (np.diff(instantaneous_phase) / (2.0 * np.pi) * fs)
@@ -34,15 +36,14 @@ def getCluster(IMFs):
             frequencies.append(0.0)
         else:
             frequencies.append(frequency.mean())
-
     matrix = np.transpose(np.array(IMFs))
     frequencies = np.array(frequencies)
     matrixF = np.vstack((frequencies, matrix))
 
     # 4 time scale ranges
-    range1 = 3
-    range2 = 20
-    range3 = 80
+    range1 = 0.00000193
+    range2 = 0.0000463
+    range3 = 0.00083
     Range = [0, 0, 0, 0]
     for f in matrixF[0, :]:
         if f < range1:
@@ -68,7 +69,7 @@ def getReference(matrix1, matrix2, timeRange):
     for i in range(0, 10):
         ref.append(correlation(matrix1[i*l:(i+1)*l,timeRange],matrix2[i*l:(i+1)*l,timeRange]))
     ref = np.array(ref)
-    return ref.mean()
+    return np.median(ref)
 
 
 def getcMatrix(matrix1, matrix2, timeRange, t):
@@ -79,8 +80,8 @@ def getcMatrix(matrix1, matrix2, timeRange, t):
 
 def dataProcessing_byday(fileName, day):
     row = day * 24 * 4
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/metadata/Rice/'+fileName,
-                           names=['date', 'value'], nrows=day)
+    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/metadata/rice_test/'+fileName,
+                           names=['date', 'value'], nrows=row)
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
@@ -99,6 +100,7 @@ def dataProcessing(fileName):
     #plt.legend()
     return np.array(raw_data['value'])
 
+
 def plot(fileName,tb, more_than_one):
     raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/' + fileName,
                            names=['date', 'value'])
@@ -116,8 +118,30 @@ def plot(fileName,tb, more_than_one):
     plt.legend()
 
 
+def band_pass_filter(IMFs):
+    sampling_rate = 0.001111
+    b, a = signal.iirdesign([0.04, 0.75], [0.03, 0.8], 2, 40)
+    return signal.lfilter(b, a, IMFs)
+
+
 if __name__ == '__main__':
-    IMF1s = EMD().emd(dataProcessing('2_Mag_HW_Return_Temp.csv'))
-    IMF2s = EMD().emd(dataProcessing('2_Mag_CHW_Supply_Temp.csv'))
-    print getReference(getCluster(IMF1s), getCluster(IMF2s), 0)
-    print getcMatrix(getCluster(IMF1s), getCluster(IMF2s), 0, 1)
+    IMF1s = EMD.emd(dataProcessing('2_Mag_HW_Return_Temp.csv'))
+    IMF2s = EMD.emd(dataProcessing('2_Mag_CHW_Supply_Temp.csv'))
+    xf = np.fft.fft(IMF1s)
+    xf_abs = np.fft.fftshift(abs(xf))
+    N = 671 * 7
+    axis_xf = np.linspace(-N / 2, N / 2 - 1, num=N)
+
+    plt.plot(axis_xf, xf_abs)
+    plt.axis('tight')
+    plt.show()
+
+    out = band_pass_filter(IMF1s)
+
+    xf = np.fft.fft(out)
+    xf_abs = np.fft.fftshift(abs(xf))
+    axis_xf = np.linspace(-N / 2, N / 2 - 1, num=N)
+
+    plt.plot(axis_xf, xf_abs)
+    plt.axis('tight')
+    plt.show()

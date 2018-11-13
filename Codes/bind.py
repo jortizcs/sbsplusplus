@@ -10,7 +10,6 @@ import pandas as pd
 from scipy.interpolate import interp1d
 from scipy.signal import hilbert, chirp
 
-fs = 0.0011
 
 def getFrequency(signal):
     fs = 0.0011
@@ -25,17 +24,15 @@ def correlation(x, y):
     if not math.isnan(cor):
         return cor
     else:
-        return -1
+        return 0.0
 
 
 def getCluster(IMFs):
     frequencies = []  # frequency of each IMFs
     for imf in IMFs:
         frequency = getFrequency(imf)
-        if frequency.mean()<0:
-            frequencies.append(0.0)
-        else:
-            frequencies.append(frequency.mean())
+        frequency = filter(lambda x: x >= 0, frequency)
+        frequencies.append(np.array(frequency).mean())
     matrix = np.transpose(np.array(IMFs))
     frequencies = np.array(frequencies)
     matrixF = np.vstack((frequencies, matrix))
@@ -63,7 +60,7 @@ def getCluster(IMFs):
 
 
 def getReference(matrix1, matrix2, timeRange):
-    n = 10  # number of time bins
+    n = 4  # number of time bins
     l = len(matrix1[:, 0])/n
     ref = []
     for i in range(0, 10):
@@ -78,10 +75,9 @@ def getcMatrix(matrix1, matrix2, timeRange, t):
     return correlation(matrix1[(t-1)*l: t*l, timeRange], matrix2[(t-1)*l:t*l, timeRange])
 
 
-def dataProcessing_byday(fileName, day):
+def dataProcessing_byday(file_path, day):
     row = day * 24 * 4
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/metadata/rice_test/'+fileName,
-                           names=['date', 'value'], nrows=row)
+    raw_data = pd.read_csv(file_path, names=['date', 'value'], nrows=row)
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
@@ -90,9 +86,8 @@ def dataProcessing_byday(fileName, day):
     return np.array(raw_data['value'])
 
 
-def dataProcessing(fileName):
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'+fileName,
-                           names=['date', 'value'])
+def dataProcessing(file_path):
+    raw_data = pd.read_csv(file_path,names=['date', 'value'])
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])

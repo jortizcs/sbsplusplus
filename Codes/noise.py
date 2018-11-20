@@ -24,11 +24,9 @@ if __name__ == '__main__':
 
     for filename in path_list:
         raw_data = pd.read_csv(filename, names=['date', 'value'])
-
-        raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
-        raw_data = raw_data.sort_values(by=['date'])
         raw_value = raw_data['value']
         if raw_value[0] == raw_value[1]:
             new_value =gauss_noise(np.array(raw_value))
             raw_data['value'] = new_value
-            raw_data.to_csv(filename)
+            del raw_data.index.name
+            raw_data.to_csv(filename, header=None, index=None)

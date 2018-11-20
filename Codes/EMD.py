@@ -59,21 +59,3 @@ def emd(x):
     imf.append(x)
     return imf
 
-
-def getFrequency(signal):
-    fs = 400.0
-    analytic_signal = hilbert(signal)
-    amplitude_envelope = np.abs(analytic_signal)
-    instantaneous_phase = np.unwrap(np.angle(analytic_signal))
-    instantaneous_frequency = (np.diff(instantaneous_phase) / (2.0*np.pi) * fs)
-    return instantaneous_frequency
-
-
-
-if __name__ == '__main__':
-    matrix = dataProcessing()
-    IMFs = emd(matrix[:,1])
-    print len(IMFs)
-    plt.plot(IMFs[1])
-    plt.show()
-

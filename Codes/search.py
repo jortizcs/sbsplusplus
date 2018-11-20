@@ -4,7 +4,7 @@ import pandas as pd
 from scipy.spatial import distance
 
 
-def behaviorChange(refMatrix, cMatrix, deviceId):
+def behaviorChange_old(refMatrix, cMatrix, deviceId):
     d = len(refMatrix[0])  # number of sensors
     R = refMatrix[:, deviceId]  # reference vector for deviceId
     C = cMatrix[:, deviceId]    # current vector for deviceId
@@ -25,3 +25,6 @@ def anomaly(list, MAD, threshold, t):
     else:
         return False
 
+
+def behaviorChange(refMatrix, cMatrix, device1, device2):
+    l = refMatrix[device1, device2] - cMatrix[device1, device2]

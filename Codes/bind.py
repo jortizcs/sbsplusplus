@@ -60,17 +60,17 @@ def getCluster(IMFs):
 
 
 def getReference(matrix1, matrix2, timeRange):
-    n = 4  # number of time bins
+    n = 4  # number of time bins: 6 hours
     l = len(matrix1[:, 0])/n
     ref = []
-    for i in range(0, 10):
+    for i in range(0, n):
         ref.append(correlation(matrix1[i*l:(i+1)*l,timeRange],matrix2[i*l:(i+1)*l,timeRange]))
     ref = np.array(ref)
     return np.median(ref)
 
 
 def getcMatrix(matrix1, matrix2, timeRange, t):
-    n = 10
+    n = 4
     l = len(matrix1[:, 0])/n
     return correlation(matrix1[(t-1)*l: t*l, timeRange], matrix2[(t-1)*l:t*l, timeRange])
 

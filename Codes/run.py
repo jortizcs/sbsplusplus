@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 if __name__ == '__main__':
-    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'
+    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
     path_list = os.listdir(path)
     path_list.sort()
     name_list = path_list
@@ -17,13 +17,14 @@ if __name__ == '__main__':
         print path_list[i]
 
     # frequency range: i
-    i = 2
-
+    i = 0
+    # time bins:
+    n = 4
     # num of days
-    num_days = 0.25
+    num_days = 1
     R = []
     cMatrix_list = []
-    for r in range(0, 10):
+    for r in range(0, n):
         cMatrix_list.append([])
     for filename1 in path_list:
         for filename2 in path_list:
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             cluster1 = bind.getCluster(IMFs1)
             cluster2 = bind.getCluster(IMFs2)
             R.append(bind.getReference(cluster1, cluster2, i))
-            for j in range(1, 11):
+            for j in range(1, n+1):
                 cMatrix_list[j - 1].append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), i, j))
     R = np.array(R).reshape((d, d))
     cMatrix_list = np.array(cMatrix_list)
@@ -52,10 +53,11 @@ if __name__ == '__main__':
     plt.show()
 
     # MAD:
-    device = 0
+    device1 = 0
+    device2 = 1
     l_t = []
-    for t in range(0, 10):
-        l_t.append(search.behaviorChange(R, np.array(cMatrix_list[t]).reshape((d, d)), device))  # behavior changes for
+    for t in range(0, n):
+        l_t.append(search.behaviorChange(R, np.array(cMatrix_list[t]).reshape((d, d)), device1, device2))  # behavior changes for
         # device
     MAD = search.MAD(l_t, 1.4826)
     ano_list = []   # list to store the anomalies for each time bin

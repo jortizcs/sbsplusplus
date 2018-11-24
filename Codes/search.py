@@ -27,4 +27,4 @@ def anomaly(list, MAD, threshold, t):
 
 
 def behaviorChange(refMatrix, cMatrix, device1, device2):
-    l = refMatrix[device1, device2] - cMatrix[device1, device2]
+    return refMatrix[device1, device2] - cMatrix[device1, device2]

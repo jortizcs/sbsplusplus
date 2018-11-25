@@ -5,11 +5,11 @@ import pandas as pd
 import numpy as np
 import os
 
-f_range = 3
-num_days = 2
+f_range = 2
+num_days = 3
 
 if __name__ == '__main__':
-    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
+    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'
     path_list = os.listdir(path)
     path_list.sort()
 

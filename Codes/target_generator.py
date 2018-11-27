@@ -36,9 +36,6 @@ if __name__ == '__main__':
                 # IMFs2 = bind.EMD().emd(bind.dataProcessing_byday(filename2, num_days))
                 IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
                 IMFs2 = EMD.emd(bind.dataProcessing_byday(filename2, num_days))
-                cluster1 = bind.getCluster(IMFs1)
-                cluster2 = bind.getCluster(IMFs2)
-
                 cMatrix.append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), f_range, j, n))
         C = np.array(cMatrix).reshape((d, d))
         df = pd.DataFrame(C)

@@ -2,7 +2,7 @@ import numpy as np
 #from PyEMD import EMD
 import math
 import EMD
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import scipy.signal as signal
 import scipy.stats as stats
 import pandas as pd
@@ -75,6 +75,20 @@ def getcMatrix(matrix1, matrix2, timeRange, t, n):
 
     l = len(matrix1[:, 0])/n
     return correlation(matrix1[(t-1)*l: t*l, timeRange], matrix2[(t-1)*l:t*l, timeRange])
+
+
+def dataProcessing_from_to(file_path, start, end):
+    start = start - 1
+    end = end - 1
+    skip = start * 24 * 4
+    row = (end - start) * 24 * 4
+    raw_data = pd.read_csv(file_path, names=['date', 'value'], skiprows=skip, nrows=row)
+
+    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data = raw_data.sort_values(by=['date'])
+    # plt.plot(raw_data['date'], raw_data['value'], label=fileName)
+    # plt.legend()
+    return np.array(raw_data['value'])
 
 
 def dataProcessing_byday(file_path, day):

@@ -43,6 +43,3 @@ def target_generator_from_to(start, end):
         df.to_csv('/home/ec2-user/sbs/output/' + file_name)
         day_count = day_count + j / 4
 
-
-if __name__ == '__main__':
-    target_generator_from_to(2, 4)

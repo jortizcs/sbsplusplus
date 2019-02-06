@@ -30,7 +30,7 @@ def read_Cmatrix(set, day, timebin):
     d = len(path_list)
     for i in range(d):
         path_list[i] = c_path + path_list[i]
-    order = (day-1) % 4 + timebin
+    order = (day-1) * 4 + timebin
     df = pd.read_csv(path_list[order])
     C = df.values
     C = C[:, 1:]
@@ -40,15 +40,15 @@ def read_Cmatrix(set, day, timebin):
 def get_Cmatrix_list(set):
     list = []
     for day in range(1, 7):
-        for tb in range(0, 3):
+        for tb in range(0, 4):
             list.append(read_Cmatrix(set, day, tb))
     return list
 
 
-def count(R, C_list, day, timebin, threshold):
+def count_sp_day(R, C_list, day, timebin, threshold):
     R = np.array(R)
     sum = 0
-    tb = (day-1) % 4 + timebin
+    tb = (day-1) * 4 + timebin
     for i in range(0, len(R)):
         for j in range(i+1, len(R)):
             l = []
@@ -60,10 +60,24 @@ def count(R, C_list, day, timebin, threshold):
     return sum/2
 
 
+def count(R, C_list, timebin, threshold):
+    R = np.array(R)
+    sum = 0
+    for i in range(0, len(R)):
+        for j in range(i+1, len(R)):
+            l = []
+            for c_matrix in C_list:
+                l.append(search.behaviorChange(R, c_matrix, i, j))
+            MAD = search.MAD(l, b)
+            if search.anomaly(l, MAD, threshold, timebin) is True:
+                sum = sum + 1
+    return sum/2
+
+
 def detail(R, C_list, day, timebin, threshold):
     R = np.array(R)
     sum = 0
-    tb = (day-1) % 4 + timebin
+    tb = (day-1) * 4 + timebin
     for i in range(0, len(R)):
         for j in range(i+1, len(R)):
             l = []

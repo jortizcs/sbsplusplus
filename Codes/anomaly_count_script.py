@@ -21,7 +21,7 @@ if __name__ == '__main__':
     print 'Please wait...'
     R = anomaly_count.read_Rmatrix(r_day)
     C_list = anomaly_count.get_Cmatrix_list(set)
-    anomalies = anomaly_count.count(R, C_list, day, tb, threshold)
+    anomalies = anomaly_count.count_sp_day(R, C_list, day, tb, threshold)
 
     print '---------------------------'
     print 'The total number anomalies in this time is: '

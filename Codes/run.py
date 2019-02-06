@@ -34,9 +34,9 @@ if __name__ == '__main__':
             IMFs2 = EMD.emd(bind.dataProcessing_byday(filename2, num_days))
             cluster1 = bind.getCluster(IMFs1)
             cluster2 = bind.getCluster(IMFs2)
-            R.append(bind.getReference(cluster1, cluster2, i))
+            R.append(bind.getReference(cluster1, cluster2, i, n))
             for j in range(1, n+1):
-                cMatrix_list[j - 1].append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), i, j))
+                cMatrix_list[j - 1].append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), i, j,n))
     R = np.array(R).reshape((d, d))
     cMatrix_list = np.array(cMatrix_list)
 

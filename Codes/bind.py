@@ -2,7 +2,7 @@ import numpy as np
 #from PyEMD import EMD
 import math
 import EMD
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import scipy.signal as signal
 import scipy.stats as stats
 import pandas as pd
@@ -112,8 +112,8 @@ def dataProcessing(file_path):
     return np.array(raw_data['value'])
 
 
-def plot(fileName,tb, more_than_one):
-    raw_data = pd.read_csv('/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/' + fileName,
+def plot(filePath,tb, more_than_one):
+    raw_data = pd.read_csv(filePath,
                            names=['date', 'value'])
 
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
@@ -127,7 +127,7 @@ def plot(fileName,tb, more_than_one):
     #print start, end
     plt.axvspan(start, end, facecolor='#c63535', alpha=0.5)
     plt.legend()
-
+    plt.show()
 
 def band_pass_filter(IMFs):
     sampling_rate = 0.001111

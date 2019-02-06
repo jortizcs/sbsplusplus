@@ -68,12 +68,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="py" value="9429" />
-          <entry key="txt" value="399" />
+          <entry key="txt" value="408" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="399" />
+          <entry key="PLAIN_TEXT" value="408" />
           <entry key="Python" value="9429" />
         </counts>
       </usages-collector>
@@ -176,6 +176,9 @@
     <findStrings>
       <find>n</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/opc</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -533,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549468142998</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="bug fixed">
+      <created>1549468788067</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1549468788067</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -600,7 +610,6 @@
     <MESSAGE value="anomaly_count completed" />
     <MESSAGE value="read data for specific day added" />
     <MESSAGE value="target_generator_script completed" />
-    <MESSAGE value="bug fixed" />
     <MESSAGE value="script test" />
     <MESSAGE value="anomalies_through_time completed" />
     <MESSAGE value="anomalies_count_script completed" />
@@ -608,7 +617,8 @@
     <MESSAGE value="details changed" />
     <MESSAGE value="plot added" />
     <MESSAGE value="opc added" />
-    <option name="LAST_COMMIT_MESSAGE" value="opc added" />
+    <MESSAGE value="bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

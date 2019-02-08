@@ -34,7 +34,7 @@ if __name__ == '__main__':
     path_list.sort()
     name_list = path_list
     d = len(path_list)
-    plot_graph(name_list[0])
-    #plot_pair_graphs(name_list[6], name_list[27])
+    #plot_graph(name_list[0])
+    plot_pair_graphs(name_list[7], name_list[13])
     plt.show()
 

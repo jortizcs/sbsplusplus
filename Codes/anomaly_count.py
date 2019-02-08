@@ -14,6 +14,12 @@ f_range = 2
 b = 1.4826
 
 
+def count_interface(R, C_list, day, timebin, threshold, option):
+    if option == 1:
+        return count_sp_day(R, C_list, day, timebin, threshold)
+    else:
+        return count_abn_sensor(R, C_list, timebin, threshold)
+
 
 def read_Rmatrix(num_days):
     r_path = path + '/R/'+str(num_days)+'day/R_Rice_'+str(num_days)+'_day_range'+str(f_range) + '.csv'
@@ -74,7 +80,21 @@ def count(R, C_list, timebin, threshold):
     return sum/2
 
 
-def detail(R, C_list, day, timebin, threshold):
+def count_abn_sensor(R, C_list, timebin, threshold):
+    R = np.array(R)
+    sum = 0
+    for i in range(0, len(R)):
+        l_i = []
+        for c_matrix in C_list:
+            l_i.append(search.behaviorChange_old(R, c_matrix, i))
+        MAD = search.MAD(l_i, b)
+        if search.anomaly(l_i, MAD, threshold, timebin) is True:
+            print 'Abnormal behavior in sensor: ' + str(i)
+            sum = sum + 1
+    return sum
+
+
+def detail_cell(R, C_list, day, timebin, threshold):
     R = np.array(R)
     sum = 0
     tb = (day-1) * 4 + timebin

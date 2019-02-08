@@ -18,14 +18,19 @@ if __name__ == '__main__':
     print 'Please choose the threshold (1-20):'
     threshold = int(raw_input())
 
+    print 'Please choose the search option:'
+    print '1. Cell'
+    print '2. Vector'
+    search_op = int(raw_input())
+
     print 'Please wait...'
     R = anomaly_count.read_Rmatrix(r_day)
     C_list = anomaly_count.get_Cmatrix_list(set)
-    anomalies = anomaly_count.count_sp_day(R, C_list, day, tb, threshold)
+    num_of_anomalies = anomaly_count.count_interface(R, C_list, day, tb, threshold, search_op)
 
     print '---------------------------'
     print 'The total number anomalies in this time is: '
-    print anomalies
+    print num_of_anomalies
 
     print 'Enter 1 to see the detail, enter 2 to exit'
     choice = int(raw_input())

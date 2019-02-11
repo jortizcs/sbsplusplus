@@ -26,11 +26,16 @@ if __name__ == '__main__':
     print 'Please wait...'
     R = anomaly_count.read_Rmatrix(r_day)
     C_list = anomaly_count.get_Cmatrix_list(set)
-    num_of_anomalies = anomaly_count.count_interface(R, C_list, day, tb, threshold, search_op)
+    abn_sensors = anomaly_count.count_interface(R, C_list, day, tb, threshold, search_op)
+    num_of_anomalies = len(abn_sensors)
 
     print '---------------------------'
     print 'The total number anomalies in this time is: '
     print num_of_anomalies
+
+    print 'Press 1 to check the anomalies:'
+    check = int(raw_input())
+    anomaly_count.anomaly_check(R, abn_sensors, day, tb)
 
     print 'Enter 1 to see the detail, enter 2 to exit'
     choice = int(raw_input())

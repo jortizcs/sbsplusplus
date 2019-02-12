@@ -37,11 +37,6 @@ if __name__ == '__main__':
     check = int(raw_input())
     anomaly_count.anomaly_check(R, abn_sensors, day, tb)
 
-    print 'Enter 1 to see the detail, enter 2 to exit'
-    choice = int(raw_input())
-    if choice == 1:
-        anomaly_count.detail(R, C_list, day, tb, threshold)
-    else:
-        print 'Thank you!'
-        exit()
+    print 'Thank you!'
+    exit()
 

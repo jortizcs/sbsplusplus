@@ -17,7 +17,7 @@ bins = 6
 n = num_days * 24 / bins
 
 if __name__ == '__main__':
-    path = '/home/ec2-user/sbs/Rice/'
+    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
     path_list = os.listdir(path)
     path_list.sort()
 
@@ -40,4 +40,4 @@ if __name__ == '__main__':
         C = np.array(cMatrix).reshape((d, d))
         df = pd.DataFrame(C)
         file_name = 'C_Rice_range' + str(num_days)+'_day_range' + str(f_range) + '_timebin' + str(j-1) + '.csv'
-        df.to_csv('/home/ec2-user/sbs/output/'+file_name)
+        df.to_csv('/Users/wuxiaodong/Desktop/'+file_name)

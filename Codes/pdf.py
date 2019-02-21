@@ -60,8 +60,12 @@ def pdf(s1, s2):
     plt.plot(x, y)
 
     # standard deviation
-    plt.fill_between(x, y, where = (x > mu + sigma), facecolor='red')
-    plt.fill_between(x, y, where=(x < mu - sigma), facecolor='red')
+    plt.fill_between(x, y, where = (x > mu + 2*sigma), facecolor='red')
+    plt.fill_between(x, y, where=(x < mu - 2*sigma), facecolor='red')
+    plt.vlines(mu + 2*sigma, 0, 2, colors= 'red', linestyles='--', label='2 sigma')
+    plt.vlines(mu - 2*sigma, 0, 2, colors= 'red', linestyles='--')
+
+
     #
     df = pd.read_csv(path_R)
     R = df.values[:, 1:]  # remove the first unnamed column in C csv file
@@ -72,10 +76,13 @@ def pdf(s1, s2):
     threshold = 1
     t_line = np.median(list) + threshold * mad_value
 
-
-    plt.vlines(t_line+r_value, 0, 5)
+    plt.vlines(t_line+r_value, 0, 5, label='MAD threshold==1')
     plt.vlines(r_value-t_line, 0, 5)
 
+    threshold2 = 2
+    t_line2 = np.median(list) + threshold2 * mad_value
+    plt.vlines(t_line2+r_value, 0, 5, label='MAD threshold==2', colors='green')
+    plt.vlines(r_value-t_line2, 0, 5, colors='green')
 
 
 def cdf(d):
@@ -89,13 +96,14 @@ def cdf(d):
 
 
 if __name__ == '__main__':
-    plt.subplot(221)
+    plt.subplot(311)
     pdf(1, 2)
+    plt.legend()
 
-    plt.subplot(222)
+    plt.subplot(312)
     pdf(28, 529)
 
-    plt.subplot(223)
+    plt.subplot(313)
     pdf(52,44)
 
     plt.show()

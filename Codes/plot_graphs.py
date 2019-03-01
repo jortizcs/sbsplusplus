@@ -16,6 +16,7 @@ def plot_graph(sensor_name):
                            names=['date', 'value'])
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
+    print np.mean(raw_data)
     plt.plot(raw_data['date'], raw_data['value'], label=sensor_name)
     plt.legend()
 
@@ -62,11 +63,7 @@ def plot_with_shade(sensor_name, day, timebin):
 
 
 if __name__ == '__main__':
-    path_list = os.listdir(path)
-    path_list.sort()
-    name_list = path_list
-    d = len(path_list)
-    #plot_graph(name_list[0])
-    plot_pair_graphs(name_list[290], name_list[300])
+    sensor = 'RMI503 Zone Temp 3.csv'
+    plot_graph(sensor)
     plt.show()
 

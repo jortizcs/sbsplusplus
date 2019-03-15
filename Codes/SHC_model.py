@@ -23,8 +23,6 @@ def temperature_model(data):
     fi = 50
     B = 20.8
     model = A * np.sin(w*(x + fi))+B
-
-
     return model
 
 
@@ -38,6 +36,48 @@ def cooler_model(temperature_model):
             c_model.append(1)
     c_model.append(c_model[len(c_model) - 1])
     return np.array(c_model)
+
+
+def cooler_open_window_model(temperature_model):
+    t_model = temperature_model
+    c_model = []
+    for i in range(1, len(t_model)):
+        c_model.append(3)
+    c_model.append(c_model[len(c_model)-1])
+    return np.array(c_model)
+
+def heater_open_window_model(temperature_model):
+    t_model = temperature_model
+    c_model = []
+    for i in range(1, len(t_model)):
+        c_model.append(1)
+    c_model.append(c_model[len(c_model)-1])
+    return np.array(c_model)
+
+def cooler_compete_model(temperature_model):
+    t_model = temperature_model
+    c_model = []
+    for i in range(0, len(t_model)/20):
+        for j in range(1, 11):
+            c_model.append(3)
+        for k in range(1, 11):
+            c_model.append(1)
+    for h in range(0, len(t_model)%20):
+        c_model.append(3)
+    return c_model
+
+
+def heater_compete_model(temperature_model):
+    t_model = temperature_model
+    h_model = []
+    for i in range(0, len(t_model)/20):
+        for j in range(1, 11):
+            h_model.append(1)
+        for k in range(1,11):
+            h_model.append(3)
+    for h in range(0, len(t_model)%20):
+        h_model.append(1)
+    return h_model
 
 
 def heater_model(temperature_model):
@@ -57,8 +97,19 @@ if __name__ == '__main__':
     raw = np.array(raw_data()['value'].values)
     date = np.array(raw_data()['date'].values)
     t_model = temperature_model(raw)
-    c_model = cooler_model(t_model)
-    h_model = heater_model(t_model)
+
+    c_model = cooler_model(t_model[0:200])
+    h_model = heater_model(t_model[0:200])
+    open_window_cooler = cooler_open_window_model(t_model[200:400])
+    open_window_heater = heater_open_window_model(t_model[200:400])
+
+    compete_model = cooler_compete_model(t_model[400:])
+    compete_model2 = heater_compete_model(t_model[400:])
+
+    mix_model_cooler = np.append(c_model, open_window_cooler)
+    mix_model_cooler = np.append(mix_model_cooler, compete_model)
+    mix_model_heater = np.append(h_model, open_window_heater)
+    mix_model_heater = np.append(mix_model_heater, compete_model2)
     plt.subplot(311)
     plt.plot(date, raw, label='data')
     plt.plot(date, t_model, label='model')
@@ -66,12 +117,13 @@ if __name__ == '__main__':
     plt.legend()
 
     plt.subplot(312)
-    plt.plot(date, c_model, label='cooler load')
+    plt.plot(date, mix_model_cooler, label='cooler load')
     plt.ylabel('cooler load')
 
     plt.subplot(313)
-    plt.plot(date, h_model, label='heater load')
+    plt.plot(date, mix_model_heater, label='heater load')
     plt.ylabel('heater load')
+
     plt.gcf().autofmt_xdate()
 
     plt.show()

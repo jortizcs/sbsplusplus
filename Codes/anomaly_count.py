@@ -9,7 +9,7 @@ import plot_graphs
 path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/'
 
 # frequency range:
-f_range = 2
+f_range = 1
 
 # constant b of MAD:
 b = 1.4826
@@ -30,8 +30,42 @@ def read_Rmatrix(num_days):
     return R
 
 
+def read_bv(sensor):
+    bv_list = []
+    bv_path = path +'BV/'
+    path_list = os.listdir(bv_path)
+    path_list.sort()
+    d = len(path_list)
+    for i in range(d):
+        path_list[i] = bv_path + path_list[i]
+
+    for p in path_list:
+        df = pd.read_csv(p)
+        bv = df.values
+        bv = bv[:,1:]
+        bv_list.append(bv)
+    return bv_list
+
+
+def read_bv_with_noise(sensor, noise):
+    bv_list = []
+    bv_path = path + 'BV/sensor'+str(sensor)+'/range1/'+str(noise)+'/'
+    path_list = os.listdir(bv_path)
+    path_list.sort()
+    d = len(path_list)
+    for i in range(d):
+        path_list[i] = bv_path + path_list[i]
+
+    for p in path_list:
+        df = pd.read_csv(p)
+        bv = df.values
+        bv = bv[:, 1:]
+        bv_list.append(bv)
+    return bv_list
+
+
 def read_Cmatrix(set, day, timebin):
-    c_path = path+'C/'
+    c_path = path+'C/range'+ str(f_range)+'/'
     path_list = os.listdir(c_path)
     path_list.sort()
     d = len(path_list)
@@ -95,7 +129,6 @@ def count_abn_sensor(R, C_list, day, timebin, threshold):
             print 'Abnormal behavior in sensor: ' + str(i)
             abn_sensors.append(i)
     return abn_sensors
-
 
 def anomaly_check(R, abn_sensors, day, timebin):
     control_sensors = []

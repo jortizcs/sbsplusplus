@@ -43,6 +43,7 @@ for i_episode in range(100):
             print('episode: ', i_episode,
                   'ep_r: ', round(ep_r, 2),
                   ' epsilon: ', round(RL.epsilon, 2))
+            print observation
             break
 
         observation = observation_

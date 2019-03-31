@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import os
 import transforms
+import noise_injection
 
 
 f_range = 1
@@ -19,8 +20,8 @@ bins = 6
 n = num_days * 24 / bins
 
 
-def bv_generator(sensor):
-    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
+def bv_generator():
+    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
     path_list = os.listdir(path)
     path_list.sort()
 
@@ -30,24 +31,25 @@ def bv_generator(sensor):
     count = 0
     bv_list = []
     day_count = 1
-    for j in range(1, n + 1):
-        bv = []
-        for filename1 in path_list:
-            raw_data = bind.dataProcessing_byday(path_list[sensor], num_days)
-            data_with_noise = transforms.flip(raw_data)
-            IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
-            IMFs2 = EMD.emd(data_with_noise)
-            bv.append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), f_range, j, n))
-        bv = np.array(bv).reshape((d,1))
-        bv_list.append(bv)
-        count+=1
-        #print count
-        print day_count
-        df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'_flip_day' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/BV/sensor6/range1/flip/' + file_name)
-        day_count = 1+ j / 4
+    for sensor in range(d):
+        bug_data = noise_injection.noise_inject(sensor, 3)
+        print 'sensor' + str(sensor)
+        for j in range(1, n + 1):
+            bv = []
+            for filename1 in path_list:
+                IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
+                IMFs2 = EMD.emd(bug_data)
+                bv.append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), f_range, j, n))
+            bv = np.array(bv).reshape((d, 1))
+            bv_list.append(bv)
+            count+=1
+            #print count
+            print day_count
+            df = pd.DataFrame(bv)
+            file_name = 'BV_Rice_sensor_'+str(sensor)+'_flip_day' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+            df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/flip/' + file_name)
+            day_count = 1 + j / 4
 
 
 if __name__ == '__main__':
-    bv_generator(6)
+    bv_generator()

@@ -4,8 +4,6 @@ import os
 import bind
 
 
-
-
 def gauss_noise(signal):
     noise = np.random.normal(0, 0.000001, len(signal))
     return noise+signal

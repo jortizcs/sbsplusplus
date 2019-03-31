@@ -17,13 +17,7 @@ def plot_graph(sensor_name):
                            names=['date', 'value'])
     raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
-    print np.mean(raw_data)
-    plt.subplot(211)
     plt.plot(raw_data['date'], raw_data['value'], label=sensor_name)
-    plt.subplot(212)
-    raw_data['value'] = transforms.flip(raw_data['value'])
-    plt.plot(raw_data['date'], raw_data['value'], label=sensor_name+'+flip')
-    plt.legend()
 
 
 def plot_pair_graphs(path1, path2):
@@ -106,11 +100,6 @@ def plot_transformed_with_shades(sensor_name, tb_list):
 
 
 if __name__ == '__main__':
-    plt.subplot(211)
-    sensor = 'AHU2 Final Filter DP.csv'
-    plot_with_shades(sensor, [7, 16, 17])
-
-    plt.subplot(212)
-    plot_transformed_with_shades(sensor, [1, 5])
+    sensor = '1st Floor Avg Space Humidity.csv'
+    plot_graph(sensor)
     plt.show()
-

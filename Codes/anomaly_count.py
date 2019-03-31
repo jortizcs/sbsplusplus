@@ -130,6 +130,7 @@ def count_abn_sensor(R, C_list, day, timebin, threshold):
             abn_sensors.append(i)
     return abn_sensors
 
+
 def anomaly_check(R, abn_sensors, day, timebin):
     control_sensors = []
     correct = 0

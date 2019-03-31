@@ -59,15 +59,14 @@ def getCluster(IMFs):
     return cluster
 
 
-def getReference(matrix1, matrix2, timeRange, n):
+def getReference(matrix1, matrix2, timeRange):
     # number of time bins: n
-
+    n = 6 * 4
     l = len(matrix1[:, 0])/n
     ref = []
-    for i in range(0, n):
+    for i in range(0, n/3):
         ref.append(correlation(matrix1[i*l:(i+1)*l, timeRange], matrix2[i*l:(i+1)*l, timeRange]))
     ref = np.array(ref)
-    print ref
     return np.median(ref)
 
 
@@ -129,6 +128,7 @@ def plot(filePath,tb, more_than_one):
     plt.axvspan(start, end, facecolor='#c63535', alpha=0.5)
     plt.legend()
     plt.show()
+
 
 def band_pass_filter(IMFs):
     sampling_rate = 0.001111

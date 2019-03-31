@@ -35,6 +35,8 @@ def add_sap_noise(signal, m, n):  # m:number of white points; n: number of black
 def flip(signal):
     mean = np.mean(signal)
     for i in range(len(signal)):
-        signal[i] = -(signal[i]-mean) +mean
+        signal[i] = -(signal[i]-mean) + mean
     return signal
+
+
 

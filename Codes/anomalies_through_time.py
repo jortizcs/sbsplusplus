@@ -9,7 +9,7 @@ from datetime import datetime
 import os
 
 
-def anomalies_throuth_time(sensor, threshold):
+def anomalies_through_time(sensor, threshold):
     b = 1.4826
     anomalies_list = []
     R = anomaly_count.read_Rmatrix(3)   # 3 days data as reference
@@ -20,7 +20,7 @@ def anomalies_throuth_time(sensor, threshold):
     MAD = search.MAD(l_list, b)
     for t in range(len(l_list)):
         anomalies_list.append(search.anomaly(l_list, MAD, threshold, t))
-    print anomalies_list
+    return anomalies_list
 
 
 def anomalies_with_transformed(sensor, threshold, noise):
@@ -35,9 +35,44 @@ def anomalies_with_transformed(sensor, threshold, noise):
     MAD = search.MAD(l_list, b)
     for t in range(len(l_list)):
         anomalies_list.append(search.anomaly(l_list, MAD, threshold, t))
-    print anomalies_list
+    return anomalies_list
+
+
+def anomalies_with_noise(sensor, thresholds):
+    tao = thresholds[0]
+    p = thresholds[1]
+    b = thresholds[2]
+    anomalies_list = []
+    R = anomaly_count.read_Rmatrix(3)  # 3 days data as reference
+    bv_list = anomaly_count.read_bv_with_noise(sensor)
+
+    l_list = []
+    for bv in bv_list:
+        l_list.append(search.behavior_change_vector(R, bv, sensor, p))
+    MAD = search.MAD(l_list, b)
+    for t in range(len(l_list)):
+        anomalies_list.append(search.anomaly(l_list, MAD, tao, t))
+    return anomalies_list
+
+
+def anomalies_without_noise(sensor, thresholds):
+    tao = thresholds[0]
+    b = thresholds[1]
+    p = thresholds[2]
+    anomalies_list = []
+    R = anomaly_count.read_Rmatrix(3)  # 3 days data as reference
+    bv_list = anomaly_count.read_bv(sensor)
+
+    l_list = []
+    for bv in bv_list:
+        l_list.append(search.behavior_change_vector(R, bv, sensor, p))
+    MAD = search.MAD(l_list, b)
+    for t in range(len(l_list)):
+        anomalies_list.append(search.anomaly(l_list, MAD, tao, t))
+    return anomalies_list
 
 
 if __name__ == '__main__':
-    anomalies_with_transformed(6, 1, "spike")
-    anomalies_with_transformed(6, 1, "flip")
+    anomalies_without_noise(1, [1,1,1])
+    anomalies_with_noise(1, [1,1,1])
+

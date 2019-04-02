@@ -23,7 +23,7 @@ def count_interface(R, C_list, day, timebin, threshold, option):
 
 
 def read_Rmatrix(num_days):
-    r_path = path + '/R/'+str(num_days)+'day/R_Rice_'+str(num_days)+'_day_range'+str(f_range) + '.csv'
+    r_path = path + 'R/R_Rice_6_day_range'+str(f_range) + '.csv'
     df = pd.read_csv(r_path)
     R = df.values
     R = R[:, 1:]
@@ -32,7 +32,7 @@ def read_Rmatrix(num_days):
 
 def read_bv(sensor):
     bv_list = []
-    bv_path = path +'BV/'
+    bv_path = path + 'without_dup/bv/range1/raw/sensor'+str(sensor)+'/'
     path_list = os.listdir(bv_path)
     path_list.sort()
     d = len(path_list)
@@ -42,14 +42,14 @@ def read_bv(sensor):
     for p in path_list:
         df = pd.read_csv(p)
         bv = df.values
-        bv = bv[:,1:]
+        bv = bv[:, 1:]
         bv_list.append(bv)
     return bv_list
 
 
-def read_bv_with_noise(sensor, noise):
+def read_bv_with_noise(sensor):
     bv_list = []
-    bv_path = path + 'BV/sensor'+str(sensor)+'/range1/'+str(noise)+'/'
+    bv_path = path + 'without_dup/bv/range1/flip/sensor'+str(sensor)+'/'
     path_list = os.listdir(bv_path)
     path_list.sort()
     d = len(path_list)

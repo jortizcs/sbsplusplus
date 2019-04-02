@@ -31,7 +31,7 @@ for i_episode in range(100):
 
         observation_, reward, done, info = env.step(action)     # observation from env
 
-        accuracy, tao, b, p = observation_      # next state
+        accuracy, tao, p, b = observation_      # next state
 
         RL.store_transition(observation, action, reward, observation_)      # store them into memory: off policy
 

@@ -1,8 +1,9 @@
 import numpy as np
+import reward_function
 
 
 # change tao, p and b according to action
-def threshold_change(tao, p, b, action):
+def threshold_change(acc, tao, p, b, action):
     a1, a2, a3 = ten_to_three(action)
     if a1 == 0:
         tao = tao
@@ -28,8 +29,8 @@ def threshold_change(tao, p, b, action):
                     b = 0.0
         else:
             p -= 0.1
-            if p < 0:
-                p = 0.0
+            if p < 1.0:
+                p = 1.0
             if a3 == 0:
                 b = b
             elif a3 == 1:
@@ -62,8 +63,8 @@ def threshold_change(tao, p, b, action):
                     b = 0.0
         else:
             p -= 0.1
-            if p < 0:
-                p = 0.0
+            if p < 1.0:
+                p = 1.0
             if a3 == 0:
                 b = b
             elif a3 == 1:
@@ -74,6 +75,8 @@ def threshold_change(tao, p, b, action):
                     b = 0.0
     else:
         tao -= 0.1
+        if tao < 0.0:
+            tao = 0.0
         if a2 == 0:
             p = p
             if a3 == 0:
@@ -96,8 +99,8 @@ def threshold_change(tao, p, b, action):
                     b = 0.0
         else:
             p -= 0.1
-            if p < 0:
-                p = 0.0
+            if p < 1.0:
+                p = 1.0
             if a3 == 0:
                 b = b
             elif a3 == 1:
@@ -106,12 +109,13 @@ def threshold_change(tao, p, b, action):
                 b -= 0.1
                 if b < 0:
                     b = 0.0
+    print tao, p, b
     return accuracy(tao, p, b), tao, p, b
 
 
 # fool function of accuracy with thresholds
 def accuracy(tao, p, b):
-    return abs(np.sin(tao*p + b))
+    return reward_function.ground_truth_check(0, [tao, p, b])
 
 
 # transform action to three specific actions: a1, a2, a3

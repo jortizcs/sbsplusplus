@@ -14,7 +14,7 @@ def ground_truth_check(sensor, thresholds):
     for item in bug_locations:
         bug_list.append(int(item)/24)
 
-    noise_result = att.anomalies_with_noise(sensor, thresholds)
+    noise_result = att.anomalies_with_noise(sensor, 'flip', thresholds)
 
     for bug in bug_list:
         if noise_result[bug] is True:

@@ -38,13 +38,13 @@ def anomalies_with_transformed(sensor, threshold, noise):
     return anomalies_list
 
 
-def anomalies_with_noise(sensor, thresholds):
+def anomalies_with_noise(sensor, noise, thresholds):
     tao = thresholds[0]
     p = thresholds[1]
     b = thresholds[2]
     anomalies_list = []
     R = anomaly_count.read_Rmatrix(3)  # 3 days data as reference
-    bv_list = anomaly_count.read_bv_with_noise(sensor)
+    bv_list = anomaly_count.read_bv_with_noise(sensor, noise)
 
     l_list = []
     for bv in bv_list:
@@ -57,8 +57,8 @@ def anomalies_with_noise(sensor, thresholds):
 
 def anomalies_without_noise(sensor, thresholds):
     tao = thresholds[0]
-    b = thresholds[1]
-    p = thresholds[2]
+    p = thresholds[1]
+    b = thresholds[2]
     anomalies_list = []
     R = anomaly_count.read_Rmatrix(3)  # 3 days data as reference
     bv_list = anomaly_count.read_bv(sensor)

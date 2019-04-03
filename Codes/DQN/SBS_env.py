@@ -41,7 +41,7 @@ class SBS_env(gym.Env):
             reward = -0.1   # every time take an action, reward decreases 0.1
         else:
             if accuracy >= 0.6:
-                reward = 10     # once reach target, reward increases 10
+                reward = 100     # once reach target, reward increases 10
             else:
                 reward = -50    # if has not reached target after done, reward decreases 50
 

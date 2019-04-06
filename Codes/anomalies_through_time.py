@@ -72,7 +72,3 @@ def anomalies_without_noise(sensor, thresholds):
     return anomalies_list
 
 
-if __name__ == '__main__':
-    anomalies_without_noise(1, [1,1,1])
-    anomalies_with_noise(1, [1,1,1])
-

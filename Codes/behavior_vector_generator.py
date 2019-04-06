@@ -30,15 +30,16 @@ def bv_generator():
         path_list[i] = path + path_list[i]
     count = 0
     bv_list = []
-    for sensor in range(1,2):
+    for sensor in range(0, 1):
         day_count = 1
-        #bug_data = noise_injection.noise_inject(sensor, 3)
+        bug_data = noise_injection.noise_inject_warp(sensor, 1)
         print 'sensor' + str(sensor)
         for j in range(1, n + 1):
             bv = []
             for filename1 in path_list:
                 IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
-                IMFs2 = EMD.emd(bind.dataProcessing_byday(path_list[1], num_days))
+                IMFs2 = EMD.emd(bug_data)
+                #IMFs2 = EMD.emd(bind.dataProcessing_byday(path_list[1], num_days))
                 bv.append(bind.getcMatrix(bind.getCluster(IMFs1), bind.getCluster(IMFs2), f_range, j, n))
             bv = np.array(bv).reshape((d, 1))
             bv_list.append(bv)
@@ -46,8 +47,8 @@ def bv_generator():
             #print count
             print day_count
             df = pd.DataFrame(bv)
-            file_name = 'BV_Rice_sensor_'+str(sensor)+'_RAW_day' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-            df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/raw/sensor1/' + file_name)
+            file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_shrink_day' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+            df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/warp_shrink_1/sensor0/' + file_name)
             day_count = 1 + j / 4
 
 

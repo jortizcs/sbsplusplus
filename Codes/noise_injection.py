@@ -52,13 +52,47 @@ def noise_inject(sensor, num_of_noise):
     print location
 
     # save locations of noise
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/spike/ground_truth.txt', 'a')
+    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/spike_'+str(num_of_noise)+
+                                                        '/ground_truth.txt', 'a')
     f.write('\n' + str(sensor) + '   ' +str(location * interval))
 
     for l in location:
         start = interval * l
         end = interval * (l+1)
         raw_data[start: end] = transforms.add_spike_noise(raw_data[start: end], 3)
+    return raw_data
+
+
+def noise_inject_warp(sensor, num_of_noise):
+    path_list = os.listdir(input_path)
+    path_list.sort()
+
+    d = len(path_list)
+    for i in range(d):
+        path_list[i] = input_path + path_list[i]
+
+    raw_data = pd.read_csv(path_list[sensor], names=['date', 'value'])
+
+    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data = raw_data.sort_values(by=['date'])
+    interval = freq / 15
+    num_intervals = 576 / interval
+
+    locations = np.random.randint(288 / interval, num_intervals, num_of_noise)
+    locations.sort()
+
+    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/warp_shrink_' + str(num_of_noise) +
+             '/ground_truth.txt', 'a')
+    f.write('\n' + str(sensor) + '   ' + str(locations * interval))
+
+    for l in locations:
+        start = interval * l
+        end = interval * (l + 1)
+        f1 = np.array(raw_data[:start]['value'])
+
+        f2 = transforms.warp_shrink(raw_data[start: end])
+        f3 = np.array(raw_data[end:]['value'])
+        raw_data = np.concatenate((f1, f2, f3), axis=0)
     return raw_data
 
 

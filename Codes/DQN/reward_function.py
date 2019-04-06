@@ -8,13 +8,13 @@ import os
 def ground_truth_check(sensor, thresholds):
     tp = 0
     fn = 0
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/spike/ground_truth.txt')
+    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/warp_shrink_1/ground_truth.txt')
     bug_locations = f.readlines()[sensor+1].split("   ")[1][1:-2].split(' ')
     bug_list = []
     for item in bug_locations:
         bug_list.append(int(item)/24)
 
-    noise_result = att.anomalies_with_noise(sensor, 'flip', thresholds)
+    noise_result = att.anomalies_with_noise(sensor, 'warp_shrink_1', thresholds)
 
     for bug in bug_list:
         if noise_result[bug] is True:

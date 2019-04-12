@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import transforms
+import bind
 import matplotlib.pyplot as plt
 
 input_path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
@@ -23,11 +24,7 @@ def get_path_list():
 
 def data_processing(sensor):
     path_list = get_path_list()
-    raw_data = pd.read_csv(path_list[sensor], names=['date', 'value'])
-
-    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
-    raw_data = raw_data.sort_values(by=['date'])
-    return np.array(raw_data['value'])
+    return bind.dataProcessing_byday(path_list[sensor], 6)
 
 
 # freq: number of interval minutes
@@ -47,14 +44,15 @@ def anomaly_location(num):
 def noise_inject(sensor, num_of_noise):
     raw_data = data_processing(sensor)
     interval = segmentation(freq)
-    location = anomaly_location(num_of_noise)
+    #location = anomaly_location(num_of_noise)
+    location = [38, 45, 67]
     location.sort()
     print location
 
     # save locations of noise
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/spike_'+str(num_of_noise)+
-                                                        '/ground_truth.txt', 'a')
-    f.write('\n' + str(sensor) + '   ' +str(location * interval))
+    #f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/flip_'+str(num_of_noise)+
+                                                        #'/ground_truth.txt', 'a')
+    #f.write('\n' + str(sensor) + '   ' +str(location * interval))
 
     for l in location:
         start = interval * l
@@ -71,9 +69,10 @@ def noise_inject_warp(sensor, num_of_noise):
     for i in range(d):
         path_list[i] = input_path + path_list[i]
 
-    raw_data = pd.read_csv(path_list[sensor], names=['date', 'value'])
+    row = 6 * 24 * 4
+    raw_data = pd.read_csv(file_path, names=['date', 'value'], nrows=row)
 
-    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
+    raw_data['datCe'] = pd.to_datetime(raw_data['date'], unit='s')
     raw_data = raw_data.sort_values(by=['date'])
     interval = freq / 15
     num_intervals = 576 / interval

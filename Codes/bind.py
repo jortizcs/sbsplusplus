@@ -42,7 +42,9 @@ def getCluster(IMFs):
     range2 = 0.0000463
     range3 = 0.00083
     Range = [0, 0, 0, 0]
-    for f in matrixF[0, :]:
+
+    for i in range(len(matrixF[0])):
+        f = matrixF[0, i]
         if f < range1:
             Range[0] = Range[0] + 1
         if range1 < f < range2:
@@ -55,6 +57,45 @@ def getCluster(IMFs):
     cluster2 = np.sum(matrix[:, Range[0]:Range[0] + Range[1]], 1)
     cluster3 = np.sum(matrix[:, Range[0] + Range[1]:Range[0] + Range[1] + Range[2]], 1)
     cluster4 = np.sum(matrix[:, Range[0] + Range[1] + Range[2]:], 1)
+    cluster = np.vstack((cluster1, cluster2, cluster3, cluster4)).transpose()
+    return cluster
+
+
+def getCluster2(IMFs):
+    frequencies = []  # frequency of each IMFs
+    for imf in IMFs:
+        frequency = getFrequency(imf)
+        frequency = filter(lambda x: x >= 0, frequency)
+        frequencies.append(np.array(frequency).mean())
+    matrix = np.transpose(np.array(IMFs))
+    frequencies = np.array(frequencies)
+    matrixF = np.vstack((frequencies, matrix))
+
+    # 4 time scale ranges
+    range1 = 0.00000193
+    range2 = 0.0000463
+    range3 = 0.00083
+    Range = [0, 0, 0, 0]
+
+    cluster1 = np.zeros((1, len(matrix[:, 0])))
+    cluster2 = np.zeros((1, len(matrix[:, 0])))
+    cluster3 = np.zeros((1, len(matrix[:, 0])))
+    cluster4 = np.zeros((1, len(matrix[:, 0])))
+    for i in range(len(matrixF[0])):
+        f = matrixF[0, i]
+        new = matrix[:,i]
+        if f < range1:
+            Range[0] = Range[0] + 1
+            cluster1 += new
+        if range1 < f < range2:
+            Range[1] = Range[1] + 1
+            cluster2 += new
+        if range2 < f < range3:
+            Range[2] = Range[2] + 1
+            cluster3 += new
+        if f > range3:
+            Range[3] = Range[3] + 1
+            cluster4 += new
     cluster = np.vstack((cluster1, cluster2, cluster3, cluster4)).transpose()
     return cluster
 

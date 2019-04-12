@@ -19,7 +19,7 @@ def getspline(x):
     peaks = findpeaks(x)
     peaks = np.concatenate(([0], peaks))
     peaks = np.concatenate((peaks, [N - 1]))
-    if (len(peaks) <= 3):
+    if len(peaks) <= 3:
         t = interpolate.splrep(peaks, y=x[peaks], w=None, xb=None, xe=None, k=len(peaks) - 1)
         return interpolate.splev(np.arange(N), t)
     t = interpolate.splrep(peaks, y=x[peaks])

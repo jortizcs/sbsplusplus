@@ -49,6 +49,7 @@ def anomalies_with_noise(sensor, noise, thresholds):
     l_list = []
     for bv in bv_list:
         l_list.append(search.behavior_change_vector(R, bv, sensor, p))
+    print l_list
     MAD = search.MAD(l_list, b)
     for t in range(len(l_list)):
         anomalies_list.append(search.anomaly(l_list, MAD, tao, t))
@@ -66,9 +67,12 @@ def anomalies_without_noise(sensor, thresholds):
     l_list = []
     for bv in bv_list:
         l_list.append(search.behavior_change_vector(R, bv, sensor, p))
+    print l_list
     MAD = search.MAD(l_list, b)
     for t in range(len(l_list)):
         anomalies_list.append(search.anomaly(l_list, MAD, tao, t))
     return anomalies_list
 
 
+if __name__ == '__main__':
+    print anomalies_with_noise(0,'spike', [1,4,1.48])

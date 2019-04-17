@@ -8,7 +8,7 @@ import os
 def ground_truth_check(sensor, thresholds):
     tp = 0
     fn = 0
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/warp_shrink_1/ground_truth.txt')
+    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/wild_noise/BV/spike_3/ground_truth.txt')
     bug_locations = f.readlines()[sensor+1].split("   ")[1][1:-2].split(' ')
     bug_list = []
     for item in bug_locations:
@@ -26,4 +26,4 @@ def ground_truth_check(sensor, thresholds):
 
 
 if __name__ == '__main__':
-    ground_truth_check(0, [1, 1, 1])
+    ground_truth_check(0, [1, 4, 1.4])

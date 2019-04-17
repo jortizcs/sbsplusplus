@@ -9,7 +9,7 @@ input_path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
 
 output_path = 'Users/wuxiaodong/Desktop/Rice+noise/'
 
-freq = 120
+freq = 360
 
 
 def get_path_list():
@@ -44,20 +44,20 @@ def anomaly_location(num):
 def noise_inject(sensor, num_of_noise):
     raw_data = data_processing(sensor)
     interval = segmentation(freq)
-    #location = anomaly_location(num_of_noise)
-    location = [38, 45, 67]
+    location = anomaly_location(num_of_noise)
+    #location = [38, 45, 67]
     location.sort()
     print location
 
     # save locations of noise
-    #f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv/range1/flip_'+str(num_of_noise)+
-                                                        #'/ground_truth.txt', 'a')
-    #f.write('\n' + str(sensor) + '   ' +str(location * interval))
+    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/wild_noise/BV/spike_6hours_'+str(num_of_noise)+
+                                                        '/ground_truth.txt', 'a')
+    f.write('\n' + str(sensor) + '   ' +str(location * interval))
 
     for l in location:
         start = interval * l
         end = interval * (l+1)
-        raw_data[start: end] = transforms.add_spike_noise(raw_data[start: end], 3)
+        raw_data[start: end] = transforms.add_spike_noise(raw_data[start: end], 10)
     return raw_data
 
 

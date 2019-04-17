@@ -6,6 +6,7 @@ import numpy as np
 import os
 import transforms
 import noise_injection
+import matplotlib.pyplot as plt
 
 
 f_range = 2
@@ -33,6 +34,8 @@ def bv_generator():
     for sensor in range(0, 1):
         day_count = 1
         bug_data = noise_injection.noise_inject(sensor, 3)
+        plt.plot(bug_data)
+        plt.show()
         print 'sensor' + str(sensor)
         for j in range(1, n + 1):
             bv = []
@@ -48,7 +51,7 @@ def bv_generator():
             print day_count
             df = pd.DataFrame(bv)
             file_name = 'BV_Rice_sensor_'+str(sensor)+'_spike_day' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-            df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/without_dup/bv_sensor0_emd_test/' + file_name)
+            df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/wild_noise/BV/spike_6hours_3/' + file_name)
             day_count = 1 + j / 4
 
 

@@ -51,8 +51,8 @@ def read_bv(sensor):
 
 def read_bv_with_noise(sensor, noise):
     bv_list = []
-    #bv_path = path + 'without_dup/bv/range1/'+noise+'/sensor'+str(sensor)+'/'
-    bv_path = path + 'wild_noise/BV/spike_6hours_3/sensor'+str(sensor)+'/'
+    bv_path = path + 'without_dup/bv/range1/'+noise+'/sensor'+str(sensor)+'/'
+    #bv_path = path + 'wild_noise/BV/spike_6hours_3/sensor'+str(sensor)+'/'
     path_list = os.listdir(bv_path)
     path_list.sort()
     d = len(path_list)

@@ -105,7 +105,7 @@ def getReference(matrix1, matrix2, timeRange):
     n = 6 * 4
     l = len(matrix1[:, 0])/n
     ref = []
-    for i in range(0, n/3):
+    for i in range(0, 12):
         ref.append(correlation(matrix1[i*l:(i+1)*l, timeRange], matrix2[i*l:(i+1)*l, timeRange]))
     ref = np.array(ref)
     return np.median(ref)

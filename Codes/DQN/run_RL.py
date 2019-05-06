@@ -36,7 +36,7 @@ for i_episode in range(100):
         RL.store_transition(observation, action, reward, observation_)      # store them into memory: off policy
 
         ep_r += reward
-        if total_steps > 1000:
+        if total_steps > 1000:      # store some memory before learning
             RL.learn()
 
         if done:

@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from SBS_env import SBS_env
+from SBS_continuous_env import SBS_continuous_env
 
 np.random.seed(2)
 tf.set_random_seed(2)  # reproducible
@@ -15,8 +15,8 @@ GAMMA = 0.9     # reward discount in TD error
 LR_A = 0.001    # learning rate for actor
 LR_C = 0.01     # learning rate for critic
 
-env = SBS_env()
-env = env.unwrapped
+env = SBS_continuous_env()
+
 
 N_F = env.observation_space.shape[0]      # number of features
 N_A = env.action_space.n        # number of actions

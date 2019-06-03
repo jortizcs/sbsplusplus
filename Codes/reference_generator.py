@@ -6,12 +6,14 @@ import numpy as np
 import os
 
 f_range = 2
-num_days = 6
+num_days = 3
 
 if __name__ == '__main__':
-    path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'
+    #path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/data/'
+    path = '/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/'
     path_list = os.listdir(path)
-    path_list.sort()
+    path_list.sort(key=lambda x: int(x[5:-4]))
+    print path_list
 
     d = len(path_list)
     for i in range(d):
@@ -22,8 +24,13 @@ if __name__ == '__main__':
         for filename2 in path_list:
             # IMFs1 = bind.EMD().emd(bind.dataProcessing_byday(filename1, num_days))
             # IMFs2 = bind.EMD().emd(bind.dataProcessing_byday(filename2, num_days))
-            IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
-            IMFs2 = EMD.emd(bind.dataProcessing_byday(filename2, num_days))
+
+            arr1 = pd.read_csv(filename1, nrows=num_days * 24 * 4)['value'].values
+            arr2 = pd.read_csv(filename2, nrows=num_days * 24 * 4)['value'].values
+            IMFs1 = EMD.emd(arr1)
+            IMFs2 = EMD.emd(arr2)
+            #IMFs1 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
+            #IMFs2 = EMD.emd(bind.dataProcessing_byday(filename2, num_days))
             cluster1 = bind.getCluster(IMFs1)
             cluster2 = bind.getCluster(IMFs2)
             R.append(bind.getReference(cluster1, cluster2, f_range))
@@ -33,5 +40,5 @@ if __name__ == '__main__':
     R = np.array(R).reshape((d, d))
     print np.shape(R)
     df = pd.DataFrame(R)
-    file_name = 'R_Rice_'+str(num_days)+'_day_range'+str(f_range)+'.csv'
+    file_name = 'A1_'+str(num_days)+'_day_range'+str(f_range)+'.csv'
     df.to_csv('/Users/wuxiaodong/Desktop/'+file_name)

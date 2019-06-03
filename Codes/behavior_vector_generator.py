@@ -46,7 +46,7 @@ def bv_generator():
                 bv.append(bind.getcMatrix(bind.getCluster2(IMFs1), bind.getCluster2(IMFs2), f_range, j, n))
             bv = np.array(bv).reshape((d, 1))
             bv_list.append(bv)
-            count+=1
+            count += 1
             #print count
             print day_count
             df = pd.DataFrame(bv)

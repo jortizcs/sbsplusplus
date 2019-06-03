@@ -102,7 +102,7 @@ def getCluster2(IMFs):
 
 def getReference(matrix1, matrix2, timeRange):
     # number of time bins: n
-    n = 6 * 4
+    n = 3 * 4
     l = len(matrix1[:, 0])/n
     ref = []
     for i in range(0, 12):

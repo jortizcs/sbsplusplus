@@ -7,8 +7,8 @@ import sample_function
 class SBS_env(gym.Env):
     metadata = {'render.modes': []}
 
-    def __init__(self):
-        self.target = 1.0  # target accuracy of SBS
+    def __init__(self, sensor):
+        self.sensor = sensor
         self.action_space = spaces.Discrete(27)
         '''
         p, b, tao each has 3 actions: 
@@ -18,9 +18,9 @@ class SBS_env(gym.Env):
         
         '''
         self.observation_space = spaces.Box(low=np.array([0.0, 0.0, 1.0, 0.0]),
-                                            high=np.array([1.0, 10.0, 10.0, 10.0]))
+                                            high=np.array([20.0, 10.0, 10.0, 10.0]))
         '''
-        state:  accuracy(0.0, 1.0)
+        state:  benchmark(0.0, 20.0)
                 tao(0.0, 10.0)
                 p(1.0, 10.0)
                 b(0.0, 10.0)               
@@ -29,18 +29,18 @@ class SBS_env(gym.Env):
 
     def step(self, action):
         assert self.action_space.contains(action), "%r (%s) invalid" % (action, type(action))
-        accuracy, tao, p, b = self.state  # state is accuracy
+        benchmark, tao, p, b = self.state  # state is accuracy
 
-        self.state = sample_function.threshold_change(accuracy, tao, p, b, action)   # return state of SBS with current combination of thresholds
+        self.state = sample_function.threshold_change(self.sensor, tao, p, b, action)   # return state of SBS with current combination of thresholds
         self.counts += 1
 
-        done = accuracy >= 0.6  # if accuracy exceeds 0.6, finish step
+        done = benchmark >= 35.0  # if accuracy exceeds 0.6, finish step
         done = bool(done)
 
         if not done:
             reward = -0.1   # every time take an action, reward decreases 0.1
         else:
-            if accuracy >= 0.6:
+            if benchmark >= 35.0:
                 reward = 100     # once reach target, reward increases 10
             else:
                 reward = -50    # if has not reached target after done, reward decreases 50
@@ -52,8 +52,8 @@ class SBS_env(gym.Env):
         tao = np.random.randint(0, 3)
         p = np.random.randint(1, 3)
         b = np.random.randint(0, 3)
-        accuracy = sample_function.accuracy(tao, p, b)
-        self.state = accuracy, tao, p, b
+        benchmark = sample_function.benchmark(self.sensor, tao, p, b)
+        self.state = benchmark, tao, p, b
         self.counts = 0
         return np.array(self.state)
 

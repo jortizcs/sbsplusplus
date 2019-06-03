@@ -9,17 +9,19 @@ from datetime import datetime
 import os
 
 
-def anomalies_through_time(sensor, threshold):
-    b = 1.4826
+def anomalies_through_time(sensor, thresholds):
+    tao = thresholds[0]
+    p = 4
+    b = thresholds[1]
     anomalies_list = []
     R = anomaly_count.read_Rmatrix(3)   # 3 days data as reference
     C_list = anomaly_count.get_Cmatrix_list('Rice')
     l_list = []
     for cmatrix in C_list:
-        l_list.append(search.behaviorChange_old(R, cmatrix, sensor))
+        l_list.append(search.behaviorChange_old(R, cmatrix, sensor, p))
     MAD = search.MAD(l_list, b)
     for t in range(len(l_list)):
-        anomalies_list.append(search.anomaly(l_list, MAD, threshold, t))
+        anomalies_list.append(search.anomaly(l_list, MAD, tao, t))
     return anomalies_list
 
 
@@ -40,8 +42,10 @@ def anomalies_with_transformed(sensor, threshold, noise):
 
 def anomalies_with_noise(sensor, noise, thresholds):
     tao = thresholds[0]
-    p = thresholds[1]
-    b = thresholds[2]
+    #p = thresholds[1]
+    p = 4
+    #b = thresholds[2]
+    b = thresholds[1]
     anomalies_list = []
     R = anomaly_count.read_Rmatrix(3)  # 3 days data as reference
     bv_list = anomaly_count.read_bv_with_noise(sensor, noise)
@@ -74,4 +78,4 @@ def anomalies_without_noise(sensor, thresholds):
 
 
 if __name__ == '__main__':
-    print anomalies_with_noise(0,'warp_shrink_1', [1,4,1.48])
+    print anomalies_through_time(4, 1)

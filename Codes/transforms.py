@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+from scipy import signal as scipy_signal
 
 
 def add_gaussian_noise(signal, mu, sigma):
@@ -43,15 +44,14 @@ def flip(signal):
 
 
 def warp_shrink(signal):
-    signal = signal.set_index('date')
-    warping_signal = signal.resample('30T').mean()
-    return np.array(warping_signal['value'])
+    warping_signal = scipy_signal.resample(signal, len(signal)*2)
+    return np.array(warping_signal[0:len(warping_signal)/2])
 
 
 def warp_expand(signal):
-    signal = signal.set_index('date')
-    warping_signal = signal.resample('7.5T').pad()
-    return np.array(warping_signal['value'])
+    warping_signal = scipy_signal.resample(signal, len(signal)/2)
+
+    return np.append(warping_signal,warping_signal)
 
 
 if __name__ == '__main__':
@@ -60,13 +60,10 @@ if __name__ == '__main__':
     path_list.sort()
     raw_data = pd.read_csv(path+path_list[0],
                            names=['date', 'value'])
-    raw_data['date'] = pd.to_datetime(raw_data['date'], unit='s')
-    raw_data = raw_data.sort_values(by=['date'])
-    raw_data = raw_data['value']
-    warped = warp_expand(raw_data)
-    warped2 = warp_shrink(raw_data)
+    values = raw_data['value']
+
+    warped = warp_shrink(values[1:20])
     plt.plot(warped)
-    plt.plot(np.array(raw_data['value']))
-    plt.plot(warped2)
+    plt.plot(np.array(values[1:20]))
     plt.show()
 

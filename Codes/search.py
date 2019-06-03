@@ -4,8 +4,8 @@ import pandas as pd
 from scipy.spatial import distance
 
 
-def behaviorChange_old(refMatrix, cMatrix, deviceId):
-    p = 4  # parameter for minkowski
+def behaviorChange_old(refMatrix, cMatrix, deviceId, p):
+    # parameter for minkowski
     d = len(refMatrix[0])  # number of sensors
     R = refMatrix[:, deviceId]  # reference vector for deviceId
     C = cMatrix[:, deviceId]    # current vector for deviceId

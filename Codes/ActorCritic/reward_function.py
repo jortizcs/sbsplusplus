@@ -25,5 +25,39 @@ def ground_truth_check(sensor, thresholds):
     return tp, fn
 
 
+def ground_truth_check_yahoo(sensor, thresholds):
+    tp = 0
+    fn = 0
+    fp = 0
+    tn = 0
+    path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/yahoo_dataset/A1Benchmark/'
+    path_list = os.listdir(path)
+    path_list.sort(key=lambda x: int(x[5:-4]))
+
+    df = pd.read_csv(path +path_list[sensor])
+    gt = df['is_anomaly'].values
+    gt_list = []
+    n = 3
+    while n < len(gt)/24:
+        for i in range(0, 24):
+            if gt[24*n+i] == 1:
+                gt_list.append(True)
+                break
+        gt_list.append(False)
+        n += 1
+    sbs_result = att.anomalies_through_time(sensor, thresholds)
+
+    for a in range(len(sbs_result)):
+        if gt_list[a] is True and sbs_result[a] is True:
+            tp += 1
+        elif gt_list[a] is True and sbs_result[a] is False:
+            fn += 1
+        elif gt_list[a] is False and sbs_result[a] is True:
+            fp += 1
+        else:
+            tn += 1
+    return tp, fn, fp, tn
+
+
 if __name__ == '__main__':
     ground_truth_check(0, [1, 4, 1.4])

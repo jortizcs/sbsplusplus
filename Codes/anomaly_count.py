@@ -7,6 +7,7 @@ import os
 import plot_graphs
 
 path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/'
+#path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/yahoo_dataset/'
 
 # frequency range:
 f_range = 1
@@ -23,8 +24,8 @@ def count_interface(R, C_list, day, timebin, threshold, option):
 
 
 def read_Rmatrix(num_days):
-    #r_path = path + 'R/R_Rice_6_day_range'+str(f_range) + '.csv'
     r_path = path + 'R/0415/R_Rice_6_day_range2.csv'
+    #r_path = path + 'R/A1_3_day_range2.csv'
     df = pd.read_csv(r_path)
     R = df.values
     R = R[:, 1:]
@@ -51,8 +52,8 @@ def read_bv(sensor):
 
 def read_bv_with_noise(sensor, noise):
     bv_list = []
-    bv_path = path + 'without_dup/bv/range1/'+noise+'/sensor'+str(sensor)+'/'
-    #bv_path = path + 'wild_noise/BV/spike_6hours_3/sensor'+str(sensor)+'/'
+    #bv_path = path + 'without_dup/bv/range1/'+noise+'/sensor'+str(sensor)+'/'
+    bv_path = path + 'noise_af_EMD/BV/'+noise+'/sensor'+str(sensor)+'/'
     path_list = os.listdir(bv_path)
     path_list.sort()
     d = len(path_list)
@@ -68,7 +69,8 @@ def read_bv_with_noise(sensor, noise):
 
 
 def read_Cmatrix(set, day, timebin):
-    c_path = path+'C/range'+ str(f_range)+'/'
+    #c_path = path+'C/range'+ str(f_range)+'/'
+    c_path = path + 'C/'
     path_list = os.listdir(c_path)
     path_list.sort()
     d = len(path_list)
@@ -83,7 +85,7 @@ def read_Cmatrix(set, day, timebin):
 
 def get_Cmatrix_list(set):
     list = []
-    for day in range(1, 7):
+    for day in range(1, 5):
         for tb in range(0, 4):
             list.append(read_Cmatrix(set, day, tb))
     return list

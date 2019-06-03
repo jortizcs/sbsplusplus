@@ -52,7 +52,7 @@ def noise_inject(sensor, num_of_noise):
     # save locations of noise
     f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/wild_noise/BV/spike_6hours_'+str(num_of_noise)+
                                                         '/ground_truth.txt', 'a')
-    f.write('\n' + str(sensor) + '   ' +str(location * interval))
+    f.write('\n' + str(sensor) + '   ' + str(location * interval))
 
     for l in location:
         start = interval * l

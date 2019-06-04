@@ -6,7 +6,7 @@ please change the env.py and rl.py correspondingly.
 from SBS_continuous_env import SBS_continuous_env
 from RL_brain import DDPG
 
-MAX_EPISODES = 400
+MAX_EPISODES = 100
 MAX_EP_STEPS = 200
 ON_TRAIN = True
 
@@ -52,7 +52,7 @@ def train():
                 print('Ep: %i | %s | ep_r: %.1f | steps: %i' % (i, '---' if not done else 'done', ep_r, j))
                 break
     rl.save()
-    print 'Max Reward: '+ max_reward
+    print 'Max Reward: '+ str(max_reward)
     import matplotlib.pyplot as plt
     import numpy as np
     plt.plot(np.arange(len(step)), step)

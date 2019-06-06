@@ -43,8 +43,8 @@ class SBS_continuous_env(object):
         #(tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sbs_info['sensor'][0], [tao, b])
         (tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sensor, self.sbs_info['thresholds'], self.ground_truth)
         cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
-        dis = abs(self.tar_r - cur_r)
-        r = -dis + 10
+        dis = self.tar_r - cur_r
+        r = -dis
         print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
             done = True

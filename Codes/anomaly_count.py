@@ -6,8 +6,8 @@ import search
 import os
 import plot_graphs
 
-path = '/home/ec2-user/'
-#path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/'
+#path = '/home/ec2-user/'
+path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/'
 #path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/yahoo_dataset/'
 
 # frequency range:

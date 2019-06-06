@@ -5,6 +5,7 @@ please change the env.py and rl.py correspondingly.
 """
 from SBS_continuous_env import SBS_continuous_env
 from RL_brain import DDPG
+from time import time
 
 MAX_EPISODES = 30
 MAX_EP_STEPS = 200
@@ -23,6 +24,7 @@ rl = DDPG(a_dim, s_dim, a_bound)
 def train():
     # start training
     reward = []
+    start = time.clock()
     max_reward = -36
     step = []
     for i in range(MAX_EPISODES):
@@ -59,6 +61,9 @@ def train():
     plt.ylabel('Step')
     plt.xlabel('Episode')
     plt.show()
+    elapsed = (time.clock() - start)
+    print 'Training time: '
+    print elapsed
 
 
 def eval():

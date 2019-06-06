@@ -6,11 +6,28 @@ import os
 import pandas as pd
 
 
-def ground_truth_check(sensor, thresholds):
+def ground_truth_check_multi(sensors, thresholds, ground_truth):
+    tp_total = []
+    fn_total = []
+    fp_total = []
+    tn_total = []
+    for sensor in sensors:
+        i = 0
+        (tp, fn, fp, tn) = ground_truth_check(sensor, thresholds[2*i:2*(i+1)], ground_truth[i])
+        tp_total.append(tp)
+        fn_total.append(fn)
+        fp_total.append(fp)
+        tn_total.append(tn)
+        i += 1
+    return tp_total, fn_total, fp_total, tn_total
+
+
+def ground_truth_check(sensor, thresholds, ground_truth):
     tp = 0
     fn = 0
     fp = 0
     tn = 0
+<<<<<<< HEAD
     f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
     bug_locations = f.readlines()[sensor+1].split("   ")[1][1:-2].split(' ')
     bug_list = []
@@ -18,7 +35,10 @@ def ground_truth_check(sensor, thresholds):
         bug_list.append(int(item)/24)
 
 
+=======
+>>>>>>> e4fd98bcfdc961b401a016f9259f9f9d13323089
 
+    bug_list = ground_truth
     noise_result = att.anomalies_with_noise(sensor, 'spike_6hours_3', thresholds)
 
     for a in range(len(noise_result)):
@@ -68,7 +88,22 @@ def ground_truth_check_yahoo(sensor, thresholds):
     return tp, fn, fp, tn
 
 
-if __name__ == '__main__':
-    for i in range(66):
-        print ground_truth_check_yahoo(i, [1, 2, 1.4])
+def ground_truth_list(sensor):
+    #f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
+    f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
+    bug_locations = f.readlines()[sensor + 1].split("   ")[1][1:-2].split(' ')
+    bug_list = []
+    for item in bug_locations:
+        bug_list.append(int(item) / 24)
+    return bug_list
+
+
+def ground_truth_interface(sensor):
+    if len(sensor) == 1:
+        return ground_truth_list(sensor)
+    else:
+        sensor_matrix = []
+        for s in sensor:
+            sensor_matrix.append(s)
+        return sensor_matrix
 

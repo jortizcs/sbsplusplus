@@ -8,16 +8,18 @@ class SBS_continuous_env(object):
     metadata = {'render.modes': []}
     dt = .1  # refresh rate
     action_bound = [0, 10]
-    state_dim = 2
-    action_dim = 2
+    # state_dim = 2
+    # action_dim = 2
+    state_dim = 8
+    action_dim = 8
 
     def __init__(self):
         self.sbs_info = np.zeros(
-            2, dtype=[('sensor', int), ('thresholds', np.float32)])
-        self.sbs_info['sensor'] = 0
+            8, dtype=[('thresholds', np.float32)])
+        self.sensor = np.array([0,1,2,3])
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
         self.tar_r = 0
-
+        self.ground_truth = reward_function.ground_truth_interface(self.sensor)
 
     def step(self, action):
         done = False
@@ -32,32 +34,32 @@ class SBS_continuous_env(object):
         # state
         s = self.sbs_info['thresholds']
 
-        (tao, b) = self.sbs_info['thresholds']  # thresholds
+        #(tao, b) = self.sbs_info['thresholds']  # thresholds
 
-        (tp, fn, fp, tn) = reward_function.ground_truth_check(self.sbs_info['sensor'][0], [tao, b])
-        cur_r = 5 * tp + -5 * fn + tn - fp
+        #(tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sbs_info['sensor'][0], [tao, b])
+        (tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sensor, self.sbs_info['thresholds'], self.ground_truth)
+        cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
         dis = abs(self.tar_r - cur_r)
         r = -dis + 10
         print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
-            r = 10.
             done = True
-            if self.tar_r < 35:
+            if self.tar_r < 35*4:
                 self.tar_r = cur_r
             else:
-                self.tar_r = 35
-            print "target change to: "+ str(self.tar_r)
+                self.tar_r = 35*4
+            print "target change to: " + str(self.tar_r)
         return s, r, done
 
     def reset(self):
-        self.sbs_info['thresholds'] = np.random.rand(2) * 10
+        self.sbs_info['thresholds'] = np.random.rand(8) * 10
         return self.sbs_info['thresholds']
 
     def render(self):
         return None
 
     def sample_action(self):
-        return np.random.rand(2)*10  # three thresholds
+        return np.random.rand(8)*10  # three thresholds
 
 
 if __name__ == '__main__':

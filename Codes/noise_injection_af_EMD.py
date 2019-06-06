@@ -20,8 +20,10 @@ def noise_inject(signal, num_of_noises):
     # f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/spike_6hours_' + str(num_of_noises) +
     #          '/ground_truth.txt', 'a')
 
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/flip_6hours_' + str(num_of_noises) +
-              '/ground_truth.txt', 'a')
+    # f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/flip_6hours_' + str(num_of_noises) +
+    #           '/ground_truth.txt', 'a')
+    f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_' + str(num_of_noises) +
+                        '/ground_truth.txt', 'a')
     f.write('\n' + str(sensor) + '   ' + str(locations * interval))
 
     for l in locations:
@@ -55,7 +57,8 @@ def noise_inject_warp(signal, num_of_noise):
     return signal
 
 
-path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
+#path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
+path = '/home/ec2-user/Rice_without_dup/'
 path_list = os.listdir(path)
 path_list.sort()
 
@@ -77,7 +80,7 @@ for i in range(d):
 count = 0
 bv_list = []
 
-for sensor in range(0, 3):
+for sensor in range(5, 100):
     IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
     cluster1 = bind.getCluster2(IMFs1)
     cluster1[:, 2] = noise_inject_warp(cluster1[:,2], 3)
@@ -95,8 +98,8 @@ for sensor in range(0, 3):
         print count
         print day_count
         df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'warp_shrink_3' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/warp_shrink_3/sensor'+str(sensor)+'/' + file_name)
+        file_name = 'BV_Rice_sensor_'+str(sensor)+'spike_6hours_3' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+        df.to_csv('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/sensor'+str(sensor)+'/' + file_name)
         day_count = 1 + j / 4
 
 

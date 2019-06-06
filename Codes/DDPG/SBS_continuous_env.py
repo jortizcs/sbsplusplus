@@ -14,9 +14,9 @@ class SBS_continuous_env(object):
     def __init__(self):
         self.sbs_info = np.zeros(
             2, dtype=[('sensor', int), ('thresholds', np.float32)])
-        self.sbs_info['sensor'] = 0
+        self.sbs_info['sensor'] = 3
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
-        self.tar_r = 0
+        self.tar_r = 35
 
 
     def step(self, action):
@@ -40,7 +40,6 @@ class SBS_continuous_env(object):
         r = -dis + 10
         print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
-            r = 10.
             done = True
             if self.tar_r < 35:
                 self.tar_r = cur_r

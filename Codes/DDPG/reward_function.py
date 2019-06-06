@@ -11,7 +11,7 @@ def ground_truth_check(sensor, thresholds):
     fn = 0
     fp = 0
     tn = 0
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
+    f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
     bug_locations = f.readlines()[sensor+1].split("   ")[1][1:-2].split(' ')
     bug_list = []
     for item in bug_locations:

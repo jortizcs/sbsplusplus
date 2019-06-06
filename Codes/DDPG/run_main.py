@@ -6,7 +6,7 @@ please change the env.py and rl.py correspondingly.
 from SBS_continuous_env import SBS_continuous_env
 from RL_brain import DDPG
 
-MAX_EPISODES = 100
+MAX_EPISODES = 30
 MAX_EP_STEPS = 200
 ON_TRAIN = True
 
@@ -32,11 +32,11 @@ def train():
             env.render()
 
             a = rl.choose_action(s)
-            print 'state: ', s
-            print 'action: ', a
+            #print 'state: ', s
+            #print 'action: ', a
 
             s_, r, done = env.step(a)
-            print 'reward: ', r
+            #print 'reward: ', r
             if r > max_reward:
                 max_reward = r
             reward.append(r)

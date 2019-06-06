@@ -27,16 +27,11 @@ def ground_truth_check(sensor, thresholds, ground_truth):
     fn = 0
     fp = 0
     tn = 0
-<<<<<<< HEAD
     f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
     bug_locations = f.readlines()[sensor+1].split("   ")[1][1:-2].split(' ')
     bug_list = []
     for item in bug_locations:
         bug_list.append(int(item)/24)
-
-
-=======
->>>>>>> e4fd98bcfdc961b401a016f9259f9f9d13323089
 
     bug_list = ground_truth
     noise_result = att.anomalies_with_noise(sensor, 'spike_6hours_3', thresholds)

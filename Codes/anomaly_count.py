@@ -6,12 +6,8 @@ import search
 import os
 import plot_graphs
 
-<<<<<<< HEAD
-path = '/home/ec2-user/'
-=======
 path = 'home/ec2-user/'
 #path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/'
->>>>>>> e4fd98bcfdc961b401a016f9259f9f9d13323089
 #path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/yahoo_dataset/'
 
 # frequency range:

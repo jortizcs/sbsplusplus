@@ -24,7 +24,7 @@ rl = DDPG(a_dim, s_dim, a_bound)
 def train():
     # start training
     reward = []
-    start = time.clock()
+    start = time()
     max_reward = -36
     step = []
     for i in range(MAX_EPISODES):
@@ -61,7 +61,7 @@ def train():
     plt.ylabel('Step')
     plt.xlabel('Episode')
     plt.show()
-    elapsed = (time.clock() - start)
+    elapsed = (time() - start)
     print 'Training time: '
     print elapsed
 

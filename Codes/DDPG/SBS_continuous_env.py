@@ -15,19 +15,15 @@ class SBS_continuous_env(object):
 
     def __init__(self):
         self.sbs_info = np.zeros(
-<<<<<<< HEAD
-            2, dtype=[('sensor', int), ('thresholds', np.float32)])
-        self.sbs_info['sensor'] = 3
+            8, dtype=[('thresholds', np.float32)])
+        self.sensor = np.array([0,1,2,3])
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
         self.tar_r = 35
 
-=======
-            8, dtype=[('thresholds', np.float32)])
         self.sensor = np.array([0,1,2,3])
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
         self.tar_r = 0
         self.ground_truth = reward_function.ground_truth_interface(self.sensor)
->>>>>>> e4fd98bcfdc961b401a016f9259f9f9d13323089
 
     def step(self, action):
         done = False

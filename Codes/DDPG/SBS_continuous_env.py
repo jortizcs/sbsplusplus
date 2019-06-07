@@ -41,7 +41,7 @@ class SBS_continuous_env(object):
         cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
         dis = self.tar_r - cur_r
         r = -dis + 10
-        #print (tp, fn, fp, tn)
+        print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
             print (tp, fn, fp, tn)
             done = True

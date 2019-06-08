@@ -15,7 +15,7 @@ class SBS_continuous_env(object):
 
     def __init__(self):
         self.sbs_info = np.zeros(
-            8, dtype=[('thresholds', np.float32)])
+            2*30, dtype=[('thresholds', np.float32)])
         self.sensor = np.arange(0, 30)
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
         self.tar_r = 0

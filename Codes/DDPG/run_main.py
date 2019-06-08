@@ -7,7 +7,7 @@ from SBS_continuous_env import SBS_continuous_env
 from RL_brain import DDPG
 from time import time
 
-MAX_EPISODES = 30
+MAX_EPISODES = 20
 MAX_EP_STEPS = 100
 ON_TRAIN = True
 

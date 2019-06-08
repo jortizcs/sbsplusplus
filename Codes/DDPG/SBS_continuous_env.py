@@ -10,13 +10,13 @@ class SBS_continuous_env(object):
     action_bound = [0, 10]
     # state_dim = 2
     # action_dim = 2
-    state_dim = 8
-    action_dim = 8
+    state_dim = 2 * 30
+    action_dim = 2 * 30
 
     def __init__(self):
         self.sbs_info = np.zeros(
             8, dtype=[('thresholds', np.float32)])
-        self.sensor = np.array([0,1,2,3])
+        self.sensor = np.arange(0, 30)
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
         self.tar_r = 0
         self.ground_truth = reward_function.ground_truth_interface(self.sensor)
@@ -45,15 +45,15 @@ class SBS_continuous_env(object):
         if cur_r > self.tar_r:
             print (tp, fn, fp, tn)
             done = True
-            if self.tar_r < 35*4:
+            if self.tar_r < 36*30:
                 self.tar_r = cur_r
             else:
-                self.tar_r = 35*4
+                self.tar_r = 36*30
             print "target change to: " + str(self.tar_r)
         return s, r, done
 
     def reset(self):
-        self.sbs_info['thresholds'] = np.random.rand(8) * 10
+        self.sbs_info['thresholds'] = np.random.rand(2*30) * 10
         return self.sbs_info['thresholds']
 
     def render(self):

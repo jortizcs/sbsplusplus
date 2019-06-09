@@ -29,8 +29,8 @@ def noise_inject(signal, num_of_noises):
     for l in locations:
         start = interval * l
         end = interval * (l + 1)
-        #signal[start: end] = transforms.add_spike_noise(signal[start: end], 10)
-        signal[start: end] = transforms.flip(signal[start: end])
+        signal[start: end] = transforms.add_spike_noise(signal[start: end], 10)
+        #signal[start: end] = transforms.flip(signal[start: end])
     return signal
 
 

@@ -80,7 +80,7 @@ for i in range(d):
 count = 0
 bv_list = []
 
-for sensor in range(5, 31):
+for sensor in range(19, 31):
     IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
     cluster1 = bind.getCluster2(IMFs1)
     cluster1[:, 2] = noise_inject(cluster1[:,2], 3)

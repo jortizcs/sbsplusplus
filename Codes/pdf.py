@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -8,8 +9,8 @@ import seaborn as sns
 import os
 import search
 
-path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/C/range1/'
-path_R = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/R/3day/R_Rice_3_day_range1.csv'
+path = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/old/C/range1/'
+path_R = '/Users/wuxiaodong/Dropbox/adaptive-anomalies/old/R/3day/R_Rice_3_day_range1.csv'
 d = 20
 # constant b of MAD:
 b = 1.4826
@@ -42,6 +43,7 @@ def variance_list(d):
 
 
 def pdf(s1, s2):
+
     arr = corr_list(s1, s2)
     print arr
 
@@ -62,7 +64,7 @@ def pdf(s1, s2):
     # standard deviation
     plt.fill_between(x, y, where = (x > mu + 2*sigma), facecolor='red')
     plt.fill_between(x, y, where=(x < mu - 2*sigma), facecolor='red')
-    plt.vlines(mu + 2*sigma, 0, 2, colors= 'red', linestyles='--', label='2 sigma')
+    plt.vlines(mu + 2*sigma, 0, 2, colors= 'red', linestyles='--', label='2'+r'$\sigma$')
     plt.vlines(mu - 2*sigma, 0, 2, colors= 'red', linestyles='--')
 
 
@@ -76,12 +78,12 @@ def pdf(s1, s2):
     threshold = 1
     t_line = np.median(list) + threshold * mad_value
 
-    plt.vlines(t_line+r_value, 0, 5, label='MAD threshold==1')
+    plt.vlines(t_line+r_value, 0, 5, label=r'$\tau$ = 1')
     plt.vlines(r_value-t_line, 0, 5)
-
+    #
     threshold2 = 2
     t_line2 = np.median(list) + threshold2 * mad_value
-    plt.vlines(t_line2+r_value, 0, 5, label='MAD threshold==2', colors='green')
+    plt.vlines(t_line2+r_value, 0, 5, label=r'$\tau$ = 2', colors='green')
     plt.vlines(r_value-t_line2, 0, 5, colors='green')
 
 
@@ -98,12 +100,17 @@ def cdf(d):
 if __name__ == '__main__':
     plt.subplot(311)
     pdf(1, 2)
+    plt.title('\'Return Temp\' and \'Supply Temp\'', fontsize=10)
+    plt.xticks([])
     plt.legend()
 
     plt.subplot(312)
     pdf(28, 529)
-
+    plt.title('\'Supply Temp\' and \'Occupancy Status\'', fontsize=10)
+    plt.xticks([])
     plt.subplot(313)
     pdf(52,44)
+    plt.title('\'Cooling coilTemp\' and \'DA Humidity\'', fontsize=10)
 
+    plt.savefig('/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/corr_distribution.png', dpi=600)
     plt.show()

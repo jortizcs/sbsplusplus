@@ -97,7 +97,7 @@ for sensor in range(19, 31):
         print count
         print day_count
         df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'spike_6hours_3' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+        file_name = 'BV_Rice_sensor_'+str(sensor)+'_spike_6hours_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
         df.to_csv('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/sensor'+str(sensor)+'/' + file_name)
         day_count = 1 + j / 4
 

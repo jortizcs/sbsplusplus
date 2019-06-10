@@ -29,8 +29,8 @@ def noise_inject(signal, num_of_noises):
     for l in locations:
         start = interval * l
         end = interval * (l + 1)
-        signal[start: end] = transforms.add_spike_noise(signal[start: end], 10)
-        #signal[start: end] = transforms.flip(signal[start: end])
+        #signal[start: end] = transforms.add_spike_noise(signal[start: end], 10)
+        signal[start: end] = transforms.flip(signal[start: end])
     return signal
 
 
@@ -80,7 +80,7 @@ for i in range(d):
 count = 0
 bv_list = []
 
-for sensor in range(19, 31):
+for sensor in range(4, 31):
     IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
     cluster1 = bind.getCluster2(IMFs1)
     cluster1[:, 2] = noise_inject(cluster1[:,2], 3)
@@ -97,8 +97,8 @@ for sensor in range(19, 31):
         print count
         print day_count
         df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'_spike_6hours_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/sensor'+str(sensor)+'/' + file_name)
+        file_name = 'BV_Rice_sensor_'+str(sensor)+'_flip_6hours_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+        df.to_csv('/home/ec2-user/noise_af_EMD/BV/flip_6hours_3/sensor'+str(sensor)+'/' + file_name)
         day_count = 1 + j / 4
 
 

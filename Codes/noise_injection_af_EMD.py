@@ -42,7 +42,7 @@ def noise_inject_warp(signal, num_of_noise):
     locations = np.random.randint(288 / interval, num_intervals, num_of_noise)
     locations.sort()
 
-    f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/warp_shrink_' + str(num_of_noise) +
+    f = open('/home/ec2-user/noise_af_EMD/BV/BV/warp_shrink_' + str(num_of_noise) +
              '/ground_truth.txt', 'a')
     f.write('\n' + str(sensor) + '   ' + str(locations * interval))
 
@@ -80,10 +80,10 @@ for i in range(d):
 count = 0
 bv_list = []
 
-for sensor in range(4, 31):
+for sensor in range(3, 31):
     IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
     cluster1 = bind.getCluster2(IMFs1)
-    cluster1[:, 2] = noise_inject(cluster1[:,2], 3)
+    cluster1[:, 2] = noise_inject_warp(cluster1[:,2], 3)
     day_count = 1
     for j in range(1, n + 1):
         bv = []
@@ -97,8 +97,8 @@ for sensor in range(4, 31):
         print count
         print day_count
         df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'_flip_6hours_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/home/ec2-user/noise_af_EMD/BV/flip_6hours_3/sensor'+str(sensor)+'/' + file_name)
+        file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_shrink_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+        df.to_csv('/home/ec2-user/noise_af_EMD/BV/warp_shrink_3/sensor'+str(sensor)+'/' + file_name)
         day_count = 1 + j / 4
 
 

@@ -42,7 +42,7 @@ def noise_inject_warp(signal, num_of_noise):
     locations = np.random.randint(288 / interval, num_intervals, num_of_noise)
     locations.sort()
 
-    f = open('/home/ec2-user/noise_af_EMD/BV/BV/warp_shrink_' + str(num_of_noise) +
+    f = open('/home/ec2-user/noise_af_EMD/BV/warp_shrink_' + str(num_of_noise) +
              '/ground_truth.txt', 'a')
     f.write('\n' + str(sensor) + '   ' + str(locations * interval))
 

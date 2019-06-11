@@ -29,7 +29,7 @@ def ground_truth_check(sensor, thresholds, ground_truth):
     tn = 0
 
     bug_list = ground_truth
-    noise_result = att.anomalies_with_noise(sensor, 'spike_6hours_3', thresholds)
+    noise_result = att.anomalies_with_noise(sensor, 'flip_6hours_3', thresholds)
 
     for a in range(len(noise_result)):
         if a in np.array(bug_list) and noise_result[a] is True:

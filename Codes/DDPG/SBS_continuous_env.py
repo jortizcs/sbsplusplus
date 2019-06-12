@@ -43,13 +43,19 @@ class SBS_continuous_env(object):
         r = -dis + 10
         #print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
-            print (tp, fn, fp, tn)
+            #print (tp, fn, fp, tn)
+            f = open('/home/ec2-user/sbsplusplus/warp_shrink_DDPG.txt', 'a')
+            f.write(tp+'\n')
+            f.write(fn+'\n')
+            f.write(fp+'\n')
+            f.write(tn+'\n')
             done = True
             if self.tar_r < 36*30:
                 self.tar_r = cur_r
             else:
                 self.tar_r = 36*30
-            print "target change to: " + str(self.tar_r)
+            f.write("target change to: " + str(self.tar_r)+'\n')
+
         return s, r, done
 
     def reset(self):

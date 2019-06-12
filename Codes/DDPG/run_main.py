@@ -27,6 +27,7 @@ def train():
     start = time()
     max_reward = -36 * 30
     step = []
+    f = open('/home/ec2-user/sbsplusplus/warp_shrink_DDPG.txt', 'a')
     for i in range(MAX_EPISODES):
         s = env.reset()
         ep_r = 0.
@@ -51,10 +52,10 @@ def train():
             s = s_
             if done or j == MAX_EP_STEPS-1:
                 step.append(j)
-                print('Ep: %i | %s | ep_r: %.1f | steps: %i' % (i, '---' if not done else 'done', ep_r, j))
+                f.write('Ep: %i | %s | ep_r: %.1f | steps: %i' % (i, '---' if not done else 'done', ep_r, j))
                 break
     rl.save()
-    print 'Max Reward: '+ str(max_reward)
+    f.write('Max Reward: '+ str(max_reward))
     import matplotlib.pyplot as plt
     import numpy as np
     plt.plot(np.arange(len(step)), step)
@@ -62,8 +63,7 @@ def train():
     plt.xlabel('Episode')
     plt.show()
     elapsed = (time() - start)
-    print 'Training time: '
-    print elapsed
+    f.write( 'Training time: '+str(elapsed))
 
 
 def eval():

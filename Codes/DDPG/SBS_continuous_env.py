@@ -46,13 +46,13 @@ class SBS_continuous_env(object):
             #print (tp, fn, fp, tn)
             f = open('/home/ec2-user/sbsplusplus/warp_shrink_DDPG.txt', 'a')
             f.write('\n')
-            f.write(tp)
+            f.write(str(tp))
             f.write('\n')
-            f.write(fn)
+            f.write(str(fn))
             f.write('\n')
-            f.write(fp)
+            f.write(str(fp))
             f.write('\n')
-            f.write(tn)
+            f.write(str(tn))
             f.write('\n')
             done = True
             if self.tar_r < 36*30:

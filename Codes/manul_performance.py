@@ -102,10 +102,10 @@ def ground_truth_interface(sensor):
 
 
 sensor = np.arange(30)
-threshold1 = [3, 1.4826]
-threshold2 = [5, 1.4826]
-threshold3 = [6, 1.4826]
-threshold4 = [8, 1.4826]
+threshold1 = [1, 1.4826]
+threshold2 = [2, 1.4826]
+threshold3 = [3, 1.4826]
+threshold4 = [4, 1.4826]
 
 ground_truth_matrix = ground_truth_interface(sensor)
 
@@ -136,4 +136,4 @@ cdf = np.cumsum(hist4)
 plt.plot(cdf, label=r'$\tau$ = 8')
 
 plt.legend()
-plt.savefig('/home/ec2-user/cdf.png', dpi=600)
+plt.savefig('/home/ec2-user/cdf_1234.png', dpi=600)

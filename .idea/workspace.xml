@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4e30830-23d7-4f3a-ba5a-a136ce7a62b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Codes/DQN/reward_function.py" afterDir="false" />
+    <list default="true" id="a4e30830-23d7-4f3a-ba5a-a136ce7a62b9" name="Default Changelist" comment="spike noises 19-30">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/DQN/SBS_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/DQN/SBS_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/DQN/run_RL.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/DQN/run_RL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/DQN/sample_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/DQN/sample_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/manul_performance.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/manul_performance.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,34 +12,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/sbsplusplus$pdf.coverage" NAME="pdf Coverage Results" MODIFIED="1550679424334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$pdf.coverage" NAME="pdf Coverage Results" MODIFIED="1560203851204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$anomaly_count_script.coverage" NAME="anomaly_count_script Coverage Results" MODIFIED="1552491516419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$env.coverage" NAME="env Coverage Results" MODIFIED="1557012741506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/RL_example" />
     <SUITE FILE_PATH="coverage/sbsplusplus$noise.coverage" NAME="noise Coverage Results" MODIFIED="1542251262115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$anomaly_count.coverage" NAME="anomaly_count Coverage Results" MODIFIED="1549895892465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$plot.coverage" NAME="plot Coverage Results" MODIFIED="1549484864787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$SBS_env.coverage" NAME="SBS_env Coverage Results" MODIFIED="1553023272718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
     <SUITE FILE_PATH="coverage/sbsplusplus$autopy.coverage" NAME="autopy Coverage Results" MODIFIED="1550075555854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$plot_graphs.coverage" NAME="plot_graphs Coverage Results" MODIFIED="1553712229538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$plot_graphs.coverage" NAME="plot_graphs Coverage Results" MODIFIED="1560451437733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$SBS_continuous_env.coverage" NAME="SBS_continuous_env Coverage Results" MODIFIED="1557109918528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/ActorCritic" />
     <SUITE FILE_PATH="coverage/sbsplusplus$c_gen.coverage" NAME="c_gen Coverage Results" MODIFIED="1550082663843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$noise_injection_af_EMD.coverage" NAME="noise_injection_af_EMD Coverage Results" MODIFIED="1560137931241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$target_generator.coverage" NAME="target_generator Coverage Results" MODIFIED="1550076602446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$run_RL__1_.coverage" NAME="run_RL (1) Coverage Results" MODIFIED="1557110403721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DDPG" />
     <SUITE FILE_PATH="coverage/sbsplusplus$SHC_model.coverage" NAME="SHC_model Coverage Results" MODIFIED="1551714438545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$reward_function.coverage" NAME="reward_function Coverage Results" MODIFIED="1554149731482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$reward_function.coverage" NAME="reward_function Coverage Results" MODIFIED="1558987132016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
     <SUITE FILE_PATH="coverage/sbsplusplus$opc_client.coverage" NAME="opc_client Coverage Results" MODIFIED="1548303759200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/opc" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$transforms.coverage" NAME="transforms Coverage Results" MODIFIED="1560097228665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$LSTM.coverage" NAME="LSTM Coverage Results" MODIFIED="1551062832026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$run_RL.coverage" NAME="run_RL Coverage Results" MODIFIED="1554173578493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$behavior_vector_generator.coverage" NAME="behavior_vector_generator Coverage Results" MODIFIED="1554087088274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$AC_brain.coverage" NAME="AC_brain Coverage Results" MODIFIED="1557505931384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/ActorCritic" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$RL_brain.coverage" NAME="RL_brain Coverage Results" MODIFIED="1558641900629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DDPG" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$run_RL.coverage" NAME="run_RL Coverage Results" MODIFIED="1559059749986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$behavior_vector_generator.coverage" NAME="behavior_vector_generator Coverage Results" MODIFIED="1555356612409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$run_main.coverage" NAME="run_main Coverage Results" MODIFIED="1559885827560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DDPG" />
     <SUITE FILE_PATH="coverage/sbsplusplus$Q_learning.coverage" NAME="Q_learning Coverage Results" MODIFIED="1552923108046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$noise_injection.coverage" NAME="noise_injection Coverage Results" MODIFIED="1553712794117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$c_values.coverage" NAME="c_values Coverage Results" MODIFIED="1550505909466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$sbsplusplus.coverage" NAME="sbsplusplus Coverage Results" MODIFIED="1550774684660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$EMD_noise.coverage" NAME="EMD_noise Coverage Results" MODIFIED="1555215089780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$remove_duplicates.coverage" NAME="remove_duplicates Coverage Results" MODIFIED="1553917380667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$main.coverage" NAME="main Coverage Results" MODIFIED="1558569849609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/RL_example" />
     <SUITE FILE_PATH="coverage/sbsplusplus$bind.coverage" NAME="bind Coverage Results" MODIFIED="1549306603247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$sample_function.coverage" NAME="sample_function Coverage Results" MODIFIED="1553026571998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$reference_generator.coverage" NAME="reference_generator Coverage Results" MODIFIED="1543093754103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$anomalies_through_time.coverage" NAME="anomalies_through_time Coverage Results" MODIFIED="1554136546556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$reference_generator.coverage" NAME="reference_generator Coverage Results" MODIFIED="1557172020523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$anomalies_through_time.coverage" NAME="anomalies_through_time Coverage Results" MODIFIED="1557425524566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$del_index.coverage" NAME="del_index Coverage Results" MODIFIED="1542231488287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$target_generator_script.coverage" NAME="target_generator_script Coverage Results" MODIFIED="1543527972121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$run.coverage" NAME="run Coverage Results" MODIFIED="1553026780249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$target_generator_script.coverage" NAME="target_generator_script Coverage Results" MODIFIED="1557176710155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$run_RL__2_.coverage" NAME="run_RL (2) Coverage Results" MODIFIED="1557110488390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DDPG" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$run.coverage" NAME="run Coverage Results" MODIFIED="1560192332113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -62,44 +70,47 @@
     <session id="-1925822959">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.3" value="3" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="2" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.open.time.9" value="4" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="checkpoint" value="1" />
           <entry key="gitignore" value="1" />
-          <entry key="ipynb" value="3" />
+          <entry key="ipynb" value="6" />
           <entry key="local" value="1" />
-          <entry key="py" value="252" />
+          <entry key="out" value="1" />
+          <entry key="py" value="528" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="IPNB" value="3" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="252" />
+          <entry key="IPNB" value="6" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="528" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="19" />
-          <entry key="py" value="28659" />
-          <entry key="txt" value="949" />
+          <entry key="dummy" value="28" />
+          <entry key="py" value="40937" />
+          <entry key="txt" value="1630" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="968" />
-          <entry key="Python" value="28659" />
+          <entry key="PLAIN_TEXT" value="1658" />
+          <entry key="Python" value="40937" />
         </counts>
       </usages-collector>
     </session>
@@ -112,59 +123,62 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/eager/context.py">
+        <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/framework/device.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/DQN/run_RL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="-134">
+              <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#233#282#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/DQN/sample_function.py">
+        <entry file="file://$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1554172523117" expanded="true" signature="2826:2918" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/DQN/SBS_env.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="387">
+              <caret line="39" column="67" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="67" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1554172655639" expanded="true" signature="162:763" ph="..." />
-                <marker date="1554172655639" expanded="true" signature="786:1719" ph="..." />
-                <marker date="1554172655639" expanded="true" signature="1735:2066" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Codes/LSTM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Codes/DDPG/reward_function.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="70" column="19" lean-forward="true" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Codes/manul_performance.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -172,65 +186,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+            <state relative-caret-position="338">
+              <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1554173007414" expanded="true" signature="733:2227" ph="..." />
+                <marker date="1559009878977" expanded="true" signature="772:2330" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/behavior_vector_generator.py">
+        <entry file="file://$PROJECT_DIR$/Codes/plot_graphs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Codes/anomaly_count.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="1429">
+              <caret line="166" column="23" lean-forward="true" selection-start-line="166" selection-start-column="23" selection-end-line="166" selection-end-column="23" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1554083113705" expanded="true" signature="313:478" ph="..." />
-                <marker date="1554083113705" expanded="true" signature="570:575" ph="..." />
-                <marker date="1554083113705" expanded="true" signature="1087:1474" ph="..." />
-                <marker date="1554083113705" expanded="true" signature="1556:1557" ph="..." />
-                <marker date="1554083113705" expanded="true" signature="2922:4392" ph="..." />
+                <marker date="1560451978118" expanded="true" signature="3078:3481" ph="..." />
+                <marker date="1560451978118" expanded="true" signature="3546:4637" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/DQN/reward_function.py">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/fromnumeric.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/search.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="134">
               <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="80" column="56" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="56" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1554136202441" expanded="true" signature="586:967" ph="..." />
+                <element signature="e#1#20#0" expanded="true" />
+                <marker date="1560203843700" expanded="true" signature="447:448" ph="..." />
               </folding>
             </state>
           </provider>
@@ -250,6 +246,23 @@
     <findStrings>
       <find>n</find>
       <find>activat</find>
+      <find>ENV_NAME</find>
+      <find>16</find>
+      <find>cost_his</find>
+      <find>loss</find>
+      <find>reward:  -2</find>
+      <find>reward:  8</find>
+      <find>ep_R</find>
+      <find>batch_size</find>
+      <find>episode</find>
+      <find>ep_</find>
+      <find>EP</find>
+      <find>reward:  4</find>
+      <find>ep</find>
+      <find>reward:  -2</find>
+      <find>EP_R</find>
+      <find>(2</find>
+      <find>ep_r</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/opc</dir>
@@ -261,52 +274,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Codes/behavior_change.py" />
-        <option value="$PROJECT_DIR$/Codes/band_pass_filter.py" />
-        <option value="$PROJECT_DIR$/anomaly_count.py" />
-        <option value="$PROJECT_DIR$/Codes/target_generator_script.py" />
-        <option value="$PROJECT_DIR$/opc_client.py" />
-        <option value="$PROJECT_DIR$/opc/lib/opc.py" />
-        <option value="$PROJECT_DIR$/opc/lib/OpenOPCService.py" />
-        <option value="$PROJECT_DIR$/opc/lib/OpenOPC.py" />
-        <option value="$PROJECT_DIR$/opc/opc_client.py" />
-        <option value="$PROJECT_DIR$/Codes/run.py" />
-        <option value="$PROJECT_DIR$/opc/__init__.py" />
-        <option value="$PROJECT_DIR$/Codes/plot.py" />
-        <option value="$PROJECT_DIR$/Codes/anomaly_count_script.py" />
-        <option value="$PROJECT_DIR$/Codes/target_generator.py" />
-        <option value="$PROJECT_DIR$/Codes/c_gen.py" />
         <option value="$PROJECT_DIR$/Codes/cdf.py" />
         <option value="$PROJECT_DIR$/Codes/autopy.py" />
         <option value="$PROJECT_DIR$/Codes/c_values.py" />
-        <option value="$PROJECT_DIR$/Codes/pdf.py" />
         <option value="$PROJECT_DIR$/Codes/LSTM.ipynb" />
         <option value="$PROJECT_DIR$/Codes/LSTM.py" />
         <option value="$PROJECT_DIR$/Codes/SHC_model.py" />
         <option value="$PROJECT_DIR$/Codes/.ipynb_checkpoints/transforms.py" />
         <option value="$PROJECT_DIR$/Codes/anomaly_with_transformed.py" />
-        <option value="$PROJECT_DIR$/Codes/EMD.py" />
         <option value="$PROJECT_DIR$/Codes/Q_learning.py" />
         <option value="$PROJECT_DIR$/Codes/RL_brain.py" />
         <option value="$PROJECT_DIR$/Codes/DQN/run.py" />
         <option value="$PROJECT_DIR$/Codes/DQN/SBS_env_single.py" />
         <option value="$PROJECT_DIR$/Codes/noise.py" />
-        <option value="$PROJECT_DIR$/Codes/transforms.py" />
-        <option value="$PROJECT_DIR$/Codes/plot_graphs.py" />
-        <option value="$PROJECT_DIR$/Codes/DQN/RL_brain.py" />
         <option value="$PROJECT_DIR$/Codes/del_index.py" />
         <option value="$PROJECT_DIR$/Codes/remove_duplicates.py" />
-        <option value="$PROJECT_DIR$/Codes/reference_generator.py" />
+        <option value="$PROJECT_DIR$/Codes/EMD.py" />
+        <option value="$PROJECT_DIR$/Codes/EMD_noise.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/Run_RL.py" />
+        <option value="$PROJECT_DIR$/Codes/DQN/RL_brain.py" />
+        <option value="$PROJECT_DIR$/Codes/ActorCritic/SBS_continuious_env.py" />
+        <option value="$PROJECT_DIR$/Codes/RL_example/rl.py" />
+        <option value="$PROJECT_DIR$/Codes/RL_example/env.py" />
+        <option value="$PROJECT_DIR$/Codes/RL_example/main.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/run_RL.py" />
+        <option value="$PROJECT_DIR$/Codes/ActorCritic/SBS_continuous_env.py" />
         <option value="$PROJECT_DIR$/Codes/bind.py" />
-        <option value="$PROJECT_DIR$/Codes/noise_injection.py" />
-        <option value="$PROJECT_DIR$/Codes/behavior_vector_generator.py" />
-        <option value="$PROJECT_DIR$/Codes/anomaly_count.py" />
+        <option value="$PROJECT_DIR$/Codes/reference_generator.py" />
+        <option value="$PROJECT_DIR$/Codes/target_generator.py" />
+        <option value="$PROJECT_DIR$/Codes/target_generator_script.py" />
         <option value="$PROJECT_DIR$/Codes/search.py" />
-        <option value="$PROJECT_DIR$/Codes/DQN/run_RL.py" />
-        <option value="$PROJECT_DIR$/Codes/DQN/reward_function.py" />
+        <option value="$PROJECT_DIR$/Codes/ActorCritic/reward_function.py" />
+        <option value="$PROJECT_DIR$/Codes/ActorCritic/AC_brain.py" />
+        <option value="$PROJECT_DIR$/Codes/RL_example/noise_injection_af_EMD.py" />
+        <option value="$PROJECT_DIR$/Codes/behavior_vector_generator.py" />
         <option value="$PROJECT_DIR$/Codes/DQN/sample_function.py" />
-        <option value="$PROJECT_DIR$/Codes/DQN/SBS_env.py" />
         <option value="$PROJECT_DIR$/Codes/anomalies_through_time.py" />
+        <option value="$PROJECT_DIR$/Codes/DQN/reward_function.py" />
+        <option value="$PROJECT_DIR$/Codes/DQN/SBS_env.py" />
+        <option value="$PROJECT_DIR$/Codes/DQN/run_RL.py" />
+        <option value="$PROJECT_DIR$/Codes/noise_injection.py" />
+        <option value="$PROJECT_DIR$/Codes/anomaly_count.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/RL_brain.py" />
+        <option value="$PROJECT_DIR$/Codes/transforms.py" />
+        <option value="$PROJECT_DIR$/Codes/run.py" />
+        <option value="$PROJECT_DIR$/Codes/pdf.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/run_main.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/reward_function.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py" />
+        <option value="$PROJECT_DIR$/Codes/noise_injection_af_EMD.py" />
+        <option value="$PROJECT_DIR$/Codes/plot_graphs.py" />
+        <option value="$PROJECT_DIR$/Codes/manul_performance.py" />
       </list>
     </option>
   </component>
@@ -316,10 +334,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="730" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -342,7 +360,7 @@
               <item name="sbsplusplus" type="b2602c69:ProjectViewProjectNode" />
               <item name="sbsplusplus" type="462c0819:PsiDirectoryNode" />
               <item name="Codes" type="462c0819:PsiDirectoryNode" />
-              <item name="DQN" type="462c0819:PsiDirectoryNode" />
+              <item name="DDPG" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -352,7 +370,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="reset&#9;null&#9;null&#10;f_range&#9;null&#9;null&#10;gym&#9;FILE&#9;file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym&#10;noise&#9;FILE&#9;file:///Users/wuxiaodong/Documents/GitHub/sbsplusplus/Codes/noise.py&#10;host&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="VarScope&#9;FILE&#9;file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/ops/variable_scope.py&#10;place&#9;null&#9;null&#10;logdir&#9;null&#9;null&#10;epsilon&#9;null&#9;null&#10;e_greedy&#9;null&#9;null&#10;cost&#9;null&#9;null&#10;reset&#9;null&#9;null&#10;f_range&#9;null&#9;null&#10;gym&#9;FILE&#9;file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym&#10;noise&#9;FILE&#9;file:///Users/wuxiaodong/Documents/GitHub/sbsplusplus/Codes/noise.py&#10;host&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -360,10 +378,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Codes" />
       <recent name="$PROJECT_DIR$/Codes/DQN" />
       <recent name="$PROJECT_DIR$/opc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Codes/ActorCritic" />
+      <recent name="$PROJECT_DIR$/Codes/DDPG" />
       <recent name="$PROJECT_DIR$/opc/lib" />
     </key>
   </component>
@@ -379,7 +400,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_RL">
+  <component name="RunManager" selected="Python.plot_graphs">
     <configuration name="sbsplusplus" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -398,7 +419,7 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
-    <configuration name="anomalies_through_time" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="noise_injection_af_EMD" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -411,7 +432,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/anomalies_through_time.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/noise_injection_af_EMD.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -420,7 +441,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="behavior_vector_generator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="pdf" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -433,7 +454,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/behavior_vector_generator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/pdf.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -442,7 +463,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="remove_duplicates" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="plot_graphs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -455,7 +476,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/remove_duplicates.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/plot_graphs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -464,7 +485,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="reward_function" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -472,12 +493,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes/DQN" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/DQN/reward_function.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -486,7 +507,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_RL" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="transforms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -494,12 +515,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes/DQN" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/DQN/run_RL.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/transforms.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -510,19 +531,19 @@
     </configuration>
     <list>
       <item itemvalue="Jupyter Notebook.sbsplusplus" />
-      <item itemvalue="Python.remove_duplicates" />
-      <item itemvalue="Python.behavior_vector_generator" />
-      <item itemvalue="Python.anomalies_through_time" />
-      <item itemvalue="Python.reward_function" />
-      <item itemvalue="Python.run_RL" />
+      <item itemvalue="Python.noise_injection_af_EMD" />
+      <item itemvalue="Python.transforms" />
+      <item itemvalue="Python.pdf" />
+      <item itemvalue="Python.run" />
+      <item itemvalue="Python.plot_graphs" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_RL" />
-        <item itemvalue="Python.reward_function" />
-        <item itemvalue="Python.anomalies_through_time" />
-        <item itemvalue="Python.behavior_vector_generator" />
-        <item itemvalue="Python.remove_duplicates" />
+        <item itemvalue="Python.plot_graphs" />
+        <item itemvalue="Python.pdf" />
+        <item itemvalue="Python.run" />
+        <item itemvalue="Python.noise_injection_af_EMD" />
+        <item itemvalue="Python.transforms" />
       </list>
     </recent_temporary>
   </component>
@@ -537,290 +558,353 @@
       <option name="presentableId" value="Default" />
       <updated>1540752625040</updated>
     </task>
-    <task id="LOCAL-00001" summary="behavior change updated">
-      <created>1542679890489</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00042" summary="reward_function updated">
+      <created>1554314116632</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1542679890489</updated>
+      <updated>1554314116633</updated>
     </task>
-    <task id="LOCAL-00002" summary="target_generator uploaded&#10;anomaly_count uploaded">
-      <created>1543088251947</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00043" summary="warp noise committed">
+      <created>1554594658730</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1543088251948</updated>
+      <updated>1554594658733</updated>
     </task>
-    <task id="LOCAL-00003" summary="anomaly_count updated">
-      <created>1543119962740</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00044" summary="reward_function updated">
+      <created>1554594673023</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1543119962741</updated>
+      <updated>1554594673023</updated>
     </task>
-    <task id="LOCAL-00004" summary="time bin bug fix">
-      <created>1543173153254</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00045" summary="emd analysis updated">
+      <created>1555110171196</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1543173153254</updated>
+      <updated>1555110171199</updated>
     </task>
-    <task id="LOCAL-00005" summary="MAD bug fixed">
-      <created>1543285733589</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00046" summary="wilder noise committed">
+      <created>1555520154061</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
-      <updated>1543285733590</updated>
+      <updated>1555520154061</updated>
     </task>
-    <task id="LOCAL-00006" summary="anomaly_count completed">
-      <created>1543357613087</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00047" summary="DDPG committed">
+      <created>1557114960403</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
       <option name="project" value="LOCAL" />
-      <updated>1543357613087</updated>
+      <updated>1557114960403</updated>
     </task>
-    <task id="LOCAL-00007" summary="read data for specific day added">
-      <created>1543357663636</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+    <task id="LOCAL-00048" summary="RL_example committed">
+      <created>1557114985392</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
-      <updated>1543357663636</updated>
+      <updated>1557114985392</updated>
     </task>
-    <task id="LOCAL-00008" summary="target_generator_script completed">
-      <created>1543357697008</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+    <task id="LOCAL-00049" summary="DQN updated">
+      <created>1557114999383</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1543357697008</updated>
+      <updated>1557114999383</updated>
     </task>
-    <task id="LOCAL-00009" summary="bug fixed">
-      <created>1543810210088</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00050" summary="Actor Critic committed">
+      <created>1557115016212</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
       <option name="project" value="LOCAL" />
-      <updated>1543810210089</updated>
+      <updated>1557115016215</updated>
     </task>
-    <task id="LOCAL-00010" summary="script test">
-      <created>1543810245687</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00051" summary="Actor Critic updated">
+      <created>1557115268250</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
-      <updated>1543810245687</updated>
+      <updated>1557115268250</updated>
     </task>
-    <task id="LOCAL-00011" summary="anomalies_through_time completed">
-      <created>1543810280586</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00052" summary="Noise injected &amp; RL updated">
+      <created>1559590901397</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1543810280586</updated>
+      <updated>1559590901400</updated>
     </task>
-    <task id="LOCAL-00012" summary="anomalies_count_script completed">
-      <created>1543810300377</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+    <task id="LOCAL-00053" summary="dynamic target committed">
+      <created>1559667339101</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
-      <updated>1543810300377</updated>
+      <updated>1559667339102</updated>
     </task>
-    <task id="LOCAL-00013" summary="anomalies_count_script completed">
-      <created>1544415593681</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+    <task id="LOCAL-00054" summary="aws path added">
+      <created>1559781381791</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1544415593681</updated>
+      <updated>1559781381791</updated>
     </task>
-    <task id="LOCAL-00014" summary="opc client updated">
-      <created>1544415896370</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
+    <task id="LOCAL-00055" summary="aws path added">
+      <created>1559782434606</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1544415896370</updated>
+      <updated>1559782434607</updated>
     </task>
-    <task id="LOCAL-00015" summary="details changed">
-      <created>1549468056200</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
+    <task id="LOCAL-00056" summary="aws path added">
+      <created>1559782670588</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
-      <updated>1549468056200</updated>
+      <updated>1559782670588</updated>
     </task>
-    <task id="LOCAL-00016" summary="plot added">
-      <created>1549468072380</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
+    <task id="LOCAL-00057" summary="co-optimizing committed">
+      <created>1559847273935</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
-      <updated>1549468072380</updated>
+      <updated>1559847273935</updated>
     </task>
-    <task id="LOCAL-00017" summary="opc added">
-      <created>1549468142998</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
+    <task id="LOCAL-00058" summary="bug fixed">
+      <created>1559848393197</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
-      <updated>1549468142998</updated>
+      <updated>1559848393198</updated>
     </task>
-    <task id="LOCAL-00018" summary="bug fixed">
-      <created>1549468788067</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
+    <task id="LOCAL-00059" summary="aws path added">
+      <created>1559848561118</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
-      <updated>1549468788067</updated>
+      <updated>1559848561118</updated>
     </task>
-    <task id="LOCAL-00019" summary="workspace fixed">
-      <created>1549469073505</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
+    <task id="LOCAL-00060" summary="bug fixed">
+      <created>1559852782754</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
-      <updated>1549469073505</updated>
+      <updated>1559852782755</updated>
     </task>
-    <task id="LOCAL-00020" summary="sensor detection updated">
-      <created>1549599218446</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
+    <task id="LOCAL-00061" summary="bug fixed">
+      <created>1559852867667</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1549599218448</updated>
+      <updated>1559852867668</updated>
     </task>
-    <task id="LOCAL-00021" summary="manually check plot updated">
-      <created>1549899191125</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
+    <task id="LOCAL-00062" summary="bug fixed">
+      <created>1559852926483</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
-      <updated>1549899191125</updated>
+      <updated>1559852926483</updated>
     </task>
-    <task id="LOCAL-00022" summary="manually check count updated">
-      <created>1549899234429</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
+    <task id="LOCAL-00063" summary="print updated">
+      <created>1559873123475</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
       <option name="project" value="LOCAL" />
-      <updated>1549899234429</updated>
+      <updated>1559873123475</updated>
     </task>
-    <task id="LOCAL-00023" summary="manually check script updated">
-      <created>1549899244494</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
+    <task id="LOCAL-00064" summary="episodes changed">
+      <created>1559885078498</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
       <option name="project" value="LOCAL" />
-      <updated>1549899244494</updated>
+      <updated>1559885078498</updated>
     </task>
-    <task id="LOCAL-00024" summary="count for correct anomalies added">
-      <created>1549995275693</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
+    <task id="LOCAL-00065" summary="aws path added">
+      <created>1559886445584</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
       <option name="project" value="LOCAL" />
-      <updated>1549995275693</updated>
+      <updated>1559886445586</updated>
     </task>
-    <task id="LOCAL-00025" summary="bug fixed">
-      <created>1550631893052</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
+    <task id="LOCAL-00066" summary="30 sensors experiment committed">
+      <created>1559956679229</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
       <option name="project" value="LOCAL" />
-      <updated>1550631893056</updated>
+      <updated>1559956679230</updated>
     </task>
-    <task id="LOCAL-00026" summary="plot_function added">
-      <created>1550631914505</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
+    <task id="LOCAL-00067" summary="bug fixed">
+      <created>1559956798838</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
       <option name="project" value="LOCAL" />
-      <updated>1550631914505</updated>
+      <updated>1559956798838</updated>
     </task>
-    <task id="LOCAL-00027" summary="distribution graph added">
-      <created>1550631938914</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
+    <task id="LOCAL-00068" summary="memory 1000 test">
+      <created>1560034273507</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
       <option name="project" value="LOCAL" />
-      <updated>1550631938914</updated>
+      <updated>1560034273509</updated>
     </task>
-    <task id="LOCAL-00028" summary="distribution graph updated">
-      <created>1550773520418</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
+    <task id="LOCAL-00069" summary="20 ep test">
+      <created>1560034530479</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
       <option name="project" value="LOCAL" />
-      <updated>1550773520418</updated>
+      <updated>1560034530479</updated>
     </task>
-    <task id="LOCAL-00029" summary="LSTM added">
-      <created>1551137854976</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
+    <task id="LOCAL-00070" summary="spike noises added">
+      <created>1560097739827</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1551137854976</updated>
+      <updated>1560097739828</updated>
     </task>
-    <task id="LOCAL-00030" summary="SHC model committed">
-      <created>1551464512144</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
+    <task id="LOCAL-00071" summary="spike noises added">
+      <created>1560097790645</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1551464512144</updated>
+      <updated>1560097790645</updated>
     </task>
-    <task id="LOCAL-00031" summary="SHC model updated">
-      <created>1552685962561</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
+    <task id="LOCAL-00072" summary="spike noises 19-30">
+      <created>1560139052165</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1552685962574</updated>
+      <updated>1560139052168</updated>
     </task>
-    <task id="LOCAL-00032" summary="behavior vector search committed">
-      <created>1552686000839</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
+    <task id="LOCAL-00073" summary="spike noises 19-30">
+      <created>1560205531048</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
-      <updated>1552686000839</updated>
+      <updated>1560205531048</updated>
     </task>
-    <task id="LOCAL-00033" summary="anomaly detection through time committed">
-      <created>1552686035229</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
+    <task id="LOCAL-00074" summary="flip noises 4-30">
+      <created>1560205709692</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
-      <updated>1552686035229</updated>
+      <updated>1560205709692</updated>
     </task>
-    <task id="LOCAL-00034" summary="data transforms committed">
-      <created>1552686060811</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
+    <task id="LOCAL-00075" summary="ddpg">
+      <created>1560205889414</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1552686060811</updated>
+      <updated>1560205889414</updated>
     </task>
-    <task id="LOCAL-00035" summary="behavior vector generator committed">
-      <created>1552686078148</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
+    <task id="LOCAL-00076" summary="flip ddpg test">
+      <created>1560222909005</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1552686078148</updated>
+      <updated>1560222909006</updated>
     </task>
-    <task id="LOCAL-00036" summary="Q learning for SBS">
-      <created>1553031873056</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
+    <task id="LOCAL-00077" summary="warp noises 4-30">
+      <created>1560297221406</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1553031873057</updated>
+      <updated>1560297221406</updated>
     </task>
-    <task id="LOCAL-00037" summary="Deep Q Network committed">
-      <created>1553031900048</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
+    <task id="LOCAL-00078" summary="bug fixed">
+      <created>1560297496794</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1553031900048</updated>
+      <updated>1560297496794</updated>
     </task>
-    <task id="LOCAL-00038" summary="noise injection committed">
-      <created>1554004125334</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
+    <task id="LOCAL-00079" summary="bug fixed">
+      <created>1560305990835</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
-      <updated>1554004125335</updated>
+      <updated>1560305990835</updated>
     </task>
-    <task id="LOCAL-00039" summary="DQN tensorboard updated">
-      <created>1554004152687</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
+    <task id="LOCAL-00080" summary="shrink test">
+      <created>1560306566287</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
-      <updated>1554004152687</updated>
+      <updated>1560306566287</updated>
     </task>
-    <task id="LOCAL-00040" summary="Noise injection updated">
-      <created>1554211952969</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
+    <task id="LOCAL-00081" summary="bug fixed">
+      <created>1560306852784</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
-      <updated>1554211952969</updated>
+      <updated>1560306852784</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00082" summary="bug fixed">
+      <created>1560307150891</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1560307150891</updated>
+    </task>
+    <task id="LOCAL-00083" summary="shrink 0-3">
+      <created>1560396630194</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1560396630196</updated>
+    </task>
+    <task id="LOCAL-00084" summary="manual_performance committed">
+      <created>1560449824557</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1560449824558</updated>
+    </task>
+    <task id="LOCAL-00085" summary="bug fixed">
+      <created>1560449967243</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1560449967243</updated>
+    </task>
+    <task id="LOCAL-00086" summary="bug fixed">
+      <created>1560450102277</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1560450102277</updated>
+    </task>
+    <task id="LOCAL-00087" summary="tau = 5 test">
+      <created>1560450173881</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1560450173881</updated>
+    </task>
+    <task id="LOCAL-00088" summary="manual cdf">
+      <created>1560451986164</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1560451986164</updated>
+    </task>
+    <task id="LOCAL-00089" summary="bug fixed">
+      <created>1560452089592</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1560452089592</updated>
+    </task>
+    <task id="LOCAL-00090" summary="bug fixed">
+      <created>1560452318913</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1560452318913</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -830,30 +914,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="730" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8448276" visible="true" weight="0.23990306" />
-      <window_info id="Structure" order="1" sideWeight="0.15517241" side_tool="true" visible="true" weight="0.23990306" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85988486" visible="true" weight="0.22859451" />
+      <window_info id="Structure" order="1" sideWeight="0.14011516" side_tool="true" visible="true" weight="0.22859451" />
       <window_info id="Favorites" order="2" sideWeight="0.51" side_tool="true" weight="0.18659128" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49757674" weight="0.61755484" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49919224" weight="0.44200626" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49676898" visible="true" weight="0.1808176" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.12578617" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3291536" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3291536" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32861635" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5016155" side_tool="true" weight="0.3291536" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4983845" weight="0.12068965" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.503231" side_tool="true" weight="0.3883648" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4983845" weight="0.32861635" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3296875" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.3291536" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.5801887" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.76332796" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.7714055" />
       <window_info anchor="right" id="Database" order="4" weight="0.09127625" />
     </layout>
     <layout-to-restore>
@@ -887,32 +971,32 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="details changed" />
-    <MESSAGE value="plot added" />
-    <MESSAGE value="opc added" />
-    <MESSAGE value="workspace fixed" />
-    <MESSAGE value="sensor detection updated" />
-    <MESSAGE value="manually check plot updated" />
-    <MESSAGE value="manually check count updated" />
-    <MESSAGE value="manually check script updated" />
-    <MESSAGE value="count for correct anomalies added" />
+    <MESSAGE value="RL_example committed" />
+    <MESSAGE value="DQN updated" />
+    <MESSAGE value="Actor Critic committed" />
+    <MESSAGE value="Actor Critic updated" />
+    <MESSAGE value="Noise injected &amp; RL updated" />
+    <MESSAGE value="dynamic target committed" />
+    <MESSAGE value="co-optimizing committed" />
+    <MESSAGE value="print updated" />
+    <MESSAGE value="episodes changed" />
+    <MESSAGE value="aws path added" />
+    <MESSAGE value="30 sensors experiment committed" />
+    <MESSAGE value="memory 1000 test" />
+    <MESSAGE value="20 ep test" />
+    <MESSAGE value="spike noises added" />
+    <MESSAGE value="spike noises 19-30" />
+    <MESSAGE value="flip noises 4-30" />
+    <MESSAGE value="ddpg" />
+    <MESSAGE value="flip ddpg test" />
+    <MESSAGE value="warp noises 4-30" />
+    <MESSAGE value="shrink test" />
+    <MESSAGE value="shrink 0-3" />
+    <MESSAGE value="manual_performance committed" />
+    <MESSAGE value="tau = 5 test" />
+    <MESSAGE value="manual cdf" />
     <MESSAGE value="bug fixed" />
-    <MESSAGE value="plot_function added" />
-    <MESSAGE value="distribution graph added" />
-    <MESSAGE value="distribution graph updated" />
-    <MESSAGE value="LSTM added" />
-    <MESSAGE value="SHC model committed" />
-    <MESSAGE value="SHC model updated" />
-    <MESSAGE value="behavior vector search committed" />
-    <MESSAGE value="anomaly detection through time committed" />
-    <MESSAGE value="data transforms committed" />
-    <MESSAGE value="behavior vector generator committed" />
-    <MESSAGE value="Q learning for SBS" />
-    <MESSAGE value="Deep Q Network committed" />
-    <MESSAGE value="noise injection committed" />
-    <MESSAGE value="DQN tensorboard updated" />
-    <MESSAGE value="Noise injection updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Noise injection updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -933,44 +1017,39 @@
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/anomaly_count.py</url>
-          <line>142</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/target_generator.py</url>
           <line>38</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/pdf.py</url>
-          <line>24</line>
+          <line>25</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/anomalies_through_time.py</url>
-          <line>32</line>
+          <line>34</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/behavior_vector_generator.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="127" />
+          <url>file://$PROJECT_DIR$/Codes/target_generator_script.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/behavior_vector_generator.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="133" />
+          <url>file://$PROJECT_DIR$/Codes/DQN/reward_function.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/DQN/sample_function.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="142" />
+          <url>file://$PROJECT_DIR$/Codes/DDPG/reward_function.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/DQN/sample_function.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="143" />
+          <url>file://$PROJECT_DIR$/Codes/noise_injection_af_EMD.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="186" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1007,191 +1086,190 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/envs/toy_text/blackjack.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/_api/v1/train/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/core.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/training/adam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="213" column="13" selection-start-line="213" selection-start-column="13" selection-end-line="213" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/spaces/multi_discrete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/spaces/box.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+        <state relative-caret-position="310">
+          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/spaces/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/spaces/discrete.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="82">
+          <caret line="959" column="33" selection-start-line="959" selection-start-column="24" selection-end-line="959" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/numeric.py">
+    <entry file="file://$PROJECT_DIR$/Codes/RL_example/checkpoint">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/ActorCritic/sample_function.py" />
+    <entry file="file://$PROJECT_DIR$/Codes/ActorCritic/SBS_env.py" />
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_RL.py" />
+    <entry file="file://$PROJECT_DIR$/Codes/c_values.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="552" selection-start-line="552" selection-end-line="552" />
+        <state relative-caret-position="408">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/shape_base.py">
+    <entry file="file://$PROJECT_DIR$/Codes/target_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="285" selection-start-line="285" selection-end-line="285" />
+        <state relative-caret-position="203">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/SBS_env_single.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+    <entry file="file://$PROJECT_DIR$/Codes/reference_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="1067" selection-start-line="1067" selection-end-line="1067" />
+        <state relative-caret-position="135">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="14" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/envs/classic_control/cartpole.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/framework/ops.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+        <state relative-caret-position="379">
+          <caret line="1769" selection-start-line="1769" selection-end-line="1769" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/run.py" />
-    <entry file="file://$PROJECT_DIR$/Codes/SHC_model.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/client/session.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="117">
+          <caret line="928" selection-start-line="928" selection-end-line="928" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/EMD.py">
+    <entry file="file://$PROJECT_DIR$/Codes/ActorCritic/reward_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="48" column="12" lean-forward="true" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        <state relative-caret-position="375">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/ActorCritic/SBS_continuous_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/ActorCritic/AC_brain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/ops/variable_scope.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/RL_example/rl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/RL_example/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/RL_example/env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/noise.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1553524555175" expanded="true" signature="87:169" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/bind.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1557170961979" expanded="true" signature="3093:3096" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/behavior_vector_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scipy/spatial/distance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="488" selection-start-line="488" selection-end-line="488" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1557431392502" expanded="true" signature="582:963" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DQN/reward_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/core/series.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="766" selection-start-line="766" selection-end-line="766" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/core/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="409" selection-start-line="409" selection-end-line="409" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/core/indexes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="2036" selection-start-line="2036" selection-end-line="2036" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/core/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="2486" selection-start-line="2486" selection-end-line="2486" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/logs/events.out.tfevents.1553699813.wuxiaodongdeMacBook-Pro.local">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14912" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="97" selection-start-line="97" selection-end-line="97" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1550679424327" expanded="true" signature="438:439" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/Q_learning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/io/formats/csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/io/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="396" selection-start-line="396" selection-end-line="396" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="1744" selection-start-line="1744" selection-end-line="1744" />
+        <state relative-caret-position="3675">
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/plot_graphs.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1553711192682" expanded="true" signature="617:721" ph="..." />
-            <marker date="1553711192682" expanded="true" signature="781:3047" ph="..." />
-            <marker date="1553711192682" expanded="true" signature="2340:3047" ph="..." />
-            <marker date="1553711192682" expanded="true" signature="2398:3047" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/target_generator_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="38" column="107" lean-forward="true" selection-start-line="38" selection-start-column="107" selection-end-line="38" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/target_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="24945">
+          <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
         </state>
       </provider>
     </entry>
@@ -1202,132 +1280,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/bind.py">
+    <entry file="file://$PROJECT_DIR$/Codes/DQN/RL_brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-919">
-          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+        <state relative-caret-position="356">
+          <caret line="117" column="35" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/LSTM.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/del_index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/c_values.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/band_pass_filter.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/noise_injection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="54" column="110" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="110" />
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1554077901930" expanded="true" signature="477:478" ph="..." />
-            <marker date="1554077901930" expanded="true" signature="796:844" ph="..." />
+            <marker date="1558665116360" expanded="true" signature="489:490" ph="..." />
+            <marker date="1558665116360" expanded="true" signature="580:583" ph="..." />
+            <marker date="1558665116360" expanded="true" signature="641:689" ph="..." />
+            <marker date="1558665116360" expanded="true" signature="873:875" ph="..." />
+            <marker date="1558665116360" expanded="true" signature="1623:2699" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/noise.py">
+    <entry file="file://$PROJECT_DIR$/Codes/target_generator_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1553524555175" expanded="true" signature="87:169" ph="..." />
-          </folding>
+        <state relative-caret-position="499">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/remove_duplicates.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/matplotlib/artist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="913" selection-start-line="913" selection-end-line="913" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="66" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="66" />
+        <state relative-caret-position="102">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/reference_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/transforms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/RL_brain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        <state relative-caret-position="475">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/ops/array_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25740">
-          <caret line="1742" selection-start-line="1742" selection-end-line="1742" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/eager/context.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/framework/device.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/DQN/run_RL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -1336,82 +1350,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/DQN/sample_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
+        <state relative-caret-position="-1367">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1554172523117" expanded="true" signature="2826:2918" ph="..." />
+            <marker date="1558988014988" expanded="true" signature="2779:2897" ph="..." />
+            <marker date="1558988014988" expanded="true" signature="2974:3066" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/DQN/SBS_env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="385">
+          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1554172655639" expanded="true" signature="162:763" ph="..." />
-            <marker date="1554172655639" expanded="true" signature="786:1719" ph="..." />
-            <marker date="1554172655639" expanded="true" signature="1735:2066" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/reward_function.py">
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/RL_brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="433">
+          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1554136202441" expanded="true" signature="586:967" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1554173007414" expanded="true" signature="733:2227" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/behavior_vector_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
+            <marker date="1560034248784" expanded="true" signature="336:341" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/anomaly_count.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="302">
+          <caret line="46" column="27" lean-forward="true" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1554083113705" expanded="true" signature="313:478" ph="..." />
-            <marker date="1554083113705" expanded="true" signature="570:575" ph="..." />
-            <marker date="1554083113705" expanded="true" signature="1087:1474" ph="..." />
-            <marker date="1554083113705" expanded="true" signature="1556:1557" ph="..." />
-            <marker date="1554083113705" expanded="true" signature="2922:4392" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/noise_injection_af_EMD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+          <folding>
+            <element signature="e#233#282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/LSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/reward_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="70" column="19" lean-forward="true" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="39" column="67" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1559009878977" expanded="true" signature="772:2330" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="80" column="56" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="56" />
+          <folding>
+            <element signature="e#1#20#0" expanded="true" />
+            <marker date="1560203843700" expanded="true" signature="447:448" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/plot_graphs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1429">
+          <caret line="166" column="23" lean-forward="true" selection-start-line="166" selection-start-column="23" selection-end-line="166" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1560451978118" expanded="true" signature="3078:3481" ph="..." />
+            <marker date="1560451978118" expanded="true" signature="3546:4637" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/manul_performance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
         </state>
       </provider>
     </entry>

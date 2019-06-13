@@ -121,18 +121,19 @@ acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])
 
 hist1, bin_edges1 = np.histogram(acc1)
 cdf = np.cumsum(hist1)
-plt.plot(cdf)
+plt.plot(cdf, label=r'$\tau$ = 3')
 
 hist2, bin_edges2 = np.histogram(acc2)
 cdf = np.cumsum(hist2)
-plt.plot(cdf)
+plt.plot(cdf, label=r'$\tau$ = 5')
 
 hist3, bin_edges3 = np.histogram(acc3)
 cdf = np.cumsum(hist3)
-plt.plot(cdf)
+plt.plot(cdf, label=r'$\tau$ = 6')
 
 hist4, bin_edges4 = np.histogram(acc4)
 cdf = np.cumsum(hist4)
-plt.plot(cdf)
+plt.plot(cdf, label=r'$\tau$ = 8')
 
+plt.legend()
 plt.savefig('/home/ec2-user/cdf.png', dpi=600)

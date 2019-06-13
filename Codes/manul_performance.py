@@ -135,4 +135,4 @@ hist4, bin_edges4 = np.histogram(acc4)
 cdf = np.cumsum(hist4)
 plt.plot(cdf)
 
-plt.show()
+plt.savefig('/home/ec2-user/cdf.png', dpi=600)

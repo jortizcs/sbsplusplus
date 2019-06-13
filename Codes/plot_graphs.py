@@ -99,6 +99,28 @@ def plot_transformed_with_shades(sensor_name, tb_list):
         plt.legend()
 
 
+def manual_result(l1,l2,l3,l4):
+    a = []
+    b = []
+    c = []
+    for i in range(30):
+        tp = l1[i]
+        fn = l2[i]
+        fp = l3[i]
+        tn = l4[i]
+        acc = (tp + tn) / 24.0
+        recall = tp / (tp + fn + 0.0)
+        if tp == 0:
+            precision = 0
+        else:
+            precision = tp / (tp + fp + 0.0)
+        a.append(acc)
+        b.append(recall)
+        c.append(precision)
+    return a,b,c
+
+
+
 def DDPG_result(l1, l2, l3, l4):
     a = []
     b = []
@@ -117,6 +139,11 @@ def DDPG_result(l1, l2, l3, l4):
         a.append(acc)
         b.append(recall)
         c.append(precision)
+
+    hist, bin_edges = np.histogram(a)
+    cdf = np.cumsum(hist)
+    plt.plot(cdf)
+    plt.show()
 
     name_list = ['accuracy', 'recall', 'precision']
     x = list(range(len(a)))
@@ -139,15 +166,16 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(b)
     print np.average(c)
     #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid.png", dpi=600)
-
+    plt.show()
 
 if __name__ == '__main__':
-    DDPG_result([2, 0, 0, 1, 1, 0, 0, 0, 1, 1, 2, 1, 1, 1, 0, 1, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 1],
+    DDPG_result([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 
-[0, 2, 0, 1, 1, 2, 2, 2, 1, 1, 0, 1, 1, 1, 2, 1, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 1, 2, 1, 1],
+[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
 
-[0, 2, 0, 1, 2, 2, 6, 1, 1, 1, 2, 1, 2, 0, 6, 0, 4, 5, 2, 0, 5, 0, 3, 0, 1, 1, 2, 4, 0, 6],
+ [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 
-[22, 18, 0, 21, 20, 20, 16, 21, 21, 21, 20, 21, 20, 22, 16, 22, 18, 17, 20, 22, 17, 22, 19, 22, 21, 21, 20, 18, 22, 16]
+ [21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 19, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 20]
 )
+
 

@@ -1,9 +1,12 @@
-import numpy as np
 import sys
 sys.path.append('../')
 import anomalies_through_time as att
 import os
 import pandas as pd
+from scipy import stats
+import matplotlib.pyplot as plt
+import numpy as np
+import plot_graphs
 
 
 def ground_truth_check_multi(sensors, thresholds, ground_truth):
@@ -99,8 +102,37 @@ def ground_truth_interface(sensor):
 
 
 sensor = np.arange(30)
-threshold = [5, 1.4826]
+threshold1 = [3, 1.4826]
+threshold2 = [5, 1.4826]
+threshold3 = [6, 1.4826]
+threshold4 = [8, 1.4826]
 
 ground_truth_matrix = ground_truth_interface(sensor)
 
-print ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
+result1 = ground_truth_check_multi(sensor, threshold1, ground_truth_matrix)
+result2 = ground_truth_check_multi(sensor, threshold2, ground_truth_matrix)
+result3 = ground_truth_check_multi(sensor, threshold3, ground_truth_matrix)
+result4 = ground_truth_check_multi(sensor, threshold4, ground_truth_matrix)
+
+acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])
+acc2 = plot_graphs.manual_result(result2[0],result2[1], result2[2], result2[3])
+acc3 = plot_graphs.manual_result(result3[0],result3[1], result3[2], result3[3])
+acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])
+
+hist1, bin_edges1 = np.histogram(acc1)
+cdf = np.cumsum(hist1)
+plt.plot(cdf)
+
+hist2, bin_edges2 = np.histogram(acc2)
+cdf = np.cumsum(hist2)
+plt.plot(cdf)
+
+hist3, bin_edges3 = np.histogram(acc3)
+cdf = np.cumsum(hist3)
+plt.plot(cdf)
+
+hist4, bin_edges4 = np.histogram(acc4)
+cdf = np.cumsum(hist4)
+plt.plot(cdf)
+
+plt.show()

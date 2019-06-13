@@ -99,7 +99,7 @@ def ground_truth_interface(sensor):
 
 
 sensor = np.arange(30)
-threshold = [3, 1.4826]
+threshold = [5, 1.4826]
 
 ground_truth_matrix = ground_truth_interface(sensor)
 

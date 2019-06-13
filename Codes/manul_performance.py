@@ -133,19 +133,19 @@ plt.plot(cdf, label=r'$\tau$_best = '+str(threshold1[0]))
 
 hist2, bin_edges2 = np.histogram(acc2)
 cdf = np.cumsum(hist2)
-#plt.plot(cdf, label=r'$\tau$ = '+str(threshold2[0]))
+plt.plot(cdf, label=r'$\tau$ = '+str(threshold2[0]))
 
 hist3, bin_edges3 = np.histogram(acc3)
 cdf = np.cumsum(hist3)
-#plt.plot(cdf, label=r'$\tau$ = '+str(threshold3[0]))
+plt.plot(cdf, label=r'$\tau$ = '+str(threshold3[0]))
 
 hist4, bin_edges4 = np.histogram(acc4)
 cdf = np.cumsum(hist4)
-#plt.plot(cdf, label=r'$\tau$ = '+str(threshold4[0]))
+plt.plot(cdf, label=r'$\tau$ = '+str(threshold4[0]))
 
 hist_rl, bin_edges_Rl = np.histogram(acc_rl)
 cdf = np.cumsum(hist_rl)
-plt.plot(cdf, label='RL')
+#plt.plot(cdf, label='RL')
 
 plt.legend()
-plt.savefig('/home/ec2-user/cdf_rl.png', dpi=600)
+plt.savefig('/home/ec2-user/cdf_1234.png', dpi=600)

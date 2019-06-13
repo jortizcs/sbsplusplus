@@ -5,6 +5,7 @@ import anomalies_through_time as att
 import os
 import pandas as pd
 
+
 def ground_truth_check_multi(sensors, thresholds, ground_truth):
     tp_total = []
     fn_total = []
@@ -28,7 +29,7 @@ def ground_truth_check(sensor, thresholds, ground_truth):
     tn = 0
 
     bug_list = ground_truth
-    noise_result = att.anomalies_with_noise(sensor, 'warp_shrink_3', thresholds)
+    noise_result = att.anomalies_with_noise(sensor, 'spike_6hours_3', thresholds)
 
     for a in range(len(noise_result)):
         if a in np.array(bug_list) and noise_result[a] is True:
@@ -79,7 +80,7 @@ def ground_truth_check_yahoo(sensor, thresholds):
 
 def ground_truth_list(sensor):
     #f = open('/Users/wuxiaodong/Dropbox/adaptive-anomalies/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
-    f = open('/home/ec2-user/noise_af_EMD/BV/warp_shrink_3/ground_truth.txt')
+    f = open('/home/ec2-user/noise_af_EMD/BV/spike_6hours_3/ground_truth.txt')
     bug_locations = f.readlines()[sensor + 1].split("   ")[1][1:-2].split(' ')
     bug_list = []
     for item in bug_locations:

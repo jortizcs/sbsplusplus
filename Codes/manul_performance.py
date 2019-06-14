@@ -150,4 +150,6 @@ cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
 
 plt.ylim([0, 1])
 plt.legend()
+plt.xlabel('accuracy')
+plt.ylabel('cumulative dense probability')
 plt.savefig('/home/ec2-user/cdf_1234_accuracy.png', dpi=600)

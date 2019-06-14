@@ -42,7 +42,7 @@ def noise_inject_warp(signal, num_of_noise):
     locations = np.random.randint(288 / interval, num_intervals, num_of_noise)
     locations.sort()
 
-    f = open('/home/ec2-user/noise_af_EMD/BV/warp_shrink_' + str(num_of_noise) +
+    f = open('/home/ec2-user/noise_af_EMD/BV/warp_expand_' + str(num_of_noise) +
              '/ground_truth.txt', 'a')
     f.write('\n' + str(sensor) + '   ' + str(locations * interval))
 
@@ -51,7 +51,7 @@ def noise_inject_warp(signal, num_of_noise):
         end = interval * (l + 1)
         f1 = np.array(signal[:start])
 
-        f2 = transforms.warp_shrink(signal[start: end])
+        f2 = transforms.warp_expand(signal[start: end])
         f3 = np.array(signal[end:])
         signal = np.concatenate((f1, f2, f3), axis=0)
     return signal
@@ -97,8 +97,8 @@ for sensor in range(0, 3):
         print count
         print day_count
         df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_shrink_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/home/ec2-user/noise_af_EMD/BV/warp_shrink_3/sensor'+str(sensor)+'/' + file_name)
+        file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_expand_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+        df.to_csv('/home/ec2-user/noise_af_EMD/BV/warp_expand_3/sensor'+str(sensor)+'/' + file_name)
         day_count = 1 + j / 4
 
 

@@ -153,7 +153,7 @@ plt.legend()
 plt.xlabel('accuracy')
 plt.ylabel('probability')
 plt.savefig('/home/ec2-user/cdf_rl_accuracy.png', dpi=600)
-
+plt.close()
 
 acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[1]
 acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[1]
@@ -165,11 +165,13 @@ hist_rl, bin_edges_rl = np.histogram(acc_rl)
 cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
 plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
 
+
 plt.ylim([0, 1])
 plt.legend()
 plt.xlabel('recall')
 plt.ylabel('probability')
 plt.savefig('/home/ec2-user/cdf_rl_recall.png', dpi=600)
+plt.close()
 
 acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[2]
 acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[2]

@@ -150,4 +150,4 @@ cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
 
 plt.ylim([0, 1])
 plt.legend()
-plt.savefig('/home/ec2-user/cdf_1234rl_precision.png', dpi=600)
+plt.savefig('/home/ec2-user/cdf_1234_accuracy.png', dpi=600)

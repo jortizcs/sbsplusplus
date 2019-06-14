@@ -121,10 +121,10 @@ result_rl = ([0, 2, 1, 0, 2, 1, 2, 0, 1, 2, 1, 1, 1, 1, 3, 1, 0, 3, 1, 0, 1, 0, 
 
             [18, 15, 15, 18, 18, 19, 14, 18, 15, 17, 17, 19, 18, 19, 18, 19, 14, 17, 18, 21, 15, 17, 17, 20, 19, 18, 16, 14, 17, 18])
 
-acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[0]
-acc2 = plot_graphs.manual_result(result2[0],result2[1], result2[2], result2[3])[0]
-acc3 = plot_graphs.manual_result(result3[0],result3[1], result3[2], result3[3])[0]
-acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])[0]
+acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[1]
+acc2 = plot_graphs.manual_result(result2[0],result2[1], result2[2], result2[3])[1]
+acc3 = plot_graphs.manual_result(result3[0],result3[1], result3[2], result3[3])[1]
+acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])[1]
 acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[2]
 
 hist1, bin_edges1 = np.histogram(acc1)
@@ -152,4 +152,4 @@ plt.ylim([0, 1])
 plt.legend()
 plt.xlabel('precision')
 plt.ylabel('probability')
-plt.savefig('/home/ec2-user/cdf_1234_accuracy.png', dpi=600)
+plt.savefig('/home/ec2-user/cdf_1234_recall.png', dpi=600)

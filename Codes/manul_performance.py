@@ -129,19 +129,19 @@ acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], resu
 
 hist1, bin_edges1 = np.histogram(acc1)
 cdf = np.cumsum(hist1.astype(float)/sum(hist1))
-plt.plot(cdf, label=r'$\tau$ = '+str(threshold1[0]))
+plt.plot(bin_edges1[1:], cdf, label=r'$\tau$ = '+str(threshold1[0]))
 
 hist2, bin_edges2 = np.histogram(acc2)
 cdf = np.cumsum(hist2.astype(float)/sum(hist1))
-plt.plot(cdf, label=r'$\tau$ = '+str(threshold2[0]))
+plt.plot(bin_edges2[1:], cdf, label=r'$\tau$ = '+str(threshold2[0]))
 
 hist3, bin_edges3 = np.histogram(acc3)
 cdf = np.cumsum(hist3.astype(float)/sum(hist3))
-plt.plot(cdf, label=r'$\tau$ = '+str(threshold3[0]))
+plt.plot(bin_edges3[1:], cdf, label=r'$\tau$ = '+str(threshold3[0]))
 
 hist4, bin_edges4 = np.histogram(acc4)
 cdf = np.cumsum(hist4.astype(float)/sum(hist4))
-plt.plot(cdf, label=r'$\tau$ = '+str(threshold4[0]))
+plt.plot(bin_edges4[1:], cdf, label=r'$\tau$ = '+str(threshold4[0]))
 
 hist_rl, bin_edges_rl = np.histogram(acc_rl)
 cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))

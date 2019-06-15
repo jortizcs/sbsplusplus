@@ -128,7 +128,7 @@ def PR_curve(tau_list):
     sensor = np.arange(30)
     ground_truth_matrix = mp.ground_truth_interface(sensor)
     for tau in tau_list:
-        threshold= [tau, 1.4826]
+        threshold = [tau, 1.4826]
         result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
         recall = manual_result(result[0],result[1], result[2], result[3])[1]
         precision = manual_result(result[0],result[1], result[2], result[3])[2]

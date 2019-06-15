@@ -101,90 +101,91 @@ def ground_truth_interface(sensor):
         return ground_truth_matrix
 
 
-sensor = np.arange(30)
-threshold1 = [1, 1.4826]
-threshold2 = [2, 1.4826]
-threshold3 = [3, 1.4826]
-threshold4 = [4, 1.4826]
+if __name__ == '__main__':
+    sensor = np.arange(30)
+    threshold1 = [1, 1.4826]
+    threshold2 = [2, 1.4826]
+    threshold3 = [3, 1.4826]
+    threshold4 = [4, 1.4826]
 
-ground_truth_matrix = ground_truth_interface(sensor)
+    ground_truth_matrix = ground_truth_interface(sensor)
 
-result1 = ground_truth_check_multi(sensor, threshold1, ground_truth_matrix)
-result2 = ground_truth_check_multi(sensor, threshold2, ground_truth_matrix)
-result3 = ground_truth_check_multi(sensor, threshold3, ground_truth_matrix)
-result4 = ground_truth_check_multi(sensor, threshold4, ground_truth_matrix)
-result_rl = ([0, 2, 1, 0, 2, 1, 2, 0, 1, 2, 1, 1, 1, 1, 3, 1, 0, 3, 1, 0, 1, 0, 1, 2, 1, 1, 1, 1, 0, 3],
+    result1 = ground_truth_check_multi(sensor, threshold1, ground_truth_matrix)
+    result2 = ground_truth_check_multi(sensor, threshold2, ground_truth_matrix)
+    result3 = ground_truth_check_multi(sensor, threshold3, ground_truth_matrix)
+    result4 = ground_truth_check_multi(sensor, threshold4, ground_truth_matrix)
+    result_rl = ([0, 2, 1, 0, 2, 1, 2, 0, 1, 2, 1, 1, 1, 1, 3, 1, 0, 3, 1, 0, 1, 0, 1, 2, 1, 1, 1, 1, 0, 3],
 
-            [3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 2, 2, 2, 0, 2, 3, 0, 2, 3, 2, 3, 2, 1, 2, 2, 2, 2, 3, 0],
+                [3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 2, 2, 2, 0, 2, 3, 0, 2, 3, 2, 3, 2, 1, 2, 2, 2, 2, 3, 0],
 
-            [3, 6, 6, 3, 3, 2, 7, 3, 6, 4, 4, 2, 3, 2, 3, 2, 7, 4, 3, 0, 6, 4, 4, 1, 2, 3, 5, 7, 4, 3],
+                [3, 6, 6, 3, 3, 2, 7, 3, 6, 4, 4, 2, 3, 2, 3, 2, 7, 4, 3, 0, 6, 4, 4, 1, 2, 3, 5, 7, 4, 3],
 
-            [18, 15, 15, 18, 18, 19, 14, 18, 15, 17, 17, 19, 18, 19, 18, 19, 14, 17, 18, 21, 15, 17, 17, 20, 19, 18, 16, 14, 17, 18])
+                [18, 15, 15, 18, 18, 19, 14, 18, 15, 17, 17, 19, 18, 19, 18, 19, 14, 17, 18, 21, 15, 17, 17, 20, 19, 18, 16, 14, 17, 18])
 
-acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[0]
-acc2 = plot_graphs.manual_result(result2[0],result2[1], result2[2], result2[3])[0]
-acc3 = plot_graphs.manual_result(result3[0],result3[1], result3[2], result3[3])[0]
-acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])[0]
-acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[0]
+    acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[0]
+    acc2 = plot_graphs.manual_result(result2[0],result2[1], result2[2], result2[3])[0]
+    acc3 = plot_graphs.manual_result(result3[0],result3[1], result3[2], result3[3])[0]
+    acc4 = plot_graphs.manual_result(result4[0],result4[1], result4[2], result4[3])[0]
+    acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[0]
 
-hist1, bin_edges1 = np.histogram(acc1)
-cdf = np.cumsum(hist1.astype(float)/sum(hist1))
-#plt.plot(bin_edges1[1:], cdf, label=r'$\tau$ = '+str(threshold1[0]))
+    hist1, bin_edges1 = np.histogram(acc1)
+    cdf = np.cumsum(hist1.astype(float)/sum(hist1))
+    #plt.plot(bin_edges1[1:], cdf, label=r'$\tau$ = '+str(threshold1[0]))
 
-hist2, bin_edges2 = np.histogram(acc2)
-cdf = np.cumsum(hist2.astype(float)/sum(hist1))
-#plt.plot(bin_edges2[1:], cdf, label=r'$\tau$ = '+str(threshold2[0]))
+    hist2, bin_edges2 = np.histogram(acc2)
+    cdf = np.cumsum(hist2.astype(float)/sum(hist1))
+    #plt.plot(bin_edges2[1:], cdf, label=r'$\tau$ = '+str(threshold2[0]))
 
-hist3, bin_edges3 = np.histogram(acc3)
-cdf = np.cumsum(hist3.astype(float)/sum(hist3))
-#plt.plot(bin_edges3[1:], cdf, label=r'$\tau$ = '+str(threshold3[0]))
+    hist3, bin_edges3 = np.histogram(acc3)
+    cdf = np.cumsum(hist3.astype(float)/sum(hist3))
+    #plt.plot(bin_edges3[1:], cdf, label=r'$\tau$ = '+str(threshold3[0]))
 
-hist4, bin_edges4 = np.histogram(acc4)
-cdf = np.cumsum(hist4.astype(float)/sum(hist4))
-plt.plot(bin_edges4[1:], cdf, label=r'$\tau$_best = '+str(threshold4[0]))
+    hist4, bin_edges4 = np.histogram(acc4)
+    cdf = np.cumsum(hist4.astype(float)/sum(hist4))
+    plt.plot(bin_edges4[1:], cdf, label=r'$\tau$_best = '+str(threshold4[0]))
 
-hist_rl, bin_edges_rl = np.histogram(acc_rl)
-cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
-plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
-
-
-plt.ylim([0, 1])
-plt.legend()
-plt.xlabel('accuracy')
-plt.ylabel('probability')
-plt.savefig('/home/ec2-user/cdf_rl_accuracy.png', dpi=600)
-plt.close()
-
-acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[1]
-acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[1]
-hist1, bin_edges1 = np.histogram(acc1)
-cdf = np.cumsum(hist1.astype(float)/sum(hist1))
-plt.plot(bin_edges1[1:], cdf, label=r'$\tau$_best = '+str(threshold1[0]))
-
-hist_rl, bin_edges_rl = np.histogram(acc_rl)
-cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
-plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
+    hist_rl, bin_edges_rl = np.histogram(acc_rl)
+    cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
+    plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
 
 
-plt.ylim([0, 1])
-plt.legend()
-plt.xlabel('recall')
-plt.ylabel('probability')
-plt.savefig('/home/ec2-user/cdf_rl_recall.png', dpi=600)
-plt.close()
+    plt.ylim([0, 1])
+    plt.legend()
+    plt.xlabel('accuracy')
+    plt.ylabel('probability')
+    plt.savefig('/home/ec2-user/cdf_rl_accuracy.png', dpi=600)
+    plt.close()
 
-acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[2]
-acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[2]
-hist1, bin_edges1 = np.histogram(acc1)
-cdf = np.cumsum(hist1.astype(float)/sum(hist1))
-plt.plot(bin_edges1[1:], cdf, label=r'$\tau$_best = '+str(threshold1[0]))
+    acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[1]
+    acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[1]
+    hist1, bin_edges1 = np.histogram(acc1)
+    cdf = np.cumsum(hist1.astype(float)/sum(hist1))
+    plt.plot(bin_edges1[1:], cdf, label=r'$\tau$_best = '+str(threshold1[0]))
 
-hist_rl, bin_edges_rl = np.histogram(acc_rl)
-cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
-plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
+    hist_rl, bin_edges_rl = np.histogram(acc_rl)
+    cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
+    plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
 
-plt.ylim([0, 1])
-plt.legend()
-plt.xlabel('precision')
-plt.ylabel('probability')
-plt.savefig('/home/ec2-user/cdf_rl_precision.png', dpi=600)
+
+    plt.ylim([0, 1])
+    plt.legend()
+    plt.xlabel('recall')
+    plt.ylabel('probability')
+    plt.savefig('/home/ec2-user/cdf_rl_recall.png', dpi=600)
+    plt.close()
+
+    acc1 = plot_graphs.manual_result(result1[0],result1[1], result1[2], result1[3])[2]
+    acc_rl = plot_graphs.manual_result(result_rl[0],result_rl[1], result_rl[2], result_rl[3])[2]
+    hist1, bin_edges1 = np.histogram(acc1)
+    cdf = np.cumsum(hist1.astype(float)/sum(hist1))
+    plt.plot(bin_edges1[1:], cdf, label=r'$\tau$_best = '+str(threshold1[0]))
+
+    hist_rl, bin_edges_rl = np.histogram(acc_rl)
+    cdf = np.cumsum(hist_rl.astype(float)/sum(hist_rl))
+    plt.plot(bin_edges_rl[1:], cdf, '-*', color='#ED7D31', label='RL')
+
+    plt.ylim([0, 1])
+    plt.legend()
+    plt.xlabel('precision')
+    plt.ylabel('probability')
+    plt.savefig('/home/ec2-user/cdf_rl_precision.png', dpi=600)

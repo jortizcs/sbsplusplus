@@ -7,7 +7,7 @@ import anomaly_count
 from datetime import datetime
 import transforms
 import os
-import manul_performance as mp
+
 
 path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
 
@@ -122,6 +122,7 @@ def manual_result(l1,l2,l3,l4):
 
 
 def PR_curve(tau_list):
+    import manul_performance as mp
     recall_list = []
     precision_list = []
     sensor = np.arange(30)

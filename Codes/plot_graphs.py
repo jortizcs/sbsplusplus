@@ -7,6 +7,7 @@ import anomaly_count
 from datetime import datetime
 import transforms
 import os
+import manul_performance as mp
 
 path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice/'
 
@@ -120,6 +121,21 @@ def manual_result(l1,l2,l3,l4):
     return a,b,c
 
 
+def PR_curve(tau_list):
+    recall_list = []
+    precision_list = []
+    sensor = np.arange(30)
+    ground_truth_matrix = mp.ground_truth_interface(sensor)
+    for tau in tau_list:
+        threshold= [tau, 1.4826]
+        result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
+        recall = manual_result(result[0],result[1], result[2], result[3])[1]
+        precision = manual_result(result[0],result[1], result[2], result[3])[2]
+        recall_list.append(recall)
+        precision_list.append(precision)
+    plt.plot(precision_list, recall_list)
+    plt.savefig("/home/ec2-user/graphs/PR_curve.png")
+
 
 def DDPG_result(l1, l2, l3, l4):
     a = []
@@ -169,13 +185,7 @@ def DDPG_result(l1, l2, l3, l4):
     plt.show()
 
 if __name__ == '__main__':
-    DDPG_result([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 
-[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
-
- [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-
- [21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 19, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 20]
-)
+    PR_curve([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5])
 
 

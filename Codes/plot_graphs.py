@@ -141,7 +141,7 @@ def PR_curve(tau_list):
     plt.xlabel('precision')
     plt.ylabel('recall')
     plt.legend()
-    plt.savefig("/home/ec2-user/graphs/PR_curve.png")
+    plt.savefig("/home/ec2-user/graphs/PR_curve_flip.png")
 
 
 def DDPG_result(l1, l2, l3, l4):

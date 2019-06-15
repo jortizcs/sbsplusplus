@@ -133,7 +133,7 @@ def PR_curve(tau_list):
         precision = manual_result(result[0],result[1], result[2], result[3])[2]
         recall_list.append(recall)
         precision_list.append(precision)
-    plt.plot(precision_list, recall_list)
+    plt.plot(precision_list, recall_list, '-*')
     plt.savefig("/home/ec2-user/graphs/PR_curve.png")
 
 

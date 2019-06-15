@@ -44,7 +44,7 @@ class SBS_continuous_env(object):
         #print (tp, fn, fp, tn)
         if cur_r > self.tar_r:
             #print (tp, fn, fp, tn)
-            f = open('/home/ec2-user/sbsplusplus/warp_shrink_DDPG.txt', 'a')
+            f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG.txt', 'a')
             f.write('\n')
             f.write(str(tp))
             f.write('\n')

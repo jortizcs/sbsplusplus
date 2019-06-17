@@ -110,14 +110,17 @@ def manual_result(l1,l2,l3,l4):
         fp = l3[i]
         tn = l4[i]
         acc = (tp + tn) / 24.0
-        recall = tp / (tp + fn + 0.0)
-        if tp == 0:
-            precision = 0
-        else:
-            precision = tp / (tp + fp + 0.0)
         a.append(acc)
-        b.append(recall)
-        c.append(precision)
+        if tp == 0 and fn == 0:
+            b.append(1.)    # recall =1
+        elif tp == 0 and fp == 0:
+            c.append(1.)    # precision = 1
+        else:
+            recall = tp / (tp + fn + 0.0)
+            b.append(recall)
+            precision = tp / (tp + fp + 0.0)
+            c.append(precision)
+
     return a,b,c
 
 

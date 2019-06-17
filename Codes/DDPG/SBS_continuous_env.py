@@ -39,28 +39,14 @@ class SBS_continuous_env(object):
         #(tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sbs_info['sensor'][0], [tao, b])
         (tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sensor, self.sbs_info['thresholds'], self.ground_truth)
 
-        a = []
-        b = []
-        c = []
-        for i in range(30):
-            tp = l1[i]
-            fn = l2[i]
-            fp = l3[i]
-            tn = l4[i]
-            acc = (tp + tn) / 24.0
-            a.append(acc)
-            if tp == 0 and fn == 0:
-                b.append(1.)  # recall =1
-            elif tp == 0 and fp == 0:
-                c.append(1.)  # precision = 1
-            else:
-                recall = tp / (tp + fn + 0.0)
-                b.append(recall)
-                precision = tp / (tp + fp + 0.0)
-                c.append(precision)
+        if np.sum(tp) == 0 and np.sum(fn) == 0:
+            recall = 1.
+        elif np.sum(tp) == 0 and np.sum(fp) == 0:
+            precision = 1.
+        else:
+            recall = np.sum(tp) / (np.sum(tp) + np.sum(fn) + 0.0)
+            precision = np.sum(tp) / (np.sum(tp) + np.sum(fp) + 0.0)
 
-        recall = np.average(b)
-        precision = np.average(c)
         F1 = 2*(precision * recall) / (precision + recall)
         #cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
         #dis = self.tar_r - cur_r

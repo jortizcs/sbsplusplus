@@ -2,7 +2,7 @@ import gym
 from gym import spaces
 import numpy as np
 import reward_function
-
+import Codes.plot_graphs as pg
 
 class SBS_continuous_env(object):
     metadata = {'render.modes': []}
@@ -18,7 +18,8 @@ class SBS_continuous_env(object):
             2*30, dtype=[('thresholds', np.float32)])
         self.sensor = np.arange(0, 30)
         self.sbs_info['thresholds'] = 1.  # 3 thresholds information
-        self.tar_r = 0
+        #self.tar_r = 0
+        self.tar_F1 = 0.
         self.ground_truth = reward_function.ground_truth_interface(self.sensor)
 
     def step(self, action):
@@ -38,13 +39,18 @@ class SBS_continuous_env(object):
 
         #(tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sbs_info['sensor'][0], [tao, b])
         (tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sensor, self.sbs_info['thresholds'], self.ground_truth)
-        cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
-        dis = self.tar_r - cur_r
-        r = -dis + 10
+        recall = pg.manual_result(tp, fn, fp, tn)[1]
+        precision = pg.manual_result(tp, fn, fp, tn)[2]
+        F1 = 2*(precision * recall) / (precision + recall)
+        #cur_r = 5 * np.sum(tp) + -5 * np.sum(fn) + np.sum(tn) - np.sum(fp)
+        #dis = self.tar_r - cur_r
+        #r = -dis + 10
         #print (tp, fn, fp, tn)
-        if cur_r > self.tar_r:
+        dis = self.tar_F1 - F1
+        r = -dis
+        if F1 > self.tar_F1:
             #print (tp, fn, fp, tn)
-            f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG.txt', 'a')
+            f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG_f1.txt', 'a')
             f.write('\n')
             f.write(str(tp))
             f.write('\n')
@@ -54,12 +60,20 @@ class SBS_continuous_env(object):
             f.write('\n')
             f.write(str(tn))
             f.write('\n')
+            f.write('F1 score: '+str(F1))
+            f.write('\n')
+            f.write('recall: '+str(recall))
+            f.write('\n')
+            f.write('precision: '+str(precision))
+            f.write('\n')
             done = True
-            if self.tar_r < 36*30:
-                self.tar_r = cur_r
-            else:
-                self.tar_r = 36*30
-            f.write("target change to: " + str(self.tar_r)+'\n')
+            r = 10.
+            self.tar_F1 = F1
+            # if self.tar_r < 36*30:
+            #     self.tar_r = cur_r
+            # else:
+            #     self.tar_r = 36*30
+            # f.write("target change to: " + str(self.tar_r)+'\n')
 
         return s, r, done
 

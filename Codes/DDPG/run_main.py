@@ -27,7 +27,7 @@ def train():
     start = time()
     max_reward = -36 * 30
     step = []
-    f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG.txt', 'a')
+    f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG_f1.txt', 'a')
     for i in range(MAX_EPISODES):
         s = env.reset()
         ep_r = 0.

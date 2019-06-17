@@ -57,7 +57,7 @@ class SBS_continuous_env(object):
         r = -dis
         if F1 > self.tar_F1:
             #print (tp, fn, fp, tn)
-            f = open('/home/ec2-user/sbsplusplus/flip_6hours_3_DDPG_f1.txt', 'a')
+            f = open('/home/ec2-user/sbsplusplus/spike_6hours_3_DDPG_f1.txt', 'a')
             f.write('\n')
             f.write(str(tp))
             f.write('\n')

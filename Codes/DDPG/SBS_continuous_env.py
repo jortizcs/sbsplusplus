@@ -38,7 +38,8 @@ class SBS_continuous_env(object):
 
         #(tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sbs_info['sensor'][0], [tao, b])
         (tp, fn, fp, tn) = reward_function.ground_truth_check_multi(self.sensor, self.sbs_info['thresholds'], self.ground_truth)
-
+        recall = 0.
+        precision = 0.
         if np.sum(tp) == 0 and np.sum(fn) == 0:
             recall = 1.
         elif np.sum(tp) == 0 and np.sum(fp) == 0:

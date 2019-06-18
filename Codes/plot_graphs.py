@@ -140,7 +140,7 @@ def PR_curve(tau_list):
     print recall_list
     print precision_list
     plt.plot(recall_list, precision_list, '-o')
-    plt.plot(0.37, 0.23, '-*', label='RL')
+    plt.plot(0.567, 0.203, '*', label='RL')
     plt.ylabel('precision')
     plt.xlabel('recall')
     plt.legend()
@@ -196,6 +196,6 @@ def DDPG_result(l1, l2, l3, l4):
 
 if __name__ == '__main__':
 
-    PR_curve([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5])
+    PR_curve(np.arange(0,5, 0.1))
 
 

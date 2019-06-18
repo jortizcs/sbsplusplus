@@ -137,7 +137,7 @@ def PR_curve(tau_list):
         FNs = np.sum(result[1])
         FPs = np.sum(result[2])
         TNs = np.sum(result[3])
-        recall = TPs/(FNs+TNs+0.0)
+        recall = TPs/(FNs+TPs+0.0)
         precision = TPs/(FPs + TPs + 0.0)
         recall_list.append(recall)
         precision_list.append(precision)

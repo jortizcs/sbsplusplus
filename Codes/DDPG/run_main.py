@@ -27,7 +27,7 @@ def train():
     start = time()
     max_reward = -36 * 30
     step = []
-    f = open('/home/ec2-user/sbsplusplus/spike_6hours_3_DDPG_f1.txt', 'a')
+    f = open('/home/ec2-user/sbsplusplus/warp_expand_3_DDPG_f1.txt', 'a')
     for i in range(MAX_EPISODES):
         s = env.reset()
         ep_r = 0.

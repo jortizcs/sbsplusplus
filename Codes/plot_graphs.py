@@ -133,10 +133,14 @@ def PR_curve(tau_list):
     for tau in tau_list:
         threshold = [tau, 1.4826]
         result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
-        recall = manual_result(result[0],result[1], result[2], result[3])[1]
-        precision = manual_result(result[0],result[1], result[2], result[3])[2]
-        recall_list.append(np.average(recall))
-        precision_list.append(np.average(precision))
+        TPs = np.sum(result[0])
+        FNs = np.sum(result[1])
+        FPs = np.sum(result[2])
+        TNs = np.sum(result[3])
+        recall = TPs/(FNs+TNs+0.0)
+        precision = TPs/(FPs + TPs + 0.0)
+        recall_list.append(recall)
+        precision_list.append(precision)
     print recall_list
     print precision_list
     plt.plot(recall_list, precision_list, '-o')

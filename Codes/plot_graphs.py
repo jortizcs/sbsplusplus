@@ -203,6 +203,6 @@ def DDPG_result(l1, l2, l3, l4):
 
 if __name__ == '__main__':
 
-    PR_curve(np.arange(0,5, 0.5))
+    PR_curve(np.arange(0,10, 0.2))
 
 

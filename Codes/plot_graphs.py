@@ -144,14 +144,14 @@ def PR_curve(tau_list):
     print recall_list
     print precision_list
     plt.plot(recall_list, precision_list, '-o')
-    plt.plot(0.567, 0.203, '*', label='RL')
+    plt.plot(0.278, 0.269, '*', label='RL')
     plt.plot([0,1],[0,1], '--')
     plt.ylabel('precision')
     plt.xlabel('recall')
     plt.xlim([0,1])
     plt.ylim([0,1])
     plt.legend()
-    plt.savefig("/home/ec2-user/graphs/PR_curve.png")
+    plt.savefig("/home/ec2-user/graphs/PR_curve_flip.png")
 
 
 def DDPG_result(l1, l2, l3, l4):

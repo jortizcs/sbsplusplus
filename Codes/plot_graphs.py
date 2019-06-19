@@ -182,9 +182,8 @@ def DDPG_result(l1, l2, l3, l4):
     x = list(range(len(a)))
     total_width, n = 0.8, 3
     width = total_width / n
-
+    plt.rcParams.update({'font.size': 14})
     plt.bar(x, a, width=width, label='accuracy', fc='y')
-
     for i in range(len(x)):
         x[i] = x[i] + width
 
@@ -193,12 +192,14 @@ def DDPG_result(l1, l2, l3, l4):
     for i in range(len(x)):
         x[i] = x[i] + width
     plt.bar(x, c, width=width, label='precision', fc='b')
-    plt.legend()
+    plt.legend(fontsize = 8)
+    #plt.legend(bbox_to_anchor=(1, 1), loc='center left', fontsize = 10)
     plt.xlabel("sensor ID")
+    plt.ylim([0,1.19])
     print np.average(a)
     print np.average(b)
     print np.average(c)
-    #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid_PR.png", dpi=600)
+    #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid_f1.png", dpi=600)
     plt.savefig("/home/ec2-user/sbsplusplus/DDPG_flip_30_sid_PR.png", dpi=600)
     #plt.show()
 
@@ -211,6 +212,7 @@ if __name__ == '__main__':
     result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
     DDPG_result(result[0], result[1], result[2], result[3])
     #(np.arange(0,10, 0.2))
+
 
 
 

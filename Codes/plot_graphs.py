@@ -151,7 +151,7 @@ def PR_curve(tau_list):
     plt.xlim([0,1])
     plt.ylim([0,1])
     plt.legend()
-    plt.savefig("/home/ec2-user/graphs/PR_curve_flip.png")
+    #plt.savefig("/home/ec2-user/graphs/PR_curve_flip.png")
 
 
 def DDPG_result(l1, l2, l3, l4):
@@ -198,11 +198,12 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(a)
     print np.average(b)
     print np.average(c)
-    #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid.png", dpi=600)
-    plt.show()
+    plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_spike_30_sid_f1.png", dpi=600)
+    #plt.show()
 
 if __name__ == '__main__':
 
     PR_curve(np.arange(0,10, 0.2))
+
 
 

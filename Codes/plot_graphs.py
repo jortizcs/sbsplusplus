@@ -175,8 +175,8 @@ def DDPG_result(l1, l2, l3, l4):
 
     hist, bin_edges = np.histogram(a)
     cdf = np.cumsum(hist)
-    plt.plot(cdf)
-    plt.show()
+    #plt.plot(cdf)
+    #plt.show()
 
     name_list = ['accuracy', 'recall', 'precision']
     x = list(range(len(a)))

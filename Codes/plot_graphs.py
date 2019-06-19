@@ -199,7 +199,7 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(b)
     print np.average(c)
     #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid_PR.png", dpi=600)
-    plt.savefig("/home/ec2-user/sbsplusplus/graphs/DDPG_flip_30_sid_PR.png", dpi=600)
+    plt.savefig("/home/ec2-user/sbsplusplus/DDPG_flip_30_sid_PR.png", dpi=600)
     #plt.show()
 
 if __name__ == '__main__':

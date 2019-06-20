@@ -152,7 +152,7 @@ def PR_curve(tau_list):
     plt.xlim([0,1])
     plt.ylim([0,1])
     plt.legend()
-    #plt.savefig("/home/ec2-user/graphs/PR_curve_flip.png", dpi=600)
+    plt.savefig("/home/ec2-user/graphs/PR_curve_spike.png", dpi=600)
 
 
 def DDPG_result(l1, l2, l3, l4):
@@ -201,20 +201,20 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(b)
     print np.average(c)
     #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_flip_30_sid_f1.png", dpi=600)
-    #plt.savefig("/home/ec2-user/sbsplusplus/DDPG_spike_30_sid_PR.png", dpi=600)
+    plt.savefig("/home/ec2-user/sbsplusplus/DDPG_spike_30_sid_PR.png", dpi=600)
     plt.show()
 
 if __name__ == '__main__':
     import manul_performance as mp
 
     sensor = np.arange(30)
-    #threshold = [3.2, 1.4826]
-    #ground_truth_matrix = mp.ground_truth_interface(sensor)
-    #result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
-    #print result
-    #DDPG_result(result[0], result[1], result[2], result[3])
-    tau_list = (np.arange(0,10, 0.2))
-    PR_curve(tau_list)
+    threshold = [1.4, 1.4826]
+    ground_truth_matrix = mp.ground_truth_interface(sensor)
+    result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
+    print result
+    DDPG_result(result[0], result[1], result[2], result[3])
+    #tau_list = (np.arange(0,10, 0.2))
+    #PR_curve(tau_list)
 
 
 

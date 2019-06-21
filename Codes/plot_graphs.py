@@ -152,7 +152,7 @@ def PR_curve(tau_list):
     plt.xlim([0,1])
     plt.ylim([0,1])
     plt.legend()
-    plt.savefig("/home/ec2-user/graphs/PR_curve_expand.png", dpi=600)
+    plt.savefig("/home/ec2-user/graphs/PR_curve_shrink.png", dpi=600)
 
 
 def DDPG_result(l1, l2, l3, l4):

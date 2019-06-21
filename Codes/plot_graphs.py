@@ -208,7 +208,7 @@ if __name__ == '__main__':
     import manul_performance as mp
 
     sensor = np.arange(30)
-    threshold = [1.4, 1.4826]
+    threshold = [1.8, 1.4826]
     ground_truth_matrix = mp.ground_truth_interface(sensor)
     result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
     print result

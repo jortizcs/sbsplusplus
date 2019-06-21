@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4e30830-23d7-4f3a-ba5a-a136ce7a62b9" name="Default Changelist" comment="spike noises 19-30">
+    <list default="true" id="a4e30830-23d7-4f3a-ba5a-a136ce7a62b9" name="Default Changelist" comment="bug fixed">
+      <change afterPath="$PROJECT_DIR$/Codes/mean_variance.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codes/manul_performance.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/manul_performance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/plot_graphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/plot_graphs.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +19,11 @@
     <SUITE FILE_PATH="coverage/sbsplusplus$env.coverage" NAME="env Coverage Results" MODIFIED="1557012741506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/RL_example" />
     <SUITE FILE_PATH="coverage/sbsplusplus$noise.coverage" NAME="noise Coverage Results" MODIFIED="1542251262115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$anomaly_count.coverage" NAME="anomaly_count Coverage Results" MODIFIED="1549895892465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$manul_performance.coverage" NAME="manul_performance Coverage Results" MODIFIED="1560471117072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$plot.coverage" NAME="plot Coverage Results" MODIFIED="1549484864787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$SBS_env.coverage" NAME="SBS_env Coverage Results" MODIFIED="1553023272718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
     <SUITE FILE_PATH="coverage/sbsplusplus$autopy.coverage" NAME="autopy Coverage Results" MODIFIED="1550075555854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/sbsplusplus$plot_graphs.coverage" NAME="plot_graphs Coverage Results" MODIFIED="1560451437733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$plot_graphs.coverage" NAME="plot_graphs Coverage Results" MODIFIED="1561078918265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$SBS_continuous_env.coverage" NAME="SBS_continuous_env Coverage Results" MODIFIED="1557109918528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/ActorCritic" />
     <SUITE FILE_PATH="coverage/sbsplusplus$c_gen.coverage" NAME="c_gen Coverage Results" MODIFIED="1550082663843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$noise_injection_af_EMD.coverage" NAME="noise_injection_af_EMD Coverage Results" MODIFIED="1560137931241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
@@ -30,6 +33,7 @@
     <SUITE FILE_PATH="coverage/sbsplusplus$reward_function.coverage" NAME="reward_function Coverage Results" MODIFIED="1558987132016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DQN" />
     <SUITE FILE_PATH="coverage/sbsplusplus$opc_client.coverage" NAME="opc_client Coverage Results" MODIFIED="1548303759200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/opc" />
     <SUITE FILE_PATH="coverage/sbsplusplus$transforms.coverage" NAME="transforms Coverage Results" MODIFIED="1560097228665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/sbsplusplus$mean_variance.coverage" NAME="mean_variance Coverage Results" MODIFIED="1561074876071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$LSTM.coverage" NAME="LSTM Coverage Results" MODIFIED="1551062832026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/sbsplusplus$AC_brain.coverage" NAME="AC_brain Coverage Results" MODIFIED="1557505931384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/ActorCritic" />
     <SUITE FILE_PATH="coverage/sbsplusplus$RL_brain.coverage" NAME="RL_brain Coverage Results" MODIFIED="1558641900629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/DDPG" />
@@ -89,28 +93,28 @@
           <entry key="gitignore" value="1" />
           <entry key="ipynb" value="6" />
           <entry key="local" value="1" />
-          <entry key="out" value="1" />
-          <entry key="py" value="528" />
+          <entry key="out" value="2" />
+          <entry key="py" value="539" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="6" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="528" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="539" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="28" />
-          <entry key="py" value="40937" />
-          <entry key="txt" value="1630" />
+          <entry key="py" value="44624" />
+          <entry key="txt" value="1662" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1658" />
-          <entry key="Python" value="40937" />
+          <entry key="PLAIN_TEXT" value="1690" />
+          <entry key="Python" value="44624" />
         </counts>
       </usages-collector>
     </session>
@@ -125,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-134">
-              <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+            <state relative-caret-position="520">
+              <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
               <folding>
                 <element signature="e#233#282#0" expanded="true" />
               </folding>
@@ -137,8 +141,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="39" column="67" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="67" />
+            <state relative-caret-position="428">
+              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -147,16 +151,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/LSTM.py">
+        <entry file="file://$PROJECT_DIR$/Codes/DDPG/RL_brain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-490">
+              <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
+                <marker date="1560034248784" expanded="true" signature="336:341" ph="..." />
               </folding>
             </state>
           </provider>
@@ -165,8 +166,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codes/DDPG/reward_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="70" column="19" lean-forward="true" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+            <state relative-caret-position="284">
+              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -177,20 +178,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Codes/manul_performance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
+            <state relative-caret-position="367">
+              <caret line="34" column="64" selection-start-line="34" selection-start-column="64" selection-end-line="34" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
+        <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+            <state relative-caret-position="327">
+              <caret line="94" column="26" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="26" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
-                <marker date="1559009878977" expanded="true" signature="772:2330" ph="..." />
+                <element signature="e#1#20#0" expanded="true" />
+                <marker date="1560203843700" expanded="true" signature="447:448" ph="..." />
               </folding>
             </state>
           </provider>
@@ -199,34 +205,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codes/plot_graphs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1429">
-              <caret line="166" column="23" lean-forward="true" selection-start-line="166" selection-start-column="23" selection-end-line="166" selection-end-column="23" />
+            <state relative-caret-position="359">
+              <caret line="211" column="46" selection-start-line="211" selection-start-column="46" selection-end-line="211" selection-end-column="46" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1560451978118" expanded="true" signature="3078:3481" ph="..." />
-                <marker date="1560451978118" expanded="true" signature="3546:4637" ph="..." />
+                <marker date="1561079770285" expanded="true" signature="4137:4584" ph="..." />
+                <marker date="1561079770285" expanded="true" signature="4649:5978" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/fromnumeric.py">
+        <entry file="file://$PROJECT_DIR$/Codes/mean_variance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
+        <entry file="file://$PROJECT_DIR$/Codes/Q_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="80" column="56" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="56" />
+            <state>
               <folding>
-                <element signature="e#1#20#0" expanded="true" />
-                <marker date="1560203843700" expanded="true" signature="447:448" ph="..." />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -274,7 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Codes/cdf.py" />
         <option value="$PROJECT_DIR$/Codes/autopy.py" />
         <option value="$PROJECT_DIR$/Codes/c_values.py" />
         <option value="$PROJECT_DIR$/Codes/LSTM.ipynb" />
@@ -319,10 +322,11 @@
         <option value="$PROJECT_DIR$/Codes/transforms.py" />
         <option value="$PROJECT_DIR$/Codes/run.py" />
         <option value="$PROJECT_DIR$/Codes/pdf.py" />
-        <option value="$PROJECT_DIR$/Codes/DDPG/run_main.py" />
-        <option value="$PROJECT_DIR$/Codes/DDPG/reward_function.py" />
-        <option value="$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py" />
         <option value="$PROJECT_DIR$/Codes/noise_injection_af_EMD.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/run_main.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py" />
+        <option value="$PROJECT_DIR$/Codes/DDPG/reward_function.py" />
+        <option value="$PROJECT_DIR$/Codes/mean_variance.py" />
         <option value="$PROJECT_DIR$/Codes/plot_graphs.py" />
         <option value="$PROJECT_DIR$/Codes/manul_performance.py" />
       </list>
@@ -361,6 +365,12 @@
               <item name="sbsplusplus" type="462c0819:PsiDirectoryNode" />
               <item name="Codes" type="462c0819:PsiDirectoryNode" />
               <item name="DDPG" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sbsplusplus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sbsplusplus" type="462c0819:PsiDirectoryNode" />
+              <item name="Codes" type="462c0819:PsiDirectoryNode" />
+              <item name="DQN" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -419,7 +429,7 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
-    <configuration name="noise_injection_af_EMD" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="manul_performance" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sbsplusplus" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -432,7 +442,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/noise_injection_af_EMD.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/manul_performance.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mean_variance" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sbsplusplus" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/mean_variance.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -507,43 +539,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="transforms" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sbsplusplus" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/transforms.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Jupyter Notebook.sbsplusplus" />
-      <item itemvalue="Python.noise_injection_af_EMD" />
-      <item itemvalue="Python.transforms" />
       <item itemvalue="Python.pdf" />
       <item itemvalue="Python.run" />
       <item itemvalue="Python.plot_graphs" />
+      <item itemvalue="Python.manul_performance" />
+      <item itemvalue="Python.mean_variance" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.plot_graphs" />
+        <item itemvalue="Python.mean_variance" />
+        <item itemvalue="Python.manul_performance" />
         <item itemvalue="Python.pdf" />
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.noise_injection_af_EMD" />
-        <item itemvalue="Python.transforms" />
       </list>
     </recent_temporary>
   </component>
@@ -558,350 +568,350 @@
       <option name="presentableId" value="Default" />
       <updated>1540752625040</updated>
     </task>
-    <task id="LOCAL-00042" summary="reward_function updated">
-      <created>1554314116632</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
+    <task id="LOCAL-00113" summary="bug fixed">
+      <created>1560543991309</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
       <option name="project" value="LOCAL" />
-      <updated>1554314116633</updated>
+      <updated>1560543991310</updated>
     </task>
-    <task id="LOCAL-00043" summary="warp noise committed">
-      <created>1554594658730</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
+    <task id="LOCAL-00114" summary="bug fixed">
+      <created>1560544102565</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
       <option name="project" value="LOCAL" />
-      <updated>1554594658733</updated>
+      <updated>1560544102565</updated>
     </task>
-    <task id="LOCAL-00044" summary="reward_function updated">
-      <created>1554594673023</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
+    <task id="LOCAL-00115" summary="pr_curve committed">
+      <created>1560617540435</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
       <option name="project" value="LOCAL" />
-      <updated>1554594673023</updated>
+      <updated>1560617540436</updated>
     </task>
-    <task id="LOCAL-00045" summary="emd analysis updated">
-      <created>1555110171196</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
+    <task id="LOCAL-00116" summary="pr_curve committed">
+      <created>1560617574770</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
       <option name="project" value="LOCAL" />
-      <updated>1555110171199</updated>
+      <updated>1560617574770</updated>
     </task>
-    <task id="LOCAL-00046" summary="wilder noise committed">
-      <created>1555520154061</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
+    <task id="LOCAL-00117" summary="bug fixed">
+      <created>1560625402963</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
       <option name="project" value="LOCAL" />
-      <updated>1555520154061</updated>
+      <updated>1560625402964</updated>
     </task>
-    <task id="LOCAL-00047" summary="DDPG committed">
-      <created>1557114960403</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
+    <task id="LOCAL-00118" summary="bug fixed">
+      <created>1560625725313</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
-      <updated>1557114960403</updated>
+      <updated>1560625725314</updated>
     </task>
-    <task id="LOCAL-00048" summary="RL_example committed">
-      <created>1557114985392</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
+    <task id="LOCAL-00119" summary="bug fixed">
+      <created>1560625972986</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
       <option name="project" value="LOCAL" />
-      <updated>1557114985392</updated>
+      <updated>1560625972986</updated>
     </task>
-    <task id="LOCAL-00049" summary="DQN updated">
-      <created>1557114999383</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
+    <task id="LOCAL-00120" summary="bug fixed">
+      <created>1560626760857</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
       <option name="project" value="LOCAL" />
-      <updated>1557114999383</updated>
+      <updated>1560626760857</updated>
     </task>
-    <task id="LOCAL-00050" summary="Actor Critic committed">
-      <created>1557115016212</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
+    <task id="LOCAL-00121" summary="bug fixed">
+      <created>1560626930923</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
       <option name="project" value="LOCAL" />
-      <updated>1557115016215</updated>
+      <updated>1560626930924</updated>
     </task>
-    <task id="LOCAL-00051" summary="Actor Critic updated">
-      <created>1557115268250</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
+    <task id="LOCAL-00122" summary="bug fixed">
+      <created>1560627768042</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
       <option name="project" value="LOCAL" />
-      <updated>1557115268250</updated>
+      <updated>1560627768043</updated>
     </task>
-    <task id="LOCAL-00052" summary="Noise injected &amp; RL updated">
-      <created>1559590901397</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
+    <task id="LOCAL-00123" summary="bug fixed">
+      <created>1560628086620</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
       <option name="project" value="LOCAL" />
-      <updated>1559590901400</updated>
+      <updated>1560628086621</updated>
     </task>
-    <task id="LOCAL-00053" summary="dynamic target committed">
-      <created>1559667339101</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
+    <task id="LOCAL-00124" summary="bug fixed">
+      <created>1560628456493</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
       <option name="project" value="LOCAL" />
-      <updated>1559667339102</updated>
+      <updated>1560628456493</updated>
     </task>
-    <task id="LOCAL-00054" summary="aws path added">
-      <created>1559781381791</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
+    <task id="LOCAL-00125" summary="bug fixed">
+      <created>1560628828128</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
       <option name="project" value="LOCAL" />
-      <updated>1559781381791</updated>
+      <updated>1560628828129</updated>
     </task>
-    <task id="LOCAL-00055" summary="aws path added">
-      <created>1559782434606</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
+    <task id="LOCAL-00126" summary="bug fixed">
+      <created>1560629528716</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
       <option name="project" value="LOCAL" />
-      <updated>1559782434607</updated>
+      <updated>1560629528716</updated>
     </task>
-    <task id="LOCAL-00056" summary="aws path added">
-      <created>1559782670588</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
+    <task id="LOCAL-00127" summary="bug fixed">
+      <created>1560630021627</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
       <option name="project" value="LOCAL" />
-      <updated>1559782670588</updated>
+      <updated>1560630021627</updated>
     </task>
-    <task id="LOCAL-00057" summary="co-optimizing committed">
-      <created>1559847273935</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
+    <task id="LOCAL-00128" summary="bug fixed">
+      <created>1560630065852</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
       <option name="project" value="LOCAL" />
-      <updated>1559847273935</updated>
+      <updated>1560630065852</updated>
     </task>
-    <task id="LOCAL-00058" summary="bug fixed">
-      <created>1559848393197</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
+    <task id="LOCAL-00129" summary="bug fixed">
+      <created>1560630106320</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
       <option name="project" value="LOCAL" />
-      <updated>1559848393198</updated>
+      <updated>1560630106320</updated>
     </task>
-    <task id="LOCAL-00059" summary="aws path added">
-      <created>1559848561118</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
+    <task id="LOCAL-00130" summary="f1-score added">
+      <created>1560787503348</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
       <option name="project" value="LOCAL" />
-      <updated>1559848561118</updated>
+      <updated>1560787503348</updated>
     </task>
-    <task id="LOCAL-00060" summary="bug fixed">
-      <created>1559852782754</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
+    <task id="LOCAL-00131" summary="bug fixed">
+      <created>1560789981126</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
       <option name="project" value="LOCAL" />
-      <updated>1559852782755</updated>
+      <updated>1560789981127</updated>
     </task>
-    <task id="LOCAL-00061" summary="bug fixed">
-      <created>1559852867667</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
+    <task id="LOCAL-00132" summary="bug fixed">
+      <created>1560790288220</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
       <option name="project" value="LOCAL" />
-      <updated>1559852867668</updated>
+      <updated>1560790288220</updated>
     </task>
-    <task id="LOCAL-00062" summary="bug fixed">
-      <created>1559852926483</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
+    <task id="LOCAL-00133" summary="bug fixed">
+      <created>1560798461070</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
       <option name="project" value="LOCAL" />
-      <updated>1559852926483</updated>
+      <updated>1560798461070</updated>
     </task>
-    <task id="LOCAL-00063" summary="print updated">
-      <created>1559873123475</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
+    <task id="LOCAL-00134" summary="bug fixed">
+      <created>1560809077855</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
       <option name="project" value="LOCAL" />
-      <updated>1559873123475</updated>
+      <updated>1560809077856</updated>
     </task>
-    <task id="LOCAL-00064" summary="episodes changed">
-      <created>1559885078498</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
+    <task id="LOCAL-00135" summary="bug fixed">
+      <created>1560824566024</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
       <option name="project" value="LOCAL" />
-      <updated>1559885078498</updated>
+      <updated>1560824566024</updated>
     </task>
-    <task id="LOCAL-00065" summary="aws path added">
-      <created>1559886445584</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
+    <task id="LOCAL-00136" summary="bug fixed">
+      <created>1560833261267</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
       <option name="project" value="LOCAL" />
-      <updated>1559886445586</updated>
+      <updated>1560833261267</updated>
     </task>
-    <task id="LOCAL-00066" summary="30 sensors experiment committed">
-      <created>1559956679229</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
+    <task id="LOCAL-00137" summary="bug fixed">
+      <created>1560883916368</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
       <option name="project" value="LOCAL" />
-      <updated>1559956679230</updated>
+      <updated>1560883916368</updated>
     </task>
-    <task id="LOCAL-00067" summary="bug fixed">
-      <created>1559956798838</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
+    <task id="LOCAL-00138" summary="bug fixed">
+      <created>1560889155869</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
       <option name="project" value="LOCAL" />
-      <updated>1559956798838</updated>
+      <updated>1560889155870</updated>
     </task>
-    <task id="LOCAL-00068" summary="memory 1000 test">
-      <created>1560034273507</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
+    <task id="LOCAL-00139" summary="bug fixed">
+      <created>1560889750044</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
       <option name="project" value="LOCAL" />
-      <updated>1560034273509</updated>
+      <updated>1560889750045</updated>
     </task>
-    <task id="LOCAL-00069" summary="20 ep test">
-      <created>1560034530479</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
+    <task id="LOCAL-00140" summary="bug fixed">
+      <created>1560890552533</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
       <option name="project" value="LOCAL" />
-      <updated>1560034530479</updated>
+      <updated>1560890552533</updated>
     </task>
-    <task id="LOCAL-00070" summary="spike noises added">
-      <created>1560097739827</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
+    <task id="LOCAL-00141" summary="bug fixed">
+      <created>1560891601359</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
       <option name="project" value="LOCAL" />
-      <updated>1560097739828</updated>
+      <updated>1560891601360</updated>
     </task>
-    <task id="LOCAL-00071" summary="spike noises added">
-      <created>1560097790645</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
+    <task id="LOCAL-00142" summary="bug fixed">
+      <created>1560892283665</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
       <option name="project" value="LOCAL" />
-      <updated>1560097790645</updated>
+      <updated>1560892283665</updated>
     </task>
-    <task id="LOCAL-00072" summary="spike noises 19-30">
-      <created>1560139052165</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
+    <task id="LOCAL-00143" summary="bug fixed">
+      <created>1560901458703</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
       <option name="project" value="LOCAL" />
-      <updated>1560139052168</updated>
+      <updated>1560901458704</updated>
     </task>
-    <task id="LOCAL-00073" summary="spike noises 19-30">
-      <created>1560205531048</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
+    <task id="LOCAL-00144" summary="bug fixed">
+      <created>1560912445772</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
       <option name="project" value="LOCAL" />
-      <updated>1560205531048</updated>
+      <updated>1560912445772</updated>
     </task>
-    <task id="LOCAL-00074" summary="flip noises 4-30">
-      <created>1560205709692</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
+    <task id="LOCAL-00145" summary="bug fixed">
+      <created>1560912812284</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
       <option name="project" value="LOCAL" />
-      <updated>1560205709692</updated>
+      <updated>1560912812285</updated>
     </task>
-    <task id="LOCAL-00075" summary="ddpg">
-      <created>1560205889414</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
+    <task id="LOCAL-00146" summary="bug fixed">
+      <created>1560914151904</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
       <option name="project" value="LOCAL" />
-      <updated>1560205889414</updated>
+      <updated>1560914151905</updated>
     </task>
-    <task id="LOCAL-00076" summary="flip ddpg test">
-      <created>1560222909005</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
+    <task id="LOCAL-00147" summary="bug fixed">
+      <created>1560915333032</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
       <option name="project" value="LOCAL" />
-      <updated>1560222909006</updated>
+      <updated>1560915333032</updated>
     </task>
-    <task id="LOCAL-00077" summary="warp noises 4-30">
-      <created>1560297221406</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
+    <task id="LOCAL-00148" summary="bug fixed">
+      <created>1560915631821</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
       <option name="project" value="LOCAL" />
-      <updated>1560297221406</updated>
+      <updated>1560915631821</updated>
     </task>
-    <task id="LOCAL-00078" summary="bug fixed">
-      <created>1560297496794</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
+    <task id="LOCAL-00149" summary="bug fixed">
+      <created>1560915823495</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
       <option name="project" value="LOCAL" />
-      <updated>1560297496794</updated>
+      <updated>1560915823495</updated>
     </task>
-    <task id="LOCAL-00079" summary="bug fixed">
-      <created>1560305990835</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
+    <task id="LOCAL-00150" summary="bug fixed">
+      <created>1560978896623</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
       <option name="project" value="LOCAL" />
-      <updated>1560305990835</updated>
+      <updated>1560978896626</updated>
     </task>
-    <task id="LOCAL-00080" summary="shrink test">
-      <created>1560306566287</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
+    <task id="LOCAL-00151" summary="bug fixed">
+      <created>1560979588670</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
       <option name="project" value="LOCAL" />
-      <updated>1560306566287</updated>
+      <updated>1560979588670</updated>
     </task>
-    <task id="LOCAL-00081" summary="bug fixed">
-      <created>1560306852784</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
+    <task id="LOCAL-00152" summary="bug fixed">
+      <created>1560981717030</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
       <option name="project" value="LOCAL" />
-      <updated>1560306852784</updated>
+      <updated>1560981717030</updated>
     </task>
-    <task id="LOCAL-00082" summary="bug fixed">
-      <created>1560307150891</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
+    <task id="LOCAL-00153" summary="bug fixed">
+      <created>1561062251004</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
       <option name="project" value="LOCAL" />
-      <updated>1560307150891</updated>
+      <updated>1561062251005</updated>
     </task>
-    <task id="LOCAL-00083" summary="shrink 0-3">
-      <created>1560396630194</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
+    <task id="LOCAL-00154" summary="bug fixed">
+      <created>1561072568314</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
       <option name="project" value="LOCAL" />
-      <updated>1560396630196</updated>
+      <updated>1561072568315</updated>
     </task>
-    <task id="LOCAL-00084" summary="manual_performance committed">
-      <created>1560449824557</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
+    <task id="LOCAL-00155" summary="bug fixed">
+      <created>1561074067356</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
       <option name="project" value="LOCAL" />
-      <updated>1560449824558</updated>
+      <updated>1561074067357</updated>
     </task>
-    <task id="LOCAL-00085" summary="bug fixed">
-      <created>1560449967243</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
+    <task id="LOCAL-00156" summary="bug fixed">
+      <created>1561075061694</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
       <option name="project" value="LOCAL" />
-      <updated>1560449967243</updated>
+      <updated>1561075061694</updated>
     </task>
-    <task id="LOCAL-00086" summary="bug fixed">
-      <created>1560450102277</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
+    <task id="LOCAL-00157" summary="bug fixed">
+      <created>1561076057273</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
       <option name="project" value="LOCAL" />
-      <updated>1560450102277</updated>
+      <updated>1561076057274</updated>
     </task>
-    <task id="LOCAL-00087" summary="tau = 5 test">
-      <created>1560450173881</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
+    <task id="LOCAL-00158" summary="bug fixed">
+      <created>1561076183366</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
       <option name="project" value="LOCAL" />
-      <updated>1560450173881</updated>
+      <updated>1561076183366</updated>
     </task>
-    <task id="LOCAL-00088" summary="manual cdf">
-      <created>1560451986164</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
+    <task id="LOCAL-00159" summary="bug fixed">
+      <created>1561077299546</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
       <option name="project" value="LOCAL" />
-      <updated>1560451986164</updated>
+      <updated>1561077299546</updated>
     </task>
-    <task id="LOCAL-00089" summary="bug fixed">
-      <created>1560452089592</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
+    <task id="LOCAL-00160" summary="bug fixed">
+      <created>1561078323482</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
       <option name="project" value="LOCAL" />
-      <updated>1560452089592</updated>
+      <updated>1561078323482</updated>
     </task>
-    <task id="LOCAL-00090" summary="bug fixed">
-      <created>1560452318913</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
+    <task id="LOCAL-00161" summary="bug fixed">
+      <created>1561079288543</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
-      <updated>1560452318913</updated>
+      <updated>1561079288544</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -917,13 +927,13 @@
     <frame x="0" y="23" width="1280" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85988486" visible="true" weight="0.22859451" />
-      <window_info id="Structure" order="1" sideWeight="0.14011516" side_tool="true" visible="true" weight="0.22859451" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8472803" visible="true" weight="0.20355412" />
+      <window_info id="Structure" order="1" sideWeight="0.16937356" side_tool="true" weight="0.22859451" />
       <window_info id="Favorites" order="2" sideWeight="0.51" side_tool="true" weight="0.18659128" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49676898" visible="true" weight="0.1808176" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.12578617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49676898" visible="true" weight="0.2735849" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.254717" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3291536" />
@@ -941,27 +951,28 @@
       <window_info anchor="right" id="Database" order="4" weight="0.09127625" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24959612" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.3296875" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="4" weight="0.3296875" />
-      <window_info anchor="bottom" id="Python Console" order="5" weight="0.3296875" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.3375" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Database" order="0" weight="0.32956383" />
-      <window_info anchor="right" id="SciView" order="1" weight="0.7504039" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8472803" visible="true" weight="0.20516963" />
+      <window_info id="Structure" order="1" sideWeight="0.16937356" side_tool="true" weight="0.22859451" />
+      <window_info id="Favorites" order="2" sideWeight="0.51" side_tool="true" weight="0.18659128" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49676898" weight="0.3553459" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.24842767" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3291536" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32861635" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.503231" side_tool="true" weight="0.3883648" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4983845" weight="0.32861635" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3296875" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.5801887" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.7714055" />
+      <window_info anchor="right" id="Database" order="4" weight="0.09127625" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -971,8 +982,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="RL_example committed" />
-    <MESSAGE value="DQN updated" />
     <MESSAGE value="Actor Critic committed" />
     <MESSAGE value="Actor Critic updated" />
     <MESSAGE value="Noise injected &amp; RL updated" />
@@ -995,6 +1004,8 @@
     <MESSAGE value="manual_performance committed" />
     <MESSAGE value="tau = 5 test" />
     <MESSAGE value="manual cdf" />
+    <MESSAGE value="pr_curve committed" />
+    <MESSAGE value="f1-score added" />
     <MESSAGE value="bug fixed" />
     <option name="LAST_COMMIT_MESSAGE" value="bug fixed" />
   </component>
@@ -1013,7 +1024,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/plot_graphs.py</url>
-          <line>41</line>
+          <line>42</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1051,6 +1062,11 @@
           <line>82</line>
           <option name="timeStamp" value="186" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Codes/plot_graphs.py</url>
+          <line>206</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -1086,20 +1102,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/_api/v1/train/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tensorflow/python/training/adam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/gym/spaces/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1238,17 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1557431392502" expanded="true" signature="582:963" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/DQN/reward_function.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1360,96 +1351,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DQN/SBS_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DDPG/RL_brain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-            <marker date="1560034248784" expanded="true" signature="336:341" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/anomaly_count.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="46" column="27" lean-forward="true" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/noise_injection_af_EMD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-134">
-          <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-          <folding>
-            <element signature="e#233#282#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DDPG/reward_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="70" column="19" lean-forward="true" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="39" column="67" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1559009878977" expanded="true" signature="772:2330" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1461,10 +1367,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/noise_injection_af_EMD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="92" column="58" lean-forward="true" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1557431392502" expanded="true" signature="582:963" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/anomalies_through_time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1559009878977" expanded="true" signature="772:2330" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/anomaly_count.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DQN/SBS_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/reward_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/Q_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/pdf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="80" column="56" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="56" />
+        <state relative-caret-position="327">
+          <caret line="94" column="26" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="26" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
             <marker date="1560203843700" expanded="true" signature="447:448" ph="..." />
@@ -1472,22 +1446,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/mean_variance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/RL_brain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-490">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <marker date="1560034248784" expanded="true" signature="336:341" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/run_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding>
+            <element signature="e#233#282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/DDPG/SBS_continuous_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codes/nohup.out">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/plot_graphs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1429">
-          <caret line="166" column="23" lean-forward="true" selection-start-line="166" selection-start-column="23" selection-end-line="166" selection-end-column="23" />
+        <state relative-caret-position="359">
+          <caret line="211" column="46" selection-start-line="211" selection-start-column="46" selection-end-line="211" selection-end-column="46" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1560451978118" expanded="true" signature="3078:3481" ph="..." />
-            <marker date="1560451978118" expanded="true" signature="3546:4637" ph="..." />
+            <marker date="1561079770285" expanded="true" signature="4137:4584" ph="..." />
+            <marker date="1561079770285" expanded="true" signature="4649:5978" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codes/manul_performance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="107" column="15" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
+        <state relative-caret-position="367">
+          <caret line="34" column="64" selection-start-line="34" selection-start-column="64" selection-end-line="34" selection-end-column="64" />
         </state>
       </provider>
     </entry>

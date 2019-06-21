@@ -201,14 +201,14 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(b)
     print np.average(c)
     #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_expand_30_sid_f1.png", dpi=600)
-    plt.savefig("/home/ec2-user/sbsplusplus/DDPG_shrink_30_sid_pr.png", dpi=600)
+    plt.savefig("/home/ec2-user/sbsplusplus/DDPG_expand_30_sid_pr.png", dpi=600)
     #plt.show()
 
 if __name__ == '__main__':
     import manul_performance as mp
 
     sensor = np.arange(30)
-    threshold = [1.8, 1.4826]
+    threshold = [1.4, 1.4826]
     ground_truth_matrix = mp.ground_truth_interface(sensor)
     result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
     #print result

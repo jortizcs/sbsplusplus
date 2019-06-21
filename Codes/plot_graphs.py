@@ -211,8 +211,8 @@ if __name__ == '__main__':
     threshold = [1.4, 1.4826]
     ground_truth_matrix = mp.ground_truth_interface(sensor)
     result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
-    #print result
-    DDPG_result(result[0], result[1], result[2], result[3])
+    print result
+    #DDPG_result(result[0], result[1], result[2], result[3])
     #tau_list = (np.arange(0,10, 0.2))
     #PR_curve(tau_list)
 

@@ -145,7 +145,7 @@ def PR_curve(tau_list):
     print precision_list
     print tau_list
     plt.plot(recall_list, precision_list, '-o')
-    plt.plot(0.46, 0.34, '*', label='RL')
+    plt.plot(0.56, 0.13, '*', label='RL')
     plt.plot([0,1],[0,1], '--')
     plt.ylabel('precision')
     plt.xlabel('recall')

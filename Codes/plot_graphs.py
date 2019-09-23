@@ -202,22 +202,34 @@ def DDPG_result(l1, l2, l3, l4):
     print np.average(a)
     print np.average(b)
     print np.average(c)
-    #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_spike_30_sid_f1.png", dpi=600)
-    plt.savefig("/home/ec2-user/sbsplusplus/DDPG_shrink_30_sid_pr.png", dpi=600)
+    plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/DDPG_shrink_30_sid_PR.png", dpi=600)
+    #plt.savefig("/home/ec2-user/sbsplusplus/DDPG_shrink_30_sid_pr.png", dpi=600)
     #plt.show()
 
 if __name__ == '__main__':
-    import manul_performance as mp
-
-    sensor = np.arange(30)
-    threshold = [1.8, 1.4826]
-    ground_truth_matrix = mp.ground_truth_interface(sensor)
-    result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
-    print result
+    # import manul_performance as mp
+    #
+    # sensor = np.arange(30)
+    # threshold = [1.8, 1.4826]
+    # ground_truth_matrix = mp.ground_truth_interface(sensor)
+    # result = mp.ground_truth_check_multi(sensor, threshold, ground_truth_matrix)
+    # print result
     #DDPG_result(result[0], result[1], result[2], result[3])
     #tau_list = (np.arange(0,10, 0.2))
     #PR_curve(tau_list)
-
+    plt.rcParams.update({'font.size': 14})
+    recall_list = [0.7333333333333333, 0.7222222222222222, 0.6222222222222222, 0.5666666666666667, 0.4888888888888889, 0.4777777777777778, 0.4222222222222222, 0.37777777777777777, 0.3, 0.2222222222222222, 0.17777777777777778, 0.15555555555555556, 0.15555555555555556, 0.13333333333333333, 0.1111111111111111, 0.08888888888888889, 0.08888888888888889, 0.08888888888888889, 0.06666666666666667, 0.06666666666666667, 0.06666666666666667, 0.06666666666666667, 0.06666666666666667, 0.06666666666666667, 0.05555555555555555, 0.044444444444444446, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.03333333333333333, 0.011111111111111112, 0.011111111111111112, 0.011111111111111112, 0.011111111111111112, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    precision_list =[0.1896551724137931, 0.23049645390070922, 0.23931623931623933, 0.2512315270935961, 0.2802547770700637, 0.31386861313868614, 0.3333333333333333, 0.37777777777777777, 0.3698630136986301, 0.37735849056603776, 0.38095238095238093, 0.3783783783783784, 0.4, 0.3870967741935484, 0.37037037037037035, 0.34782608695652173, 0.34782608695652173, 0.36363636363636365, 0.3157894736842105, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.35294117647058826, 0.35294117647058826, 0.3333333333333333, 0.3333333333333333, 0.2727272727272727, 0.2727272727272727, 0.375, 0.375, 0.375, 0.375, 0.42857142857142855, 0.5, 0.5, 0.25, 0.25, 0.3333333333333333, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    plt.plot(recall_list, precision_list, '-o')
+    plt.scatter(0.46, 0.36, s=120, marker='*', label='RL', color='y')
+    plt.plot([0, 1], [0, 1], '--')
+    plt.ylabel('precision')
+    plt.xlabel('recall')
+    plt.xlim([0, 1])
+    plt.ylim([0, 1])
+    plt.legend(fontsize=16)
+    plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/PR_curve_expand.png", dpi=600)
+    plt.show()
 
 
 

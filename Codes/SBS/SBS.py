@@ -80,9 +80,9 @@ class SBS(object):
             day_count = day_count + j / self.timebins_per_day
 
     def anomaly_detector(self, sensor_id, tao, p, b, start_day, end_day):
-        search_object = search(self.R, self.R_output_path, self.C_output_path, tao, p, b)
+        search_object = search(self.R, self.R_output_path, self.C_output_path, self.timebins_per_day, tao, p, b)
         anomalies_list = []
-        C_list = search_object.get_Cmatrix_list(start_day, end_day, self.timebins_per_day)
+        C_list = search_object.get_Cmatrix_list(start_day, end_day)
         l_list = []
         for cmatrix in C_list:
             l_list.append(search_object.behavior_change(cmatrix, sensor_id))

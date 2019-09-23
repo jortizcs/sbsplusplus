@@ -86,6 +86,6 @@ class bind(object):
         matrix1 = self.get_cluster(self.input1)
         matrix2 = self.get_cluster(self.input2)
         l = len(matrix1[:, 0]) / self.n
-        return correlation(matrix1[(t - 1) * l: t * l, timeRange], matrix2[(t - 1) * l:t * l, timeRange])
+        return correlation(matrix1[(t - 1) * l: t * l, self.frequency_range], matrix2[(t - 1) * l:t * l, self.frequency_range])
 
 

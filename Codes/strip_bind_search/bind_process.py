@@ -14,7 +14,7 @@ def correlation(x, y):
         return 0.0
 
 
-def get_frequency(raw):
+def get_frequency(raw, fs):
     #fs = 0.0011
     analytic_signal = hilbert(raw)
     instantaneous_phase = np.unwrap(np.angle(analytic_signal))
@@ -35,7 +35,7 @@ class bind(object):
     def get_cluster(self, imfs):
         frequencies = []  # frequency of each IMFs
         for imf in imfs:
-            frequency = get_frequency(imf)
+            frequency = get_frequency(imf, self.fs)
             frequency = filter(lambda x: x >= 0, frequency)
             frequencies.append(np.array(frequency).mean())
         matrix = np.transpose(np.array(imfs))

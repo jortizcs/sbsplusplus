@@ -8,19 +8,20 @@ from scipy.spatial import distance
 
 
 class search(object):
-    def __init__(self, R, R_path, C_path,timebins_per_day, tao, p, b):
-        self.R = R
+    def __init__(self, R, R_path, C_path, timebins_per_day, tao, p, b):
+        #self.R = R
         self.R_path = R_path
         self.C_path = C_path
         self.timebins_per_day = timebins_per_day
         self.R = self.read_Rmatrix()
-        self.C = self.read_Cmatrix()
+        #self.C = self.read_Cmatrix()
         self.tao = tao
         self.p = p
         self.b = b
 
     def read_Rmatrix(self):
-        df = pd.read_csv(self.R_path)
+        matrix_path = os.listdir(self.R_path)
+        df = pd.read_csv(self.R_path+matrix_path[0])
         R = df.values
         R = R[:, 1:]
         return R
@@ -40,7 +41,7 @@ class search(object):
 
     def get_Cmatrix_list(self, start_date, end_date):
         list = []
-        for day in range(start_date, end_date):
+        for day in range(start_date, end_date+1):
             for tb in range(0, self.timebins_per_day):
                 list.append(self.read_Cmatrix(day, tb))
         return list

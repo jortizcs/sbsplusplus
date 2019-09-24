@@ -39,10 +39,12 @@ class SBS(object):
                 raw_data1 = pd.read_csv(filename1, names=['date', 'value'])
                 raw_data2 = pd.read_csv(filename2, names=['date', 'value'])
 
-                raw_data1['date'] = pd.to_datetime(raw_data1['date'], unit='s')
-                raw_data2['date'] = pd.to_datetime(raw_data2['date'], unit='s')
+                #raw_data1['date'] = pd.to_datetime(raw_data1['date'], unit='s')
+                #raw_data2['date'] = pd.to_datetime(raw_data2['date'], unit='s')
                 raw_data1 = raw_data1.sort_values(by=['date'])
                 raw_data2 = raw_data2.sort_values(by=['date'])
+                raw_data1 = raw_data1['value']
+                raw_data2 = raw_data2['value']
                 imfs1 = emd(np.array(raw_data1))
                 imfs2 = emd(np.array(raw_data2))
 
@@ -63,10 +65,12 @@ class SBS(object):
                     raw_data1 = pd.read_csv(filename1, names=['date', 'value'])
                     raw_data2 = pd.read_csv(filename2, names=['date', 'value'])
 
-                    raw_data1['date'] = pd.to_datetime(raw_data1['date'], unit='s')
-                    raw_data2['date'] = pd.to_datetime(raw_data2['date'], unit='s')
+                    #raw_data1['date'] = pd.to_datetime(raw_data1['date'], unit='s')
+                    #raw_data2['date'] = pd.to_datetime(raw_data2['date'], unit='s')
                     raw_data1 = raw_data1.sort_values(by=['date'])
                     raw_data2 = raw_data2.sort_values(by=['date'])
+                    raw_data1 = raw_data1['value']
+                    raw_data2 = raw_data2['value']
                     imfs1 = emd(np.array(raw_data1))
                     imfs2 = emd(np.array(raw_data2))
 
@@ -80,6 +84,7 @@ class SBS(object):
             day_count = day_count + j / self.timebins_per_day
 
     def anomaly_detector(self, sensor_id, tao, p, b, start_day, end_day):
+        print self.R_path_list[sensor_id]
         search_object = search(self.R, self.R_output_path, self.C_output_path, self.timebins_per_day, tao, p, b)
         anomalies_list = []
         C_list = search_object.get_Cmatrix_list(start_day, end_day)
@@ -89,6 +94,7 @@ class SBS(object):
         MAD = search_object.MAD(l_list, b)
         for t in range(len(l_list)):
             anomalies_list.append(search_object.anomaly(l_list, MAD, t))
+        print anomalies_list
         return anomalies_list
 
 

@@ -31,7 +31,7 @@ class SBS_env(gym.Env):
         assert self.action_space.contains(action), "%r (%s) invalid" % (action, type(action))
         benchmark, tao, p, b = self.state  # state is accuracy
 
-        self.state = sample_function.threshold_change(self.sensor, tao, p, b, action)   # return state of SBS with current combination of thresholds
+        self.state = sample_function.threshold_change(self.sensor, tao, p, b, action)   # return state of strip_bind_search with current combination of thresholds
         self.counts += 1
 
         done = benchmark >= 35.0  # if accuracy exceeds 0.6, finish step

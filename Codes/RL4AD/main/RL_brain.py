@@ -13,7 +13,8 @@ from mpl_toolkits.mplot3d import axes3d
 from collections import deque, namedtuple
 
 # import the library in the sub-folder environment
-from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
+from ..environment.time_series_repo_ext import EnvTimeSeriesfromRepo
+
 
 # macros for running q-learning
 DATAFIXED = 0           # whether target at a single time series dataset

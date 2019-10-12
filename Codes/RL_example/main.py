@@ -1,7 +1,7 @@
 """
 Plug a RL method to the framework, this method can be discrete or continuous.
 This script is based on a continuous action RL. If you want to change to discrete RL like DQN,
-please change the env.py and rl.py correspondingly.
+please change the environment.py and rl.py correspondingly.
 """
 from env import ArmEnv
 from rl import DDPG
@@ -10,7 +10,7 @@ MAX_EPISODES = 500
 MAX_EP_STEPS = 200
 ON_TRAIN = True
 
-# set env
+# set environment
 env = ArmEnv()
 s_dim = env.state_dim
 a_dim = env.action_dim

@@ -36,7 +36,7 @@ def run(sensor):
 
             action = RL.choose_action(observation)  # choose an action
 
-            observation_, reward, done, info = env.step(action)     # observation from env
+            observation_, reward, done, info = env.step(action)     # observation from environment
 
             benchmark, tao, p, b = observation_      # next state
 

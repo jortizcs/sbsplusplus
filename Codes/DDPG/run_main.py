@@ -1,7 +1,7 @@
 """
 Plug a RL method to the framework, this method can be discrete or continuous.
 This script is based on a continuous action RL. If you want to change to discrete RL like DQN,
-please change the env.py and rl.py correspondingly.
+please change the environment.py and rl.py correspondingly.
 """
 from SBS_continuous_env import SBS_continuous_env
 from RL_brain import DDPG
@@ -11,7 +11,7 @@ MAX_EPISODES = 20
 MAX_EP_STEPS = 100
 ON_TRAIN = True
 
-# set env
+# set environment
 env = SBS_continuous_env()
 s_dim = env.state_dim
 a_dim = env.action_dim
@@ -70,7 +70,7 @@ def eval():
     rl.restore()
     env.render()
     steps = []
-    #env.viewer.set_vsync(True)
+    #environment.viewer.set_vsync(True)
     reward = []
     for i in range(200):
         s = env.reset()

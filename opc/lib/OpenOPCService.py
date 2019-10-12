@@ -42,7 +42,7 @@ def getvar(env_var):
     except:
         return None
 
-# Get env vars directly from the Registry since a reboot is normally required
+# Get environment vars directly from the Registry since a reboot is normally required
 # for the Local System account to inherit these.
 
 if getvar('OPC_CLASS'):  opc_class = getvar('OPC_CLASS')

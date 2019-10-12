@@ -1,5 +1,5 @@
 from DQN import DeepQNetwork
-from Codes.RL4AD.env.time_series_env import TimeSeriesEnv
+from Codes.RL4AD.environment.time_series_env import TimeSeriesEnv
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
@@ -74,7 +74,7 @@ steps = []
 # start training
 for i_episode in range(2000):
 
-    observation = env.reset()
+    observation = environment.reset()
     ep_r = 0
     step = 0
     while True:
@@ -82,7 +82,7 @@ for i_episode in range(2000):
 
         action = RL.choose_action(observation)  # choose an action
 
-        observation_, reward, done, info = env.step(action)     # observation from env
+        observation_, reward, done, info = environment.step(action)     # observation from environment
 
         RL.store_transition(observation, action, reward, observation_)      # store them into memory: off policy
         print reward

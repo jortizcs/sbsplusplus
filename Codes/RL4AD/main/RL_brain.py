@@ -12,8 +12,8 @@ from tensorflow.contrib import rnn
 from mpl_toolkits.mplot3d import axes3d
 from collections import deque, namedtuple
 
-# import the library in the sub-folder env
-from Codes.RL4AD.env.time_series_repo_ext import EnvTimeSeriesfromRepo
+# import the library in the sub-folder environment
+from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 
 # macros for running q-learning
 DATAFIXED = 0           # whether target at a single time series dataset
@@ -373,7 +373,7 @@ def q_learning(env,
 def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     """
     With 1) the trained estimator of Q(s,a) action-value function, i.e., estimator
-         2) the known envivronment, i.e., env
+         2) the known envivronment, i.e., environment
 
     Test the validity of the estimator in the application of time series anomaly detection.
 
@@ -478,8 +478,8 @@ for j in range(len(percentage)):
     exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
 
     # Which dataset we are targeting
-    # dataset_dir = ['env/time_series_repo/A1Benchmark', 'env/time_series_repo/A2Benchmark',
-    #                'env/time_series_repo/A3Benchmark', 'env/time_series_repo/A4Benchmark']
+    # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
+    #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
     dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
     #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
 

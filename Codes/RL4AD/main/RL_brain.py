@@ -483,7 +483,7 @@ for j in range(len(percentage)):
     #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
     #dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
     #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
-    dataset_dir = ['../../../Aniyama_groundtruth']
+    dataset_dir = ['../../../Aniyama_groundtruth/dataport/']
 
     for i in range(len(dataset_dir)):
         env = EnvTimeSeriesfromRepo(dataset_dir[i])

@@ -475,13 +475,15 @@ for j in range(len(percentage)):
     # Where we save our checkpoints and graphs
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
+    #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
+    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
     # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
     #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
-    dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
+    #dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
     #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
+    dataset_dir = ['../../../Aniyama_groundtruth']
 
     for i in range(len(dataset_dir)):
         env = EnvTimeSeriesfromRepo(dataset_dir[i])

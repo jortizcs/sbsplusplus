@@ -43,9 +43,9 @@ class bind(object):
         matrixF = np.vstack((frequencies, matrix))
 
         # 4 time scale ranges
-        range1 = 0.00000193
-        range2 = 0.0000463
-        range3 = 0.00083
+        range1 = 0.00000193 # 6 days
+        range2 = 0.0000463  # 6 hours
+        range3 = 0.00083    # 20 mins
         Range = [0, 0, 0, 0]
 
         cluster1 = np.zeros((1, len(matrix[:, 0])))

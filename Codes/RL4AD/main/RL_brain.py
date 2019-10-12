@@ -425,7 +425,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         # Search over reward_rec to correct the rewards
         # 1) If FN happend within a small range of TP (miss alarm very closer to reported anomaly), correct it
         # 2) If FP happend within a small range of TP (false alarm very close to the reported anomaly), correct it
-        '''
+
         RNG = 5
         for i in range(len(reward_rec)):
             if reward_rec[i] < 0:
@@ -434,17 +434,18 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
                 r = reward_rec[low_range:up_range]
                 if r.count(TP_Value) > 0:
                     reward_rec[i] = -reward_rec[i]
-        '''
+
         # Plot the result for each episode
         if plot:
-            f, axarr = plt.subplots(2, sharex=True)
+            f, axarr = plt.subplots(3, sharex=True)
             axarr[0].plot(state_rec)
             axarr[0].set_title('Time Series')
             axarr[1].plot(action_rec, color='g')
             axarr[1].set_title('Action')
-            #axarr[2].plot(reward_rec, color='r')
-            #axarr[2].set_title('Reward')
-            plt.show()
+            axarr[2].plot(reward_rec, color='r')
+            axarr[2].set_title('Reward')
+            #plt.show()
+            plt.savefig("/home/lfwutong/sbsplusplus/graphs/Aniyama-dataport/"+str(i_episode)+".png")
 
         # Calculate the accuracy F1-score = 2*((precison*recall)/(precison+recall))
         # precision = tp / (tp+fp)
@@ -514,7 +515,7 @@ for j in range(len(percentage)):
             q_learning(env,
                        qlearn_estimator=qlearn_estimator,
                        target_estimator=target_estimator,
-                       num_episodes=20,
+                       num_episodes=2000,
                        num_epoches=10,
                        experiment_dir=experiment_dir,
                        replay_memory_size=500000,

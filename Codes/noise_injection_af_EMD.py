@@ -56,49 +56,49 @@ def noise_inject_warp(signal, num_of_noise):
         signal = np.concatenate((f1, f2, f3), axis=0)
     return signal
 
+if __name__ == '__main__':
+    #path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
+    path = '/home/ec2-user/Rice_without_dup/'
+    path_list = os.listdir(path)
+    path_list.sort()
 
-#path = '/Users/wuxiaodong/Desktop/18fall/SpecialProblem/Rice_without_dup/'
-path = '/home/ec2-user/Rice_without_dup/'
-path_list = os.listdir(path)
-path_list.sort()
+    f_range = 2
 
-f_range = 2
+    # days of data to process:
+    num_days = 6
 
-# days of data to process:
-num_days = 6
+    # time bins: 6 hours
+    bins = 6
 
-# time bins: 6 hours
-bins = 6
-
-# number of time bins:
-n = num_days * 24 / bins
+    # number of time bins:
+    n = num_days * 24 / bins
 
 
-d = len(path_list)
-for i in range(d):
-    path_list[i] = path + path_list[i]
-count = 0
-bv_list = []
+    d = len(path_list)
+    for i in range(d):
+        path_list[i] = path + path_list[i]
+    count = 0
+    bv_list = []
 
-for sensor in range(3, 31):
-    IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
-    cluster1 = bind.getCluster2(IMFs1)
-    cluster1[:, 2] = noise_inject_warp(cluster1[:,2], 3)
-    day_count = 1
-    for j in range(1, n + 1):
-        bv = []
-        for filename1 in path_list:
-            IMFs2 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
-            cluster2 = bind.getCluster2(IMFs2)
-            bv.append(bind.getcMatrix(cluster1, cluster2, 2, j, n))
-        bv = np.array(bv).reshape((d, 1))
-        bv_list.append(bv)
-        count += 1
-        print count
-        print day_count
-        df = pd.DataFrame(bv)
-        file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_expand_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
-        df.to_csv('/home/ec2-user/noise_af_EMD/BV/warp_expand_3/sensor'+str(sensor)+'/' + file_name)
-        day_count = 1 + j / 4
+    for sensor in range(3, 31):
+        IMFs1 = EMD.emd(bind.dataProcessing_byday(path_list[sensor], num_days))
+        cluster1 = bind.getCluster2(IMFs1)
+        cluster1[:, 2] = noise_inject_warp(cluster1[:,2], 3)
+        day_count = 1
+        for j in range(1, n + 1):
+            bv = []
+            for filename1 in path_list:
+                IMFs2 = EMD.emd(bind.dataProcessing_byday(filename1, num_days))
+                cluster2 = bind.getCluster2(IMFs2)
+                bv.append(bind.getcMatrix(cluster1, cluster2, 2, j, n))
+            bv = np.array(bv).reshape((d, 1))
+            bv_list.append(bv)
+            count += 1
+            print count
+            print day_count
+            df = pd.DataFrame(bv)
+            file_name = 'BV_Rice_sensor_'+str(sensor)+'_warp_expand_3_day_' + str(day_count) + '_range' + str(f_range) + '_timebin' + str((j - 1) % 4) + '.csv'
+            df.to_csv('/home/ec2-user/noise_af_EMD/BV/warp_expand_3/sensor'+str(sensor)+'/' + file_name)
+            day_count = 1 + j / 4
 
 

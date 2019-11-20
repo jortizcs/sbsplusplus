@@ -63,6 +63,8 @@ class EnvTimeSeriesfromRepo():
 
         self.timeseries_repo = []
 
+        self.states_list = []
+
         for i in range(len(self.repodirext)):
             """
             The following two lines are used instead of the third line when DataMarket is the data source.
@@ -88,18 +90,36 @@ class EnvTimeSeriesfromRepo():
 
             self.timeseries_repo.append(ts)
 
+
     # reset the instance
     def reset(self):
         # 1. select a new time series from the repo and load
         # the time series contains "timestamp", "value", "anomaly"
         if self.datasetfix == 0:
             self.datasetidx = (self.datasetidx + 1) % self.datasetrng
-        print self.datasetidx
+        print self.repodirext[self.datasetidx]
         self.timeseries = self.timeseries_repo[self.datasetidx]
         self.timeseries_curser = self.timeseries_curser_init
 
         # 2. return the first state, containing the first element of the time series
         self.timeseries_states = self.statefnc(self.timeseries, self.timeseries_curser)
+
+        # update states list
+        self.states_list = self.get_states_list()
+
+        return self.timeseries_states
+
+    # reset the env to a specific file
+    def reset_to(self, id):
+        self.datasetidx = id
+        self.timeseries = self.timeseries_repo[self.datasetidx]
+        self.timeseries_curser = self.timeseries_curser_init
+
+        # 2. return the first state, containing the first element of the time series
+        self.timeseries_states = self.statefnc(self.timeseries, self.timeseries_curser)
+
+        # update states list
+        self.states_list = self.get_states_list()
 
         return self.timeseries_states
 
@@ -146,3 +166,20 @@ class EnvTimeSeriesfromRepo():
             self.timeseries_states = state
 
         return state, reward, done, []
+
+    def get_states_list(self):
+        self.timeseries = self.timeseries_repo[self.datasetidx]
+        self.timeseries_curser = self.timeseries_curser_init
+        state_list = []
+        for cursor in range(self.timeseries_curser_init, self.timeseries['value'].size):
+            if len(state_list) == 0:
+                state = self.statefnc(self.timeseries, cursor)
+            else:
+                state = self.statefnc(self.timeseries, cursor, state_list[-1])
+                state = state[0]
+            state_list.append(state)
+        return state_list
+
+
+
+

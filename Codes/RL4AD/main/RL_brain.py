@@ -13,7 +13,7 @@ from mpl_toolkits.mplot3d import axes3d
 from collections import deque, namedtuple
 
 # import the library in the sub-folder environment
-from ..environment.time_series_repo_ext import EnvTimeSeriesfromRepo
+from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 
 
 # macros for running q-learning
@@ -39,6 +39,8 @@ TP_Value = 5
 TN_Value = 1
 FP_Value = -1
 FN_Value = -5
+
+validation_separate_ratio = 0.9
 
 
 # The state function returns a vector composing of n_steps of n_input_dim data instances:
@@ -241,6 +243,7 @@ def q_learning(env,
 
     # Create directories for checkpoints and summaries
     checkpoint_dir = os.path.join(experiment_dir, "checkpoints")
+
     checkpoint_path = os.path.join(checkpoint_dir, "model")
 
     if not os.path.exists(checkpoint_dir):
@@ -271,6 +274,10 @@ def q_learning(env,
     popu_time = time.time()
 
     state = env.reset()
+    while env.datasetidx > env.datasetsize * validation_separate_ratio:
+        env.reset()
+        print 'double reset'
+
     for i in range(replay_memory_init_size):
         action_probs = policy(state, epsilons[min(total_t, epsilon_decay_steps - 1)])
         action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
@@ -281,6 +288,9 @@ def q_learning(env,
 
         if done:
             state = env.reset()
+            while env.datasetidx > env.datasetsize * validation_separate_ratio:
+                env.reset()
+                print 'double reset'
         else:
             state = next_state[action]
 
@@ -298,9 +308,13 @@ def q_learning(env,
 
         # Reset the environment
         state = env.reset()
+        while env.datasetidx > env.datasetsize * validation_separate_ratio:
+            env.reset()
+            print 'double reset'
 
         # One step in the environment
         for t in itertools.count():
+
             # 3.1 Some Preprocess
             # Epsilon for this time step
             epsilon = epsilons[min(total_t, epsilon_decay_steps - 1)]
@@ -403,6 +417,9 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
 
         # Reset the environment and pick the first action
         state = env.reset()
+        while env.datasetidx < env.datasetsize * validation_separate_ratio:
+            state = env.reset()
+            print 'double reset'
 
         # One step in the environment
         for t in itertools.count():
@@ -416,7 +433,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
             # Record the statistics
             state_rec.append(state[len(state) - 1][0])
             action_rec.append(action)
-            #reward_rec.append(reward[action])
+            reward_rec.append(reward[action])
 
             if done:
                 break
@@ -445,8 +462,9 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
             axarr[1].set_title('Action')
             axarr[2].plot(reward_rec, color='r')
             axarr[2].set_title('Reward')
-            #plt.show()
-            plt.savefig("/home/lfwutong/sbsplusplus/graphs/Aniyama-dataport/"+str(i_episode)+".png")
+            plt.show()
+            #plt.savefig("/home/lfwutong/sbsplusplus/graphs/Aniyama-dataport/"+str(i_episode)+".png")
+            #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/graphs/Aniyama-dataport/"+str(i_episode)+".png")
 
         # Calculate the accuracy F1-score = 2*((precison*recall)/(precison+recall))
         # precision = tp / (tp+fp)
@@ -472,20 +490,22 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
 
 # percentage = ['0.2', '0.35', '0.65', '0.8']
 percentage = [1]
+#percentage = ['0.8']
 test = 0
 for j in range(len(percentage)):
     # Where we save our checkpoints and graphs
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
+    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data fully-labeled']
+    #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
     # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
     #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
-    #dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
+    dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
     #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
-    dataset_dir = ['/home/lfwutong/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
+    #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
+    #dataset_dir = ['/home/lfwutong/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
 
     for i in range(len(dataset_dir)):
         env = EnvTimeSeriesfromRepo(dataset_dir[i])

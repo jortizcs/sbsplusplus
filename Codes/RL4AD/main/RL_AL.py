@@ -1,10 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import itertools
 import random
 import sys
 import os
 import time
+from scipy import stats
 
 import tensorflow as tf
 
@@ -15,14 +17,15 @@ from collections import deque, namedtuple
 # import the library in the sub-folder environment
 from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 
+from sklearn.svm import OneClassSVM
 
 # macros for running q-learning
-DATAFIXED = 0           # whether target at a single time series dataset
+DATAFIXED = 0  # whether target at a single time series dataset
 
-EPISODES = 500          # number of episodes for training
-DISCOUNT_FACTOR = 0.5   # reward discount factor [0,1]
-EPSILON = 0.5           # epsilon-greedy method parameter for action selection
-EPSILON_DECAY = 1.00    # epsilon-greedy method decay parameter
+EPISODES = 500  # number of episodes for training
+DISCOUNT_FACTOR = 0.5  # reward discount factor [0,1]
+EPSILON = 0.5  # epsilon-greedy method parameter for action selection
+EPSILON_DECAY = 1.00  # epsilon-greedy method decay parameter
 
 NOT_ANOMALY = 0
 ANOMALY = 1
@@ -30,9 +33,9 @@ ANOMALY = 1
 action_space = [NOT_ANOMALY, ANOMALY]
 action_space_n = len(action_space)
 
-n_steps = 25        # size of the slide window for SLIDE_WINDOW state and reward functions
-n_input_dim = 2     # dimension of the input for a LSTM cell
-n_hidden_dim = 64   # dimension of the hidden state in LSTM cell
+n_steps = 25  # size of the slide window for SLIDE_WINDOW state and reward functions
+n_input_dim = 2  # dimension of the input for a LSTM cell
+n_hidden_dim = 64  # dimension of the hidden state in LSTM cell
 
 # Reward Values
 TP_Value = 5
@@ -41,6 +44,7 @@ FP_Value = -1
 FN_Value = -5
 
 validation_separate_ratio = 0.9
+
 
 
 # The state function returns a vector composing of n_steps of n_input_dim data instances:
@@ -157,6 +161,7 @@ class Q_Estimator_Nonlinear():
             self.summary_writer.add_summary(summaries, global_step)
         return
 
+
 def copy_model_parameters(sess, estimator1, estimator2):
     """
     Copies the model parameters of one estimator to another.
@@ -270,11 +275,46 @@ def q_learning(env,
         qlearn_estimator,
         env.action_space_n)
 
-    # 2. Populate the replay memory with initial experience
+    num_label = 0
+
+    # 2. Populate the replay memory with initial experience by SVM
     popu_time = time.time()
 
+    # warm up with active learning
+    print 'Warm up starting...'
+    '''
+    outliers_fraction = 0.01
+    data_train = []
+    for num in env.datasetsize:
+        env.reset()
+        dataset_dir.extend(env.states_list)
+    model = WarmUp().warm_up_isolation_forest(outliers_fraction, data_train)
+
+    for t in itertools.count():
+        env.reset()
+        anomaly_score = model.decision_function(env.states_list)   # [-0.5, 0.5]
+        pred_score = [-1 * s + 0.5 for s in anomaly_score]      # [0, 0.5]
+        threshold = stats.scoreatpercentile(pred_score, 100 * outliers_fraction)
+
+
+        # al.label(warm_samples)
+        for sample in warm_samples:
+            # pick up a state from warm_up samples
+            state = env.states_list[sample]
+            # update the cursor
+            env.timeseries_curser = sample + n_steps
+            action_probs = policy(state, epsilons[min(total_t, epsilon_decay_steps - 1)])
+            action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
+
+            next_state, reward, done, _ = env.step(action)
+
+            replay_memory.append(Transition(state, reward, next_state, done))
+        if len(replay_memory) >= replay_memory_init_size:
+            break
+    '''
+    # warm up without active learning
     state = env.reset()
-    while env.datasetidx > env.datasetsize * validation_separate_ratio:
+    while env.datasetidx > env.datasetrng * validation_separate_ratio:
         env.reset()
         print 'double reset'
 
@@ -282,13 +322,16 @@ def q_learning(env,
         action_probs = policy(state, epsilons[min(total_t, epsilon_decay_steps - 1)])
         action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
 
-        next_state, reward, done, _ = env.step(action)
+        # mark the sample to labeled
+        env.timeseries['labeled'][env.timeseries_curser] = 1
+        num_label += 1
 
+        next_state, reward, done, _ = env.step(action)
         replay_memory.append(Transition(state, reward, next_state, done))
 
         if done:
             state = env.reset()
-            while env.datasetidx > env.datasetsize * validation_separate_ratio:
+            while env.datasetidx > env.datasetrng * validation_separate_ratio:
                 env.reset()
                 print 'double reset'
         else:
@@ -297,7 +340,8 @@ def q_learning(env,
     popu_time = time.time() - popu_time
     print("Populating replay memory with time {}".format(popu_time))
 
-    # 3. Start the main loop
+    # 3. Start the main loop2
+    dict = {}
     for i_episode in range(num_episodes):
         # Save the current checkpoint
         if i_episode % 50 == 49:
@@ -311,32 +355,90 @@ def q_learning(env,
         while env.datasetidx > env.datasetrng * validation_separate_ratio:
             env.reset()
             print 'double reset'
+        # Active learning:
+        # if a AL is needed
 
-        # One step in the environment
-        for t in itertools.count():
+        ori_idx = env.datasetidx
+        if env.datasetidx >= 0:
+            if dict.has_key(env.datasetidx) is False:
+                already_selected = []
+                dict[env.datasetidx] = already_selected
+            al = active_learning(env=env, N=10, strategy='margin_sampling',
+                                 estimator=qlearn_estimator, already_selected=dict[env.datasetidx])
+            active_samples = al.get_samples()
+            #active_samples = al.get_samples_by_score(threshold=1.5)
 
-            # 3.1 Some Preprocess
-            # Epsilon for this time step
-            epsilon = epsilons[min(total_t, epsilon_decay_steps - 1)]
+            # Label the samples
+            # al.label(active_samples)
 
-            # 3.2 The main work
-            # Choose an action to take
-            action_probs = policy(state, epsilon)
-            action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
+            # Add new-labeled samples
 
-            # Take a step
-            next_state, reward, done, _ = env.step(action)
+            dict[env.datasetidx].extend(active_samples)
+            print 'add labeled samples: ' + str(active_samples) + 'in env ' + str(env.datasetidx)
 
-            # 3.3 Control replay memory
-            if len(replay_memory) == replay_memory_size:
-                replay_memory.pop(0)
+            # One step in the environment
+            for ids in dict.keys():
+                env.reset_to(ids)
+                print 'Training on ' + str(ids)
+                for samples in dict[ids]:
+                    env.timeseries_curser = samples + n_steps
+                    # 3.1 Some Preprocess
+                    # Epsilon for this time step
+                    epsilon = epsilons[min(total_t, epsilon_decay_steps - 1)]
 
-            replay_memory.append(Transition(state, reward, next_state, done))
+                    state = env.states_list[samples]
 
-            if done:
-                break
+                    # 3.2 The main work
+                    # Choose an action to take
+                    action_probs = policy(state, epsilon)
+                    action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
 
-            state = next_state[action]
+                    # Take a step
+                    if env.timeseries['labeled'][env.timeseries_curser] == 0:
+                        env.timeseries['labeled'][env.timeseries_curser] = 1
+                        num_label += 1
+
+                    next_state, reward, done, _ = env.step(action)
+
+                    # 3.3 Control replay memory
+                    if len(replay_memory) == replay_memory_size:
+                        replay_memory.pop(0)
+
+                    replay_memory.append(Transition(state, reward, next_state, done))
+            print 'num_label: ' + str(num_label)
+
+            env.datasetidx = ori_idx
+        else:
+            # One step in the environment
+            for t in itertools.count():
+                # 3.1 Some Preprocess
+                # Epsilon for this time step
+                epsilon = epsilons[min(total_t, epsilon_decay_steps - 1)]
+
+                # 3.2 The main work
+                # Choose an action to take
+
+                action_probs = policy(state, epsilon)
+                action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
+
+                # Take a step
+                next_state, reward, done, _ = env.step(action)
+
+                # 3.3 Control replay memory
+                if len(replay_memory) == replay_memory_size:
+                    replay_memory.pop(0)
+
+                # if the sample for this step is unlabeled, skip
+                if env.timeseries['labeled'][env.timeseries_curser] != 0:
+                    replay_memory.append(Transition(state, reward, next_state, done))
+                    print 'memory stored'
+                else:
+                    print 'unlabeled -> skip'
+
+                if done:
+                    break
+
+                state = next_state[action]
 
         per_loop_time2 = time.time()
 
@@ -404,6 +506,10 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         rec_file = open('./{}'.format(record_dir), 'wb')
         rec_writer = csv.writer(rec_file)
 
+    p_overall = 0
+    recall_overall = 0
+    f1_overall = 0
+    reward_overall = 0
     for i_episode in range(num_episodes):
         print("Episode {}/{}".format(i_episode + 1, num_episodes))
 
@@ -463,8 +569,8 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
             axarr[2].plot(reward_rec, color='r')
             axarr[2].set_title('Reward')
             plt.show()
-            #plt.savefig("/home/lfwutong/sbsplusplus/graphs/Aniyama-dataport/"+str(i_episode)+".png")
-            #plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/graphs/Aniyama-dataport/"+str(i_episode)+".png")
+            # plt.savefig("/home/lfwutong/sbsplusplus/graphs/Aniyama-dataport/"+str(i_episode)+".png")
+            # plt.savefig("/Users/wuxiaodong/Dropbox/adaptive-anomalies/graphs/Aniyama-dataport/"+str(i_episode)+".png")
 
         # Calculate the accuracy F1-score = 2*((precison*recall)/(precison+recall))
         # precision = tp / (tp+fp)
@@ -477,35 +583,122 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         recall = (tp + 1) / float(tp + fn + 1)
         f1 = 2 * ((precision * recall) / (precision + recall))
 
+        p_overall += precision
+        recall_overall += recall
+        f1_overall += f1
+        reward_overall += np.array(reward_rec).sum()
+
         if record_dir:
             rec_writer.writerow([f1])
 
-        print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
+        # print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
 
+    print 'Overall performance: '
+    print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".
+          format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
+    print 'reward: ' + str(reward_overall)
     if record_dir:
         rec_file.close()
 
     return
 
 
+class active_learning(object):
+    def __init__(self, env, N, strategy, estimator, already_selected):
+        self.env = env
+        self.N = N
+        self.strategy = strategy
+        self.estimator = estimator
+        self.already_selected = already_selected
+
+    def get_samples(self):
+        states_list = self.env.states_list
+        distances = []
+        for state in states_list:
+            q = self.estimator.predict(state=[state])[0]
+            distance = abs(q[0] - q[1])
+            distances.append(distance)
+        distances = np.array(distances)
+        if len(distances.shape) < 2:
+            min_margin = abs(distances)
+        else:
+            sort_distances = np.sort(distances, 1)[:, -2:]
+            min_margin = sort_distances[:, 1] - sort_distances[:, 0]
+        rank_ind = np.argsort(min_margin)
+        rank_ind = [i for i in rank_ind if i not in self.already_selected]
+        active_samples = rank_ind[0:self.N]
+        return active_samples
+
+    def get_samples_by_score(self, threshold):
+        states_list = self.env.states_list
+        distances = []
+        for state in states_list:
+            q = self.estimator.predict(state=[state])[0]
+            distance = abs(q[0] - q[1])
+            distances.append(distance)
+        distances = np.array(distances)
+        if len(distances.shape) < 2:
+            min_margin = abs(distances)
+        else:
+            sort_distances = np.sort(distances, 1)[:, -2:]
+            min_margin = sort_distances[:, 1] - sort_distances[:, 0]
+        rank_ind = np.argsort(min_margin)
+        rank_ind = [i for i in rank_ind if i not in self.already_selected]
+        active_samples = [t for t in rank_ind if distances[t] < threshold]
+        return active_samples
+
+    def label(self, active_samples):
+        for sample in active_samples:
+            print 'AL finds one of the most confused samples:'
+            print self.env.timeseries['value'].iloc[sample:sample + n_steps]
+            print 'Please label the last timestamp based on your knowledge'
+            print '0 for non-anomaly; 1 for anomaly'
+            label = input()
+            self.env.timeseries.loc[sample + n_steps - 1, 'anomaly'] = label
+        return
+
+
+class WarmUp(object):
+    def warm_up_SVM(self, outliers_fraction):
+        states_list = self.env.get_states_list()
+        data = np.array(states_list).transpose(2, 0, 1).reshape(2, -1)[0].reshape(-1, n_steps)[:, -1].reshape(-1, 1)
+        model = OneClassSVM(gamma='auto', nu=0.95 * outliers_fraction)  # nu=0.95 * outliers_fraction  + 0.05
+        model.fit(data)
+        distances = model.decision_function(data)
+        if len(distances.shape) < 2:
+            min_margin = abs(distances)
+        else:
+            sort_distances = np.sort(distances, 1)[:, -2:]
+            min_margin = sort_distances[:, 1] - sort_distances[:, 0]
+        rank_ind = np.argsort(min_margin)
+        samples = rank_ind[0:N]
+        return samples
+
+    def warm_up_isolation_forest(self, outliers_fraction, X_train):
+        from sklearn.ensemble import IsolationForest
+        clf = IsolationForest(contamination=outliers_fraction)
+        clf.fit(X_train)
+        return clf
+
+
 # percentage = ['0.2', '0.35', '0.65', '0.8']
 percentage = [1]
-#percentage = ['0.8']
 test = 0
 for j in range(len(percentage)):
     # Where we save our checkpoints and graphs
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data fully-labeled']
-    #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
+    # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
+    exp_relative_dir = ['5000init 10N 1000ep']
+    # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
     # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
     #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
     dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
-    #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
-    #dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
-    #dataset_dir = ['/home/lfwutong/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
+    # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
+    # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
+    # dataset_dir = ['/home/lfwutong/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
 
     for i in range(len(dataset_dir)):
         env = EnvTimeSeriesfromRepo(dataset_dir[i])
@@ -536,11 +729,11 @@ for j in range(len(percentage)):
             q_learning(env,
                        qlearn_estimator=qlearn_estimator,
                        target_estimator=target_estimator,
-                       num_episodes=2000,
+                       num_episodes=1000,
                        num_epoches=10,
                        experiment_dir=experiment_dir,
                        replay_memory_size=500000,
-                       replay_memory_init_size=50000,
+                       replay_memory_init_size=5000,
                        update_target_estimator_every=10,
                        epsilon_start=1.0,
                        epsilon_end=0.1,
@@ -548,5 +741,4 @@ for j in range(len(percentage)):
                        discount_factor=0.9,
                        batch_size=256,
                        test=test)
-            q_learning_validator(env, qlearn_estimator, 1)
-
+            q_learning_validator(env, qlearn_estimator, 7)

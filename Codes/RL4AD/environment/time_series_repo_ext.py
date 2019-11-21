@@ -80,7 +80,11 @@ class EnvTimeSeriesfromRepo():
             """
             The following line is used instead of the third line when Yahoo Benchmark is the data source.
             """
+
             ts = pd.read_csv(self.repodirext[i], usecols=[1, 2], header=0, names=['value', 'anomaly'])
+
+            # add a marker column for label/unlabeled
+            ts['labeled'] = 0
 
             ts = ts.astype(np.float32)
 
@@ -89,7 +93,6 @@ class EnvTimeSeriesfromRepo():
             ts['value'] = scaler.transform(np.array(ts['value']).reshape(-1, 1))
 
             self.timeseries_repo.append(ts)
-
 
     # reset the instance
     def reset(self):

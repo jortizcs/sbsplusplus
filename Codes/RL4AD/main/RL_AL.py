@@ -282,20 +282,22 @@ def q_learning(env,
 
     # warm up with active learning
     print 'Warm up starting...'
-    '''
+
     outliers_fraction = 0.01
     data_train = []
-    for num in env.datasetsize:
+    for num in range(env.datasetsize):
         env.reset()
-        dataset_dir.extend(env.states_list)
+        data_train.extend(env.states_list)
     model = WarmUp().warm_up_isolation_forest(outliers_fraction, data_train)
 
     for t in itertools.count():
         env.reset()
-        anomaly_score = model.decision_function(env.states_list)   # [-0.5, 0.5]
+        data = np.array(env.states_list).transpose(2, 0, 1).reshape(2, -1)[0].reshape(-1, n_steps)[:, -1].reshape(-1, 1)
+        anomaly_score = model.decision_function(data)   # [-0.5, 0.5]
         pred_score = [-1 * s + 0.5 for s in anomaly_score]      # [0, 0.5]
-        threshold = stats.scoreatpercentile(pred_score, 100 * outliers_fraction)
-
+        #threshold = stats.scoreatpercentile(pred_score, 100 * outliers_fraction)
+        warm_samples = np.argsort(pred_score)[:5]
+        warm_samples = np.append(warm_samples, warm_samples[-5:])
 
         # al.label(warm_samples)
         for sample in warm_samples:
@@ -317,7 +319,7 @@ def q_learning(env,
     while env.datasetidx > env.datasetrng * validation_separate_ratio:
         env.reset()
         print 'double reset'
-
+        
     for i in range(replay_memory_init_size):
         action_probs = policy(state, epsilons[min(total_t, epsilon_decay_steps - 1)])
         action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
@@ -325,7 +327,7 @@ def q_learning(env,
         # mark the sample to labeled
         env.timeseries['labeled'][env.timeseries_curser] = 1
         num_label += 1
-
+        
         next_state, reward, done, _ = env.step(action)
         replay_memory.append(Transition(state, reward, next_state, done))
 
@@ -336,7 +338,7 @@ def q_learning(env,
                 print 'double reset'
         else:
             state = next_state[action]
-
+    '''
     popu_time = time.time() - popu_time
     print("Populating replay memory with time {}".format(popu_time))
 
@@ -659,7 +661,7 @@ class active_learning(object):
 
 
 class WarmUp(object):
-    def warm_up_SVM(self, outliers_fraction):
+    def warm_up_SVM(self, outliers_fraction, N):
         states_list = self.env.get_states_list()
         data = np.array(states_list).transpose(2, 0, 1).reshape(2, -1)[0].reshape(-1, n_steps)[:, -1].reshape(-1, 1)
         model = OneClassSVM(gamma='auto', nu=0.95 * outliers_fraction)  # nu=0.95 * outliers_fraction  + 0.05
@@ -676,8 +678,9 @@ class WarmUp(object):
 
     def warm_up_isolation_forest(self, outliers_fraction, X_train):
         from sklearn.ensemble import IsolationForest
+        data = np.array(X_train).transpose(2, 0, 1).reshape(2, -1)[0].reshape(-1, n_steps)[:, -1].reshape(-1, 1)
         clf = IsolationForest(contamination=outliers_fraction)
-        clf.fit(X_train)
+        clf.fit(data)
         return clf
 
 
@@ -689,7 +692,7 @@ for j in range(len(percentage)):
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-    exp_relative_dir = ['5000init 10N 1000ep']
+    exp_relative_dir = ['3000init_warmup 10N 1000ep']
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
@@ -733,7 +736,7 @@ for j in range(len(percentage)):
                        num_epoches=10,
                        experiment_dir=experiment_dir,
                        replay_memory_size=500000,
-                       replay_memory_init_size=5000,
+                       replay_memory_init_size=3000,
                        update_target_estimator_every=10,
                        epsilon_start=1.0,
                        epsilon_end=0.1,

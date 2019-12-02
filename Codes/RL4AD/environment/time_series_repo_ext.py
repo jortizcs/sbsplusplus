@@ -83,8 +83,8 @@ class EnvTimeSeriesfromRepo():
 
             ts = pd.read_csv(self.repodirext[i], usecols=[1, 2], header=0, names=['value', 'anomaly'])
 
-            # add a marker column for label/unlabeled
-            ts['labeled'] = 0
+            # add a marker column for 1:anomaly, 0:non-anomaly, -1: unlabeled
+            ts['label'] = -1
 
             ts = ts.astype(np.float32)
 

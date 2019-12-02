@@ -18,6 +18,7 @@ from collections import deque, namedtuple
 from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 
 from sklearn.svm import OneClassSVM
+from sklearn.semi_supervised import label_propagation
 
 # macros for running q-learning
 DATAFIXED = 0  # whether target at a single time series dataset
@@ -35,7 +36,7 @@ action_space_n = len(action_space)
 
 n_steps = 25  # size of the slide window for SLIDE_WINDOW state and reward functions
 n_input_dim = 2  # dimension of the input for a LSTM cell
-n_hidden_dim = 64  # dimension of the hidden state in LSTM cell
+n_hidden_dim = 128  # dimension of the hidden state in LSTM cell
 
 # Reward Values
 TP_Value = 5
@@ -44,7 +45,6 @@ FP_Value = -1
 FN_Value = -5
 
 validation_separate_ratio = 0.9
-
 
 
 # The state function returns a vector composing of n_steps of n_input_dim data instances:
@@ -287,8 +287,13 @@ def q_learning(env,
     data_train = []
     for num in range(env.datasetsize):
         env.reset()
+        # remove time window
         data_train.extend(env.states_list)
+    # Isolation Forest model
     model = WarmUp().warm_up_isolation_forest(outliers_fraction, data_train)
+
+    # label propagation
+    lp_model = label_propagation.LabelSpreading()
 
     for t in itertools.count():
         env.reset()
@@ -297,9 +302,14 @@ def q_learning(env,
         pred_score = [-1 * s + 0.5 for s in anomaly_score]      # [0, 0.5]
         #threshold = stats.scoreatpercentile(pred_score, 100 * outliers_fraction)
         warm_samples = np.argsort(pred_score)[:5]
-        warm_samples = np.append(warm_samples, warm_samples[-5:])
+        warm_samples = np.append(warm_samples, np.argsort(pred_score)[-5:])
 
         # al.label(warm_samples)
+
+        # retrieve input for label propagation
+        state_list = np.array(env.states_list).transpose(2, 0, 1)[0]
+        label_list = [-1] * len(state_list)  # remove labels
+
         for sample in warm_samples:
             # pick up a state from warm_up samples
             state = env.states_list[sample]
@@ -308,11 +318,39 @@ def q_learning(env,
             action_probs = policy(state, epsilons[min(total_t, epsilon_decay_steps - 1)])
             action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
 
+            # mark the sample to labeled
+            env.timeseries['label'][env.timeseries_curser] = env.timeseries['anomaly'][env.timeseries_curser]
+            num_label += 1
+
+            # retrieve label for propagation
+            label_list[sample] = int(env.timeseries['anomaly'][env.timeseries_curser])
+
             next_state, reward, done, _ = env.step(action)
 
             replay_memory.append(Transition(state, reward, next_state, done))
+
+        # label propagation main process:
+
+        unlabeled_indices = [i for i, e in enumerate(label_list) if e == -1]
+        label_list = np.array(label_list)
+        lp_model.fit(state_list, label_list)
+        pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
+        # select up to 20 samples that is most certain about
+        certainty_index = np.argsort(pred_entropies)
+        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:20]
+        # give them pseudo labels
+        for index in certainty_index:
+            pseudo_label = lp_model.transduction_[index]
+            env.timeseries['label'][index + n_steps] = pseudo_label
+
         if len(replay_memory) >= replay_memory_init_size:
             break
+
+
+
+
+
+
     '''
     # warm up without active learning
     state = env.reset()
@@ -365,7 +403,7 @@ def q_learning(env,
             if dict.has_key(env.datasetidx) is False:
                 already_selected = []
                 dict[env.datasetidx] = already_selected
-            al = active_learning(env=env, N=10, strategy='margin_sampling',
+            al = active_learning(env=env, N=28, strategy='margin_sampling',
                                  estimator=qlearn_estimator, already_selected=dict[env.datasetidx])
             active_samples = al.get_samples()
             #active_samples = al.get_samples_by_score(threshold=1.5)
@@ -526,9 +564,10 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         # Reset the environment and pick the first action
         state = env.reset()
         while env.datasetidx < env.datasetrng * validation_separate_ratio:
-            state = env.reset()
             print 'double reset'
+            state = env.reset()
 
+        print 'testing on: ' + str(env.repodirext[env.datasetidx])
         # One step in the environment
         for t in itertools.count():
             # Choose an action to take
@@ -692,7 +731,7 @@ for j in range(len(percentage)):
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-    exp_relative_dir = ['3000init_warmup 10N 1000ep']
+    exp_relative_dir = ['670init_warmup d0.9 b256 h128 28N 1000ep']
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
@@ -736,9 +775,9 @@ for j in range(len(percentage)):
                        num_epoches=10,
                        experiment_dir=experiment_dir,
                        replay_memory_size=500000,
-                       replay_memory_init_size=3000,
+                       replay_memory_init_size=670,
                        update_target_estimator_every=10,
-                       epsilon_start=1.0,
+                       epsilon_start=1,
                        epsilon_end=0.1,
                        epsilon_decay_steps=500000,
                        discount_factor=0.9,

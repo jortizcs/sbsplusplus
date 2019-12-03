@@ -46,6 +46,9 @@ FN_Value = -5
 
 validation_separate_ratio = 0.9
 
+N_label_propagation = 50
+N_active_learning = 5
+
 
 # The state function returns a vector composing of n_steps of n_input_dim data instances:
 # e.g., [[x_1, f_1], [x_2, f_2], ..., [x_t, f_t]] of shape (n_steps, n_input_dim)
@@ -74,6 +77,17 @@ def RNNBinaryStateFuc(timeseries, timeseries_curser, previous_state=[], action=N
 # Also, because we use binary tree here, the reward function returns a list of rewards for each action
 def RNNBinaryRewardFuc(timeseries, timeseries_curser, action=0):
     if timeseries_curser >= n_steps:
+        if timeseries['label'][timeseries_curser] == 0:
+            return [TN_Value, FP_Value]
+
+        if timeseries['label'][timeseries_curser] == 1:
+            return [FN_Value, TP_Value]
+    else:
+        return [0, 0]
+
+
+def RNNBinaryRewardFucTest(timeseries, timeseries_curser, action=0):
+    if timeseries_curser >= n_steps:
         if timeseries['anomaly'][timeseries_curser] == 0:
             return [TN_Value, FP_Value]
 
@@ -81,6 +95,8 @@ def RNNBinaryRewardFuc(timeseries, timeseries_curser, action=0):
             return [FN_Value, TP_Value]
     else:
         return [0, 0]
+
+
 
 
 class Q_Estimator_Nonlinear():
@@ -292,7 +308,7 @@ def q_learning(env,
     # Isolation Forest model
     model = WarmUp().warm_up_isolation_forest(outliers_fraction, data_train)
 
-    # label propagation
+    # label propagation model
     lp_model = label_propagation.LabelSpreading()
 
     for t in itertools.count():
@@ -335,9 +351,9 @@ def q_learning(env,
         label_list = np.array(label_list)
         lp_model.fit(state_list, label_list)
         pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
-        # select up to 20 samples that is most certain about
+        # select up to N samples that is most certain about
         certainty_index = np.argsort(pred_entropies)
-        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:20]
+        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:N_label_propagation]
         # give them pseudo labels
         for index in certainty_index:
             pseudo_label = lp_model.transduction_[index]
@@ -345,11 +361,6 @@ def q_learning(env,
 
         if len(replay_memory) >= replay_memory_init_size:
             break
-
-
-
-
-
 
     '''
     # warm up without active learning
@@ -398,6 +409,66 @@ def q_learning(env,
         # Active learning:
         # if a AL is needed
 
+        # index of already labeled samples of this TS
+        labeled_index = [i for i, e in enumerate(env.timeseries['label']) if e != -1]
+        # transform to match state_list
+        labeled_index = [item for item in labeled_index if item >= 25]
+        labeled_index = [item - n_steps for item in labeled_index]
+
+        al = active_learning(env=env, N=N_active_learning, strategy='margin_sampling',
+                             estimator=qlearn_estimator, already_selected=labeled_index)
+        # find the samples need to be labeled by human
+        al_samples = al.get_samples()
+        print 'labeling samples: '+ str(al_samples) + 'in env' + str(env.datasetidx)
+        # al.label(al_samples)
+        # add the new labeled samples
+        labeled_index.extend(al_samples)
+        num_label += len(al_samples)
+
+        # retrieve input for label propagation
+        state_list = np.array(env.states_list).transpose(2, 0, 1)[0]
+        label_list = np.array(env.timeseries['label'][n_steps:])
+
+        for new_sample in al_samples:
+            label_list[new_sample] = env.timeseries['anomaly'][n_steps+new_sample]
+            env.timeseries['label'][n_steps+new_sample] = env.timeseries['anomaly'][n_steps+new_sample]
+
+        for samples in labeled_index:
+            env.timeseries_curser = samples + n_steps
+            # 3.1 Some Preprocess
+            # Epsilon for this time step
+            epsilon = epsilons[min(total_t, epsilon_decay_steps - 1)]
+
+            state = env.states_list[samples]
+
+            # 3.2 The main work
+            # Choose an action to take
+            action_probs = policy(state, epsilon)
+            action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
+
+            # Take a step
+            next_state, reward, done, _ = env.step(action)
+
+            # 3.3 Control replay memory
+            if len(replay_memory) == replay_memory_size:
+                replay_memory.pop(0)
+
+            replay_memory.append(Transition(state, reward, next_state, done))
+
+        # label propagation main process:
+        unlabeled_indices = [i for i, e in enumerate(label_list) if e == -1]
+        label_list = np.array(label_list)
+        lp_model.fit(state_list, label_list)
+        pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
+        # select up to N samples that is most certain about
+        certainty_index = np.argsort(pred_entropies)
+        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:N_label_propagation]
+        # give them pseudo labels
+        for index in certainty_index:
+            pseudo_label = lp_model.transduction_[index]
+            env.timeseries['label'][index + n_steps] = pseudo_label
+
+        '''
         ori_idx = env.datasetidx
         if env.datasetidx >= 0:
             if dict.has_key(env.datasetidx) is False:
@@ -479,7 +550,7 @@ def q_learning(env,
                     break
 
                 state = next_state[action]
-
+        '''
         per_loop_time2 = time.time()
 
         # Update the model
@@ -731,7 +802,7 @@ for j in range(len(percentage)):
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-    exp_relative_dir = ['670init_warmup d0.9 b256 h128 28N 1000ep']
+    exp_relative_dir = ['LP 670init_warmup d0.9 b256 h128 5N1 50N2 1000ep']
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
@@ -749,6 +820,10 @@ for j in range(len(percentage)):
         env.timeseries_curser_init = n_steps
         env.datasetfix = DATAFIXED
         env.datasetidx = 0
+
+        # environment for testing
+        env_test = env
+        env_test.rewardfnc = RNNBinaryRewardFucTest
 
         if test == 1:
             env.datasetrng = env.datasetsize
@@ -783,4 +858,4 @@ for j in range(len(percentage)):
                        discount_factor=0.9,
                        batch_size=256,
                        test=test)
-            q_learning_validator(env, qlearn_estimator, 7)
+            q_learning_validator(env_test, qlearn_estimator, 7)

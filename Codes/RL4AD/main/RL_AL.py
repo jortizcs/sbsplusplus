@@ -850,7 +850,7 @@ def train(num_LP, num_AL, discount_factor):
                            sess=sess,
                            qlearn_estimator=qlearn_estimator,
                            target_estimator=target_estimator,
-                           num_episodes=2000,
+                           num_episodes=1000,
                            num_epoches=10,
                            experiment_dir=experiment_dir,
                            replay_memory_size=500000,

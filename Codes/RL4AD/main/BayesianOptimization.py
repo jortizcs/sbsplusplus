@@ -10,7 +10,7 @@ logger = JSONLogger(path="./Bayesian_logs.json")
 
 # Bounded region of parameter space
 # num_LP, num_AL, discount_factor
-pbounds = {'num_LP': (1, 50), 'num_AL': (1, 20), 'discount_factor': (0.8, 1.0)}
+pbounds = {'num_LP': (2, 50), 'num_AL': (1, 20), 'discount_factor': (0.8, 1.0)}
 
 
 def function_to_be_optimized(num_LP, num_AL, discount_factor):

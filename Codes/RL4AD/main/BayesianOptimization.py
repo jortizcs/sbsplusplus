@@ -1,6 +1,6 @@
 import RL_AL
 from bayes_opt import BayesianOptimization
-from bayes_opt.logger import JSONLogger
+from bayes_opt.observer import JSONLogger
 from bayes_opt.event import Events
 
 logger = JSONLogger(path="./Bayesian_logs.json")

@@ -15,8 +15,8 @@ from mpl_toolkits.mplot3d import axes3d
 from collections import deque, namedtuple
 
 # import the library in the sub-folder environment
-from Codes.RL4AD.environment.time_series_repo_ext import EnvTimeSeriesfromRepo
-
+sys.path.append('../')
+from environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 from sklearn.svm import OneClassSVM
 from sklearn.semi_supervised import label_propagation
 

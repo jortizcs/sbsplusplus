@@ -20,6 +20,8 @@ from environment.time_series_repo_ext import EnvTimeSeriesfromRepo
 from sklearn.svm import OneClassSVM
 from sklearn.semi_supervised import label_propagation
 
+os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
+
 # macros for running q-learning
 DATAFIXED = 0  # whether target at a single time series dataset
 

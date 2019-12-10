@@ -46,9 +46,6 @@ FN_Value = -5
 
 validation_separate_ratio = 0.9
 
-N_label_propagation = 50
-N_active_learning = 5
-
 
 # The state function returns a vector composing of n_steps of n_input_dim data instances:
 # e.g., [[x_1, f_1], [x_2, f_2], ..., [x_t, f_t]] of shape (n_steps, n_input_dim)
@@ -226,6 +223,7 @@ def make_epsilon_greedy_policy(estimator, nA):
 
 
 def q_learning(env,
+               sess,
                qlearn_estimator,
                target_estimator,
                num_episodes,
@@ -239,6 +237,8 @@ def q_learning(env,
                epsilon_end=0.1,
                epsilon_decay_steps=500000,
                batch_size=512,
+               num_label_propagation=20,
+               num_active_learning=5,
                test=0):
     """
     Q-Learning algorithm for off-policy TD control using Function Approximation.
@@ -353,7 +353,7 @@ def q_learning(env,
         pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
         # select up to N samples that is most certain about
         certainty_index = np.argsort(pred_entropies)
-        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:N_label_propagation]
+        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:num_label_propagation]
         # give them pseudo labels
         for index in certainty_index:
             pseudo_label = lp_model.transduction_[index]
@@ -415,7 +415,7 @@ def q_learning(env,
         labeled_index = [item for item in labeled_index if item >= 25]
         labeled_index = [item - n_steps for item in labeled_index]
 
-        al = active_learning(env=env, N=N_active_learning, strategy='margin_sampling',
+        al = active_learning(env=env, N=num_active_learning, strategy='margin_sampling',
                              estimator=qlearn_estimator, already_selected=labeled_index)
         # find the samples need to be labeled by human
         al_samples = al.get_samples()
@@ -462,7 +462,7 @@ def q_learning(env,
         pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
         # select up to N samples that is most certain about
         certainty_index = np.argsort(pred_entropies)
-        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:N_label_propagation]
+        certainty_index = certainty_index[np.in1d(certainty_index, unlabeled_indices)][:num_label_propagation]
         # give them pseudo labels
         for index in certainty_index:
             pseudo_label = lp_model.transduction_[index]
@@ -615,7 +615,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     """
     if record_dir:
         rec_file = open('./{}'.format(record_dir), 'wb')
-        rec_writer = csv.writer(rec_file)
+        #rec_writer = csv.writer(rec_file)
 
     p_overall = 0
     recall_overall = 0
@@ -704,7 +704,6 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
             rec_writer.writerow([f1])
 
         # print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
-
     print 'Overall performance: '
     print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".
           format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
@@ -712,7 +711,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     if record_dir:
         rec_file.close()
 
-    return
+    return p_overall / num_episodes
 
 
 class active_learning(object):
@@ -794,68 +793,74 @@ class WarmUp(object):
         return clf
 
 
-# percentage = ['0.2', '0.35', '0.65', '0.8']
-percentage = [1]
-test = 0
-for j in range(len(percentage)):
-    # Where we save our checkpoints and graphs
-    # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
-    #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-    exp_relative_dir = ['LP 670init_warmup d0.9 b256 h128 5N1 50N2 1000ep']
-    # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
+def train(num_LP, num_AL, discount_factor):
+    # percentage = ['0.2', '0.35', '0.65', '0.8']
+    percentage = [1]
+    test = 0
+    for j in range(len(percentage)):
+        # Where we save our checkpoints and graphs
+        # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
+        #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
+        # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
+        exp_relative_dir = ['LP 670init_warmup h128 b256 2000ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
+                            ' d'+str(discount_factor)]
+        # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
-    # Which dataset we are targeting
-    # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
-    #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
-    dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
-    # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
-    # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
-    # dataset_dir = ['/home/lfwutong/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
+        # Which dataset we are targeting
+        # dataset_dir = ['environment/time_series_repo/A1Benchmark', 'environment/time_series_repo/A2Benchmark',
+        #                'environment/time_series_repo/A3Benchmark', 'environment/time_series_repo/A4Benchmark']
+        #dataset_dir = ['/Users/wuxiaodong/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark/']
+        # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
+        # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
+        # dataset_dir = ['/home/sciphilab/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
+        dataset_dir = ['/home/scifilab/anomaly_detection/dataset//A1Benchmark/']
+        for i in range(len(dataset_dir)):
+            env = EnvTimeSeriesfromRepo(dataset_dir[i])
+            env.statefnc = RNNBinaryStateFuc
+            env.rewardfnc = RNNBinaryRewardFuc
+            env.timeseries_curser_init = n_steps
+            env.datasetfix = DATAFIXED
+            env.datasetidx = 0
 
-    for i in range(len(dataset_dir)):
-        env = EnvTimeSeriesfromRepo(dataset_dir[i])
-        env.statefnc = RNNBinaryStateFuc
-        env.rewardfnc = RNNBinaryRewardFuc
-        env.timeseries_curser_init = n_steps
-        env.datasetfix = DATAFIXED
-        env.datasetidx = 0
+            # environment for testing
+            env_test = env
+            env_test.rewardfnc = RNNBinaryRewardFucTest
 
-        # environment for testing
-        env_test = env
-        env_test.rewardfnc = RNNBinaryRewardFucTest
+            if test == 1:
+                env.datasetrng = env.datasetsize
+            else:
+                env.datasetrng = np.int32(env.datasetsize * float(percentage[j]))
 
-        if test == 1:
-            env.datasetrng = env.datasetsize
-        else:
-            env.datasetrng = np.int32(env.datasetsize * float(percentage[j]))
+            experiment_dir = os.path.abspath("./exp/{}".format(exp_relative_dir[i]))
 
-        experiment_dir = os.path.abspath("./exp/{}".format(exp_relative_dir[i]))
+            tf.reset_default_graph()
 
-        tf.reset_default_graph()
+            global_step = tf.Variable(0, name="global_step", trainable=False)
 
-        global_step = tf.Variable(0, name="global_step", trainable=False)
+            qlearn_estimator = Q_Estimator_Nonlinear(scope="qlearn", summaries_dir=experiment_dir)
+            target_estimator = Q_Estimator_Nonlinear(scope="target")
 
-        qlearn_estimator = Q_Estimator_Nonlinear(scope="qlearn", summaries_dir=experiment_dir)
-        target_estimator = Q_Estimator_Nonlinear(scope="target")
+            sess = tf.Session()
+            sess.run(tf.global_variables_initializer())
 
-        sess = tf.Session()
-        sess.run(tf.global_variables_initializer())
-
-        with sess.as_default():
-            q_learning(env,
-                       qlearn_estimator=qlearn_estimator,
-                       target_estimator=target_estimator,
-                       num_episodes=1000,
-                       num_epoches=10,
-                       experiment_dir=experiment_dir,
-                       replay_memory_size=500000,
-                       replay_memory_init_size=670,
-                       update_target_estimator_every=10,
-                       epsilon_start=1,
-                       epsilon_end=0.1,
-                       epsilon_decay_steps=500000,
-                       discount_factor=0.9,
-                       batch_size=256,
-                       test=test)
-            q_learning_validator(env_test, qlearn_estimator, 7)
+            with sess.as_default():
+                q_learning(env,
+                           sess=sess,
+                           qlearn_estimator=qlearn_estimator,
+                           target_estimator=target_estimator,
+                           num_episodes=2000,
+                           num_epoches=10,
+                           experiment_dir=experiment_dir,
+                           replay_memory_size=500000,
+                           replay_memory_init_size=670,
+                           update_target_estimator_every=10,
+                           epsilon_start=1,
+                           epsilon_end=0.1,
+                           epsilon_decay_steps=500000,
+                           discount_factor=discount_factor,
+                           batch_size=256,
+                           num_label_propagation=num_LP,
+                           num_active_learning=num_AL,
+                           test=test)
+                optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7)
+            return optimization_metric

@@ -715,7 +715,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     if record_dir:
         rec_file.close()
 
-    return p_overall / num_episodes
+    return f1_overall / num_episodes
 
 
 class active_learning(object):

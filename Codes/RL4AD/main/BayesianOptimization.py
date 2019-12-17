@@ -5,7 +5,7 @@ from bayes_opt.event import Events
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
-logger = JSONLogger(path="./Bayesian_logs.json")
+logger = JSONLogger(path="./Bayesian_logs_f1.json")
 
 
 # Bounded region of parameter space

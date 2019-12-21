@@ -617,7 +617,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     Returns:
         Statistics
     """
-    rec_file = open(record_dir+'performance.txt')
+    rec_file = open(record_dir+'performance.txt','w')
         #rec_writer = csv.writer(rec_file)
 
     p_overall = 0

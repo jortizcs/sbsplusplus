@@ -617,8 +617,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
     Returns:
         Statistics
     """
-    if record_dir:
-        rec_file = open('./{}'.format(record_dir), 'wb')
+    rec_file = open(record_dir+'performance.txt')
         #rec_writer = csv.writer(rec_file)
 
     p_overall = 0
@@ -708,8 +707,8 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
             rec_writer.writerow([f1])
 
         # print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
-    print 'Overall performance: '
-    print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".
+    #print 'Overall performance: '
+    rec_file.write("Precision:{}, Recall:{}, F1-score:{} ".
           format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
     print 'reward: ' + str(reward_overall)
     if record_dir:
@@ -866,5 +865,5 @@ def train(num_LP, num_AL, discount_factor):
                            num_label_propagation=num_LP,
                            num_active_learning=num_AL,
                            test=test)
-                optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7)
+                optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7, experiment_dir)
             return optimization_metric

@@ -6,12 +6,12 @@ from bayes_opt.util import load_logs
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
-logger = JSONLogger(path="./Bayesian_logs_f1.json")
+logger = JSONLogger(path="./Bayesian_logs_f1_new.json")
 
 
 # Bounded region of parameter space
 # num_LP, num_AL, discount_factor
-pbounds = {'num_LP': (2, 50), 'num_AL': (2, 20), 'discount_factor': (0.8, 1.0)}
+pbounds = {'num_LP': (1, 100), 'num_AL': (1, 5), 'discount_factor': (0.8, 1.0)}
 
 
 def function_to_be_optimized(num_LP, num_AL, discount_factor):
@@ -28,16 +28,6 @@ optimizer = BayesianOptimization(
     random_state=1,
 )
 
-new_optimizer = BayesianOptimization(
-    f=function_to_be_optimized,
-    pbounds={'num_LP': (1, 100), 'num_AL': (1, 5), 'discount_factor': (0.8, 1.0)},
-    verbose=2,
-    random_state=1,
-)
-
-# New optimizer is loaded with previously seen points
-load_logs(new_optimizer, logs=["./Bayesian_logs_f1.json"])
-
-new_optimizer.subscribe(Events.OPTMIZATION_STEP, logger)
-new_optimizer.maximize(alpha=1e-3)
+optimizer.subscribe(Events.OPTMIZATION_STEP, logger)
+optimizer.maximize(alpha=1e-3)
 

@@ -2,6 +2,7 @@ import RL_AL
 from bayes_opt import BayesianOptimization
 from bayes_opt.observer import JSONLogger
 from bayes_opt.event import Events
+from bayes_opt.util import load_logs
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
@@ -27,6 +28,16 @@ optimizer = BayesianOptimization(
     random_state=1,
 )
 
-optimizer.subscribe(Events.OPTMIZATION_STEP, logger)
-optimizer.maximize(alpha=1e-3)
+new_optimizer = BayesianOptimization(
+    f=function_to_be_optimized,
+    pbounds={'num_LP': (1, 100), 'num_AL': (1, 5), 'discount_factor': (0.8, 1.0)},
+    verbose=2,
+    random_state=1,
+)
+
+# New optimizer is loaded with previously seen points
+load_logs(new_optimizer, logs=["./Bayesian_logs_f1.json"])
+
+new_optimizer.subscribe(Events.OPTMIZATION_STEP, logger)
+new_optimizer.maximize(alpha=1e-3)
 

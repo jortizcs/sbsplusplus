@@ -806,7 +806,7 @@ def train(num_LP, num_AL, discount_factor):
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
         #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-        exp_relative_dir = ['LP 670init_warmup h128 b256 2000ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
+        exp_relative_dir = ['LP 670init_warmup h128 b256 1000ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
                             ' d'+str(discount_factor)]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 

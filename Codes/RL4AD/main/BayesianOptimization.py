@@ -5,7 +5,7 @@ from bayes_opt.event import Events
 from bayes_opt.util import load_logs
 import os
 
-#os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
+os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
 logger = JSONLogger(path="./Bayesian_logs_f1_AL(80-90).json")
 
 

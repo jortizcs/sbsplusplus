@@ -703,8 +703,8 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         f1_overall += f1
         reward_overall += np.array(reward_rec).sum()
 
-        if record_dir:
-            rec_writer.writerow([f1])
+        #if record_dir:
+            #rec_writer.writerow([f1])
 
         # print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
     #print 'Overall performance: '

@@ -801,7 +801,7 @@ class WarmUp(object):
 def train(num_LP, num_AL, discount_factor):
     # percentage = ['0.2', '0.35', '0.65', '0.8']
     percentage = [1]
-    test = 1
+    test = 0
     for j in range(len(percentage)):
         # Where we save our checkpoints and graphs
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
@@ -853,7 +853,7 @@ def train(num_LP, num_AL, discount_factor):
                            sess=sess,
                            qlearn_estimator=qlearn_estimator,
                            target_estimator=target_estimator,
-                           num_episodes=1000,
+                           num_episodes=500,
                            num_epoches=10,
                            experiment_dir=experiment_dir,
                            replay_memory_size=500000,

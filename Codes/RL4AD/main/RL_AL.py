@@ -11,6 +11,8 @@ import time
 from scipy import stats
 
 import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
 
 from tensorflow.contrib import rnn
 from mpl_toolkits.mplot3d import axes3d

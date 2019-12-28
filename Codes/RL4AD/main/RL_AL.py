@@ -168,11 +168,11 @@ class Q_Estimator_Nonlinear():
                 self.summary_writer = tf.summary.FileWriter(summary_dir)
 
     def predict(self, state, sess=None):
-        sess = sess or tf.get_default_session()
+        sess = sess or tf.get_default_session(config=config)
         return sess.run(self.action_values, {self.state: state})
 
     def update(self, state, target, sess=None):
-        sess = sess or tf.get_default_session()
+        sess = sess or tf.get_default_session(config=config)
         feed_dict = {self.state: state, self.target: target}
         summaries, global_step, _ = sess.run([self.summaries, tf.contrib.framework.get_global_step(),
                                               self.train_op], feed_dict)

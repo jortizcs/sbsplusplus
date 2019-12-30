@@ -420,7 +420,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         while env.datasetidx < env.datasetrng * validation_separate_ratio:
             state = env.reset()
             print 'double reset'
-
+        print 'testing on: ' + str(env.repodirext[env.datasetidx])
         # One step in the environment
         for t in itertools.count():
             # Choose an action to take
@@ -491,12 +491,12 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
 # percentage = ['0.2', '0.35', '0.65', '0.8']
 percentage = [1]
 #percentage = ['0.8']
-test = 0
+test = 1
 for j in range(len(percentage)):
     # Where we save our checkpoints and graphs
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data fully-labeled']
+    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data fully-labeled 500ep']
     #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting
@@ -536,7 +536,7 @@ for j in range(len(percentage)):
             q_learning(env,
                        qlearn_estimator=qlearn_estimator,
                        target_estimator=target_estimator,
-                       num_episodes=2000,
+                       num_episodes=500,
                        num_epoches=10,
                        experiment_dir=experiment_dir,
                        replay_memory_size=500000,
@@ -548,5 +548,5 @@ for j in range(len(percentage)):
                        discount_factor=0.9,
                        batch_size=256,
                        test=test)
-            q_learning_validator(env, qlearn_estimator, 1)
+            q_learning_validator(env, qlearn_estimator, 7)
 

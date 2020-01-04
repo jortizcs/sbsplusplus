@@ -819,7 +819,8 @@ def train(num_LP, num_AL, discount_factor):
         # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
         # dataset_dir = ['/home/sciphilab/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
         #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/A1Benchmark/']
-        dataset_dir = ['/Users/wuxiaodong/Downloads/KPI_dataset']
+        #dataset_dir = ['/Users/wuxiaodong/Downloads/KPI_dataset']
+        dataset_dir = ['/home/scifilab/anomaly_detection/dataset/KPI/']
         for i in range(len(dataset_dir)):
             env = EnvTimeSeriesfromRepo(dataset_dir[i])
             env.statefnc = RNNBinaryStateFuc

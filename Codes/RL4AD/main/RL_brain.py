@@ -404,6 +404,10 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         rec_file = open('./{}'.format(record_dir), 'wb')
         rec_writer = csv.writer(rec_file)
 
+    p_overall = 0
+    recall_overall = 0
+    f1_overall = 0
+
     for i_episode in range(num_episodes):
         print("Episode {}/{}".format(i_episode + 1, num_episodes))
 
@@ -476,12 +480,18 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         precision = (tp + 1) / float(tp + fp + 1)
         recall = (tp + 1) / float(tp + fn + 1)
         f1 = 2 * ((precision * recall) / (precision + recall))
+        p_overall += precision
+        recall_overall += recall
+        f1_overall += f1
 
         if record_dir:
             rec_writer.writerow([f1])
 
         print("Precision:{}, Recall:{}, F1-score:{} (f1 wrote to file)".format(precision, recall, f1))
-
+    print ("Precision:{}, Recall:{}, F1-score:{} ".
+           format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
+    print ("Precision:{}, Recall:{}, F1-score:{} ".
+                   format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
     if record_dir:
         rec_file.close()
 
@@ -496,7 +506,7 @@ for j in range(len(percentage)):
     # Where we save our checkpoints and graphs
     # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
     #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
-    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data fully-labeled 500ep']
+    exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data 0labeled 67 unlabeled 1000ep']
     #exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
     # Which dataset we are targeting

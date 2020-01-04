@@ -423,7 +423,7 @@ def q_learning(env,
                              estimator=qlearn_estimator, already_selected=labeled_index)
         # find the samples need to be labeled by human
         al_samples = al.get_samples()
-        print 'labeling samples: '+ str(al_samples) + 'in env' + str(env.datasetidx)
+        print 'labeling samples: ' + str(al_samples) + 'in env' + str(env.datasetidx)
         # al.label(al_samples)
         # add the new labeled samples
         labeled_index.extend(al_samples)
@@ -807,7 +807,7 @@ def train(num_LP, num_AL, discount_factor):
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
         #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-        exp_relative_dir = ['LP 670init_warmup h128 b256 1000ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
+        exp_relative_dir = ['KPI LP 670init_warmup h128 b256 1000ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
                             ' d'+str(discount_factor)]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
@@ -818,7 +818,8 @@ def train(num_LP, num_AL, discount_factor):
         # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/demo/csv/']
         # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
         # dataset_dir = ['/home/sciphilab/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
-        dataset_dir = ['/home/scifilab/anomaly_detection/dataset/A1Benchmark/']
+        #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/A1Benchmark/']
+        dataset_dir = ['/Users/wuxiaodong/Downloads/KPI_dataset']
         for i in range(len(dataset_dir)):
             env = EnvTimeSeriesfromRepo(dataset_dir[i])
             env.statefnc = RNNBinaryStateFuc
@@ -869,3 +870,5 @@ def train(num_LP, num_AL, discount_factor):
                            test=test)
                 optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7, experiment_dir)
             return optimization_metric
+
+train(93, 10, 0.8)

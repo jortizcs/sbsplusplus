@@ -34,6 +34,6 @@ def splitByLineCount(filename, count):
 
 if __name__ == '__main__':
     begin = time.time()
-    splitByLineCount('/Users/wuxiaodong/Downloads/KPI_dataset/phase2_train.csv', 200000)
+    splitByLineCount('/Users/wuxiaodong/Downloads/KPI_dataset/phase2_train.csv', 20000)
     end = time.time()
     print('time is %d seconds ' % (end - begin))

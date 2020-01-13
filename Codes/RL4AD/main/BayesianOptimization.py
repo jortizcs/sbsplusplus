@@ -6,12 +6,12 @@ from bayes_opt.util import load_logs
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
-logger = JSONLogger(path="./Bayesian_logs_f1_numLP(80-100)_numAL(5-10).json")
+logger = JSONLogger(path="./KPI_Bayesian_logs_f1_numLP(20-100)_numAL(5-20).json")
 
 
 # Bounded region of parameter space
 # num_LP, num_AL, discount_factor
-pbounds = {'num_LP': (80, 100), 'num_AL': (5, 10), 'discount_factor': (0.8, 1.0)}
+pbounds = {'num_LP': (20, 100), 'num_AL': (5, 20), 'discount_factor': (0.8, 1.0)}
 
 
 def function_to_be_optimized(num_LP, num_AL, discount_factor):

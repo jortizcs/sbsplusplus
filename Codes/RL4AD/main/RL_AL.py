@@ -871,5 +871,3 @@ def train(num_LP, num_AL, discount_factor):
                            test=test)
                 optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7, experiment_dir)
             return optimization_metric
-
-train(93, 10, 0.9)

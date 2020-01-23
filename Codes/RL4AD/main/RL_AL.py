@@ -869,10 +869,7 @@ def train(num_LP, num_AL, discount_factor):
                            num_label_propagation=num_LP,
                            num_active_learning=num_AL,
                            test=test)
-                optimization_metric = q_learning_validator(env_test, qlearn_estimator, 7, experiment_dir)
+                optimization_metric = q_learning_validator(env_test, qlearn_estimator,
+                                                           env.datasetsize*(1-validation_separate_ratio), experiment_dir)
             return optimization_metric
 
-
-train(100, 300, 1.0)
-train(100, 1500, 1.0)
-train(100, 3000, 1.0)

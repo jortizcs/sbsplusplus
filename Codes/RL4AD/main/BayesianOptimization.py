@@ -6,7 +6,7 @@ from bayes_opt.util import load_logs
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
-logger = JSONLogger(path="./KPI_Bayesian_logs_f1_numLP(20-100)_numAL(5-20).json")
+logger = JSONLogger(path="./KPI_Bayesian_logs_f1_numLP(50-200)_numAL(30-50).json")
 
 
 # Bounded region of parameter space

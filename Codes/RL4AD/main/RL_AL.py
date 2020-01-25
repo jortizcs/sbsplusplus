@@ -870,6 +870,6 @@ def train(num_LP, num_AL, discount_factor):
                            num_active_learning=num_AL,
                            test=test)
                 optimization_metric = q_learning_validator(env_test, qlearn_estimator,
-                                                           env.datasetsize*(1-validation_separate_ratio), experiment_dir)
+                                                           int(env.datasetsize*(1-validation_separate_ratio)), experiment_dir)
             return optimization_metric
 

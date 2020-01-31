@@ -873,3 +873,7 @@ def train(num_LP, num_AL, discount_factor):
                                                            int(env.datasetsize*(1-validation_separate_ratio)), experiment_dir)
             return optimization_metric
 
+
+train(100, 30, 1.0)
+train(100, 50, 1.0)
+train(100, 100, 1.0)

@@ -105,7 +105,7 @@ class EnvTimeSeriesfromRepo():
         # the time series contains "timestamp", "value", "anomaly"
         if self.datasetfix == 0:
             self.datasetidx = (self.datasetidx + 1) % self.datasetrng
-        print self.repodirext[self.datasetidx]
+        print (self.repodirext[self.datasetidx])
         self.timeseries = self.timeseries_repo[self.datasetidx]
         self.timeseries_curser = self.timeseries_curser_init
 

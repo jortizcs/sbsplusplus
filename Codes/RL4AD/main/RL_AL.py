@@ -11,8 +11,10 @@ import time
 from scipy import stats
 
 import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
 
-from tensorflow.contrib import rnn
+#from tensorflow.contrib import rnn
+
 from mpl_toolkits.mplot3d import axes3d
 from collections import deque, namedtuple
 
@@ -110,33 +112,33 @@ class Q_Estimator_Nonlinear():
         self.scope = scope
         self.summary_writer = None
 
-        with tf.variable_scope(scope):
+        with tf.compat.v1.variable_scope(scope):
             # tf Graph input
             # The input to the rnn is typically of the shape:
             # [batch_size, n_steps, n_input_dim]
             # RNN requires the data of the shape:
             # n_steps tensors of [batch_size, n_input_dim]
-            self.state = tf.placeholder(shape=[None, n_steps, n_input_dim],
+            self.state = tf.compat.v1.placeholder(shape=[None, n_steps, n_input_dim],
                                         dtype=tf.float32, name="state")
-            self.target = tf.placeholder(shape=[None, action_space_n],
+            self.target = tf.compat.v1.placeholder(shape=[None, action_space_n],
                                          dtype=tf.float32, name="target")
 
             # Define weights
             self.weights = {
-                'out': tf.Variable(tf.random_normal([n_hidden_dim, action_space_n]))
+                'out': tf.Variable(tf.compat.v1.random_normal([n_hidden_dim, action_space_n]))
             }
             self.biases = {
-                'out': tf.Variable(tf.random_normal([action_space_n]))
+                'out': tf.Variable(tf.compat.v1.random_normal([action_space_n]))
             }
 
             self.state_unstack = tf.unstack(self.state, n_steps, 1)
-            print self.state_unstack
+            print (self.state_unstack)
 
             # Define a lstm cell with tensorflow
-            lstm_cell = rnn.BasicLSTMCell(n_hidden_dim, forget_bias=1.0)
+            lstm_cell = tf.compat.v1.nn.rnn_cell.LSTMCell(n_hidden_dim, forget_bias=1.0)
 
             # Get lstm cell output
-            self.outputs, self.states = rnn.static_rnn(lstm_cell,
+            self.outputs, self.states = tf.compat.v1.nn.static_rnn(lstm_cell,
                                                        self.state_unstack,
                                                        dtype=tf.float32)
 
@@ -144,35 +146,36 @@ class Q_Estimator_Nonlinear():
             self.action_values = tf.matmul(self.outputs[-1], self.weights['out']) + self.biases['out']
 
             # Loss and train op
-            self.losses = tf.squared_difference(self.action_values, self.target)
+            self.losses = tf.compat.v1.squared_difference(self.action_values, self.target)
             self.loss = tf.reduce_mean(self.losses)
 
-            self.optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+            self.optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=learning_rate)
+
             self.train_op = self.optimizer.minimize(self.loss,
-                                                    global_step=tf.contrib.framework.get_global_step())
+                                                    global_step=tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES, scope="global_step")[0])
 
             # Summaries for Tensorboard
-            self.summaries = tf.summary.merge([
-                tf.summary.histogram("loss_hist", self.losses),
-                tf.summary.scalar("loss", self.loss),
-                tf.summary.histogram("q_values_hist", self.action_values),
-                tf.summary.scalar("q_value", tf.reduce_max(self.action_values))
+            self.summaries = tf.compat.v1.summary.merge([
+                tf.compat.v1.summary.histogram("loss_hist", self.losses),
+                tf.compat.v1.summary.scalar("loss", self.loss),
+                tf.compat.v1.summary.histogram("q_values_hist", self.action_values),
+                tf.compat.v1.summary.scalar("q_value", tf.reduce_max(self.action_values))
             ])
 
             if summaries_dir:
                 summary_dir = os.path.join(summaries_dir, "summaries_{}".format(scope))
                 if not os.path.exists(summary_dir):
                     os.makedirs(summary_dir)
-                self.summary_writer = tf.summary.FileWriter(summary_dir)
+                self.summary_writer = tf.compat.v1.summary.FileWriter(summary_dir)
 
     def predict(self, state, sess=None):
-        sess = sess or tf.get_default_session()
+        sess = sess or tf.compat.v1.get_default_session()
         return sess.run(self.action_values, {self.state: state})
 
     def update(self, state, target, sess=None):
-        sess = sess or tf.get_default_session()
+        sess = sess or tf.compat.v1.get_default_session()
         feed_dict = {self.state: state, self.target: target}
-        summaries, global_step, _ = sess.run([self.summaries, tf.contrib.framework.get_global_step(),
+        summaries, global_step, _ = sess.run([self.summaries, tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES, scope="global_step")[0],
                                               self.train_op], feed_dict)
         if self.summary_writer:
             self.summary_writer.add_summary(summaries, global_step)
@@ -188,9 +191,9 @@ def copy_model_parameters(sess, estimator1, estimator2):
       estimator1: Estimator to copy the paramters from
       estimator2: Estimator to copy the parameters to
     """
-    e1_params = [t for t in tf.trainable_variables() if t.name.startswith(estimator1.scope)]
+    e1_params = [t for t in tf.compat.v1.trainable_variables() if t.name.startswith(estimator1.scope)]
     e1_params = sorted(e1_params, key=lambda v: v.name)
-    e2_params = [t for t in tf.trainable_variables() if t.name.startswith(estimator2.scope)]
+    e2_params = [t for t in tf.compat.v1.trainable_variables() if t.name.startswith(estimator2.scope)]
     e2_params = sorted(e2_params, key=lambda v: v.name)
 
     update_ops = []
@@ -275,7 +278,7 @@ def q_learning(env,
         os.makedirs(checkpoint_dir)
 
     # Load a previous checkpoint if we find one
-    saver = tf.train.Saver()
+    saver = tf.compat.v1.train.Saver()
 
     latest_checkpoint = tf.train.latest_checkpoint(checkpoint_dir)
     if latest_checkpoint:
@@ -285,7 +288,8 @@ def q_learning(env,
             return
 
     # Get the time step
-    total_t = sess.run(tf.contrib.framework.get_global_step())
+
+    total_t = sess.run(tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES, scope="global_step")[0])
 
     # The epsilon decay schedule
     epsilons = np.linspace(epsilon_start, epsilon_end, epsilon_decay_steps)
@@ -301,7 +305,7 @@ def q_learning(env,
     popu_time = time.time()
 
     # warm up with active learning
-    print 'Warm up starting...'
+    print ('Warm up starting...')
 
     outliers_fraction = 0.01
     data_train = []
@@ -409,7 +413,7 @@ def q_learning(env,
         state = env.reset()
         while env.datasetidx > env.datasetrng * validation_separate_ratio:
             env.reset()
-            print 'double reset'
+            print ('double reset')
         # Active learning:
         # if a AL is needed
 
@@ -423,7 +427,7 @@ def q_learning(env,
                              estimator=qlearn_estimator, already_selected=labeled_index)
         # find the samples need to be labeled by human
         al_samples = al.get_samples()
-        print 'labeling samples: ' + str(al_samples) + 'in env' + str(env.datasetidx)
+        print ('labeling samples: ' + str(al_samples) + 'in env' + str(env.datasetidx))
         # al.label(al_samples)
         # add the new labeled samples
         labeled_index.extend(al_samples)
@@ -561,7 +565,7 @@ def q_learning(env,
         for i_epoch in range(num_epoches):
             # Add epsilon to Tensorboard
             if qlearn_estimator.summary_writer:
-                episode_summary = tf.Summary()
+                episode_summary = tf.compat.v1.Summary()
                 qlearn_estimator.summary_writer.add_summary(episode_summary, total_t)
 
             # Update the target estimator
@@ -638,10 +642,10 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
         # Reset the environment and pick the first action
         state = env.reset()
         while env.datasetidx < env.datasetrng * validation_separate_ratio:
-            print 'double reset'
+            print ('double reset')
             state = env.reset()
 
-        print 'testing on: ' + str(env.repodirext[env.datasetidx])
+        print ('testing on: ' + str(env.repodirext[env.datasetidx]))
         # One step in the environment
         for t in itertools.count():
             # Choose an action to take
@@ -712,7 +716,7 @@ def q_learning_validator(env, estimator, num_episodes, record_dir=None, plot=1):
           format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
     rec_file.write("Precision:{}, Recall:{}, F1-score:{} ".
           format(p_overall / num_episodes, recall_overall / num_episodes, f1_overall / num_episodes))
-    print 'reward: ' + str(reward_overall)
+    print ('reward: ' + str(reward_overall))
     if record_dir:
         rec_file.close()
 
@@ -765,10 +769,10 @@ class active_learning(object):
 
     def label(self, active_samples):
         for sample in active_samples:
-            print 'AL finds one of the most confused samples:'
-            print self.env.timeseries['value'].iloc[sample:sample + n_steps]
-            print 'Please label the last timestamp based on your knowledge'
-            print '0 for non-anomaly; 1 for anomaly'
+            print ('AL finds one of the most confused samples:')
+            print (self.env.timeseries['value'].iloc[sample:sample + n_steps])
+            print ('Please label the last timestamp based on your knowledge')
+            print ('0 for non-anomaly; 1 for anomaly')
             label = input()
             self.env.timeseries.loc[sample + n_steps - 1, 'anomaly'] = label
         return
@@ -807,7 +811,7 @@ def train(num_LP, num_AL, discount_factor):
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A2_partial_data_' + percentage[j],
         #                     'RNN Binary d0.9 s25 h64 b256 A3_partial_data_' + percentage[j], 'RNN Binary d0.9 s25 h64 b256 A4_partial_data_' + percentage[j]]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 A1-4_all_data']
-        exp_relative_dir = ['KPI LP 1500init_warmup h128 b256 300ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
+        exp_relative_dir = ['A1 LP 1500init_warmup h128 b256 300ep num_LP'+str(num_LP)+' num_AL'+str(num_AL) +
                             ' d'+str(discount_factor)]
         # exp_relative_dir = ['RNN Binary d0.9 s25 h64 b256 Aniyama-dataport']
 
@@ -819,8 +823,8 @@ def train(num_LP, num_AL, discount_factor):
         # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
         # dataset_dir = ['/home/sciphilab/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
         #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/A1Benchmark/']
-        #dataset_dir = ['/Users/wuxiaodong/Downloads/KPI_dataset']
-        dataset_dir = ['/home/scifilab/anomaly_detection/dataset/KPI_dataset/']
+        dataset_dir = ['/Users/tongwu/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark']
+        #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/KPI_dataset/']
         for i in range(len(dataset_dir)):
             env = EnvTimeSeriesfromRepo(dataset_dir[i])
             env.statefnc = RNNBinaryStateFuc
@@ -840,15 +844,16 @@ def train(num_LP, num_AL, discount_factor):
 
             experiment_dir = os.path.abspath("./exp/{}".format(exp_relative_dir[i]))
 
-            tf.reset_default_graph()
+            tf.compat.v1.reset_default_graph()
 
             global_step = tf.Variable(0, name="global_step", trainable=False)
+
 
             qlearn_estimator = Q_Estimator_Nonlinear(scope="qlearn", summaries_dir=experiment_dir)
             target_estimator = Q_Estimator_Nonlinear(scope="target")
 
-            sess = tf.Session()
-            sess.run(tf.global_variables_initializer())
+            sess = tf.compat.v1.Session()
+            sess.run(tf.compat.v1.global_variables_initializer())
 
             with sess.as_default():
                 q_learning(env,

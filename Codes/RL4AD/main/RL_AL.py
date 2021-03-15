@@ -405,7 +405,7 @@ def q_learning(env,
         # Save the current checkpoint
         if i_episode % 50 == 49:
             print("Save checkpoint in episode {}/{}".format(i_episode + 1, num_episodes))
-            saver.save(tf.get_default_session(), checkpoint_path)
+            saver.save(tf.compat.v1.get_default_session(), checkpoint_path)
 
         per_loop_time1 = time.time()
 

@@ -823,7 +823,8 @@ def train(num_LP, num_AL, discount_factor):
         # dataset_dir = ['/Users/wuxiaodong/Dropbox/adaptive-anomalies/Aniyama_groundtruth/dataport/']
         # dataset_dir = ['/home/sciphilab/sbsplusplus/datasets/Aniyama_groundtruth/dataport/']
         #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/A1Benchmark/']
-        dataset_dir = ['/Users/tongwu/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark']
+        #dataset_dir = ['/Users/tongwu/Downloads/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark']
+        dataset_dir = ['/home/tongwu/sbsplusplus/ydata-labeled-time-series-anomalies-v1_0/A1Benchmark']
         #dataset_dir = ['/home/scifilab/anomaly_detection/dataset/KPI_dataset/']
         for i in range(len(dataset_dir)):
             env = EnvTimeSeriesfromRepo(dataset_dir[i])
